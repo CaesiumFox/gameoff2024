@@ -1,8 +1,16 @@
-[gd_scene format=3 uid="uid://b27m3op5uoa3a"]
+[gd_scene load_steps=2 format=3 uid="uid://b27m3op5uoa3a"]
+
+[sub_resource type="GDScript" id="GDScript_fyrs6"]
+script/source = "extends Level
+"
 
 [node name="Level" type="Node2D"]
+script = SubResource("GDScript_fyrs6")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="Shape" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PackedVector2Array(0, 384, 0, 128, 32, 128, 32, 320, 384, 320, 384, 288, 576, 288, 576, 192, 768, 192, 768, 384, 1152, 384, 1152, 576, 1408, 576, 1408, 536, 1600, 536, 1600, 472, 1856, 472, 1856, 128, 1920, 128, 1920, 640, 1024, 640, 1024, 448, 512, 448, 512, 384)
+
+[node name="Spawn" type="Marker2D" parent="."]
+position = Vector2(192, 192)
