@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="TemporaryName"
+run/main_scene="res://Game.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -20,3 +21,14 @@ window/size/viewport_width=640
 window/size/viewport_height=360
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
+
+[layer_names]
+
+2d_physics/layer_1="walls"
+2d_physics/layer_2="wall_destruct"
+2d_physics/layer_3="player"
+2d_physics/layer_4="player_hit"
+2d_physics/layer_5="player_hurt"
+2d_physics/layer_6="damage"
+2d_physics/layer_7="interact"
+2d_physics/layer_8="collect"

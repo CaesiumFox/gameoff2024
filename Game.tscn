@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6mldhkvt57q"]
+
+[ext_resource type="Script" path="res://Game.gd" id="1_dlfmj"]
+[ext_resource type="PackedScene" uid="uid://deglo5vpok0js" path="res://gameplay/Gameplay.tscn" id="2_muhjf"]
+
+[node name="Game" type="Node"]
+script = ExtResource("1_dlfmj")
+
+[node name="LevelLoader" parent="." instance=ExtResource("2_muhjf")]
+script = null
