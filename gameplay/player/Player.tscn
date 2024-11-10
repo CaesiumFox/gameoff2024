@@ -1,12 +1,27 @@
-[gd_scene load_steps=2 format=3 uid="uid://dkcewkefukuy7"]
+[gd_scene load_steps=6 format=3 uid="uid://dkcewkefukuy7"]
+
+[ext_resource type="Script" path="res://gameplay/player/Player.gd" id="1_nltvs"]
+[ext_resource type="Script" path="res://gameplay/player/Jump.gd" id="2_pr0e3"]
+[ext_resource type="Script" path="res://gameplay/player/Move.gd" id="3_sa6vb"]
+[ext_resource type="Script" path="res://gameplay/player/Gravity.gd" id="4_0pydb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dpbum"]
-size = Vector2(16, 32)
+size = Vector2(32, 32)
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 4
 platform_floor_layers = 1
 platform_wall_layers = 1
+script = ExtResource("1_nltvs")
 
 [node name="Shape" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_dpbum")
+
+[node name="Jump" type="Node" parent="."]
+script = ExtResource("2_pr0e3")
+
+[node name="Move" type="Node" parent="."]
+script = ExtResource("3_sa6vb")
+
+[node name="Gravity" type="Node" parent="."]
+script = ExtResource("4_0pydb")
