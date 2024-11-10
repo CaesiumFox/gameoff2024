@@ -1,6 +1,6 @@
 extends Node
 
-@onready var level_loader: Node2D = $LevelLoader
+@onready var level_loader: Node2D = $Gameplay
 var test_level := preload("res://gameplay/levels/Test.tscn")
 
 func _ready() -> void:
