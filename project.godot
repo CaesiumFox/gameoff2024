@@ -14,7 +14,7 @@ config/name="TemporaryName"
 run/main_scene="res://Game.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
-config/tags=PackedStringArray("game_jam")
+config/tags=PackedStringArray("game_jam", "game_off_2024", "2d", "platformer")
 
 [autoload]
 
