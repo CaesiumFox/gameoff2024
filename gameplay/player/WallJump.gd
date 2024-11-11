@@ -30,6 +30,9 @@ func _physics_process(_delta: float) -> void:
                 wall_timer.stop()
 
 func try_wall_jump() -> bool:
+    if not SaveManager.data.abilities.wall_jump:
+        return false
+    
     var dir: int = on_wall
     if dir == 0: dir = timer_works
     

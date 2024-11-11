@@ -10,10 +10,8 @@ signal air_jump_reset(amount: int)
 @onready var coyote_timer := $CoyoteTimer as Timer
 @onready var wall_jump := $WallJump as Node
 
-const MAX_AIR_JUMPS: int = 0
-
 var want_to_jump: bool = false
-var air_jumps_left: int = MAX_AIR_JUMPS
+var air_jumps_left: int = 0
 var was_on_ground: bool = false
 var coyote_works: bool = false
 
@@ -54,8 +52,9 @@ func _physics_process(_delta: float) -> void:
             jump.emit(true)
 
 func reset_air_jumps() -> void:
-    air_jumps_left = MAX_AIR_JUMPS
-    air_jump_reset.emit(MAX_AIR_JUMPS)
+    var max_air_jumps := SaveManager.data.abilities.air_jumps
+    air_jumps_left = max_air_jumps
+    air_jump_reset.emit(max_air_jumps)
 
 func _on_coyote_timer_timeout() -> void:
     coyote_works = false
