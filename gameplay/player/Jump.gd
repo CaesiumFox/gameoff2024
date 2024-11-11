@@ -1,26 +1,22 @@
 extends Node
 
 signal jump(air: bool)
-signal ground
+signal air_jump_reset(amount: int)
 
 @export var enabled: bool = true
-
+@export var player: CharacterBody2D
 @export var ray: RayCast2D
 
-@onready var coyote_timer: Timer = $CoyoteTimer
+@onready var coyote_timer := $CoyoteTimer as Timer
+@onready var wall_jump := $WallJump as Node
 
 const MAX_AIR_JUMPS: int = 0
 
 var want_to_jump: bool = false
 var air_jumps_left: int = MAX_AIR_JUMPS
-
 var was_on_ground: bool = false
 var coyote_works: bool = false
 
-var player: CharacterBody2D
-
-func _ready() -> void:
-    player = get_parent()
 
 func _physics_process(_delta: float) -> void:
     if not enabled: return
@@ -36,8 +32,11 @@ func _physics_process(_delta: float) -> void:
             coyote_works = false
             coyote_timer.stop()
     
+    if want_to_jump and wall_jump.try_wall_jump():
+        want_to_jump = false
+        return
+    
     if on_ground or coyote_works:
-        ground.emit()
         if want_to_jump:
             want_to_jump = false
             player.velocity.y = -PhysicsCalculator.jump_speed()
@@ -56,6 +55,7 @@ func _physics_process(_delta: float) -> void:
 
 func reset_air_jumps() -> void:
     air_jumps_left = MAX_AIR_JUMPS
+    air_jump_reset.emit(MAX_AIR_JUMPS)
 
 func _on_coyote_timer_timeout() -> void:
     coyote_works = false

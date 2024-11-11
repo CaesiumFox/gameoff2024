@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dkcewkefukuy7"]
+[gd_scene load_steps=7 format=3 uid="uid://dkcewkefukuy7"]
 
 [ext_resource type="Script" path="res://gameplay/player/Player.gd" id="1_nltvs"]
 [ext_resource type="Script" path="res://gameplay/player/Jump.gd" id="2_pr0e3"]
 [ext_resource type="Script" path="res://gameplay/player/Move.gd" id="3_sa6vb"]
 [ext_resource type="Script" path="res://gameplay/player/Gravity.gd" id="4_0pydb"]
+[ext_resource type="Script" path="res://gameplay/player/WallJump.gd" id="5_m5vos"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dpbum"]
 size = Vector2(24, 24)
@@ -21,8 +22,9 @@ shape = SubResource("RectangleShape2D_dpbum")
 position = Vector2(0, 12)
 target_position = Vector2(0, 8)
 
-[node name="Jump" type="Node" parent="." node_paths=PackedStringArray("ray")]
+[node name="Jump" type="Node" parent="." node_paths=PackedStringArray("player", "ray")]
 script = ExtResource("2_pr0e3")
+player = NodePath("..")
 ray = NodePath("../JumpRay")
 
 [node name="CoyoteTimer" type="Timer" parent="Jump"]
@@ -30,11 +32,22 @@ process_callback = 0
 wait_time = 0.1
 one_shot = true
 
-[node name="Move" type="Node" parent="."]
-script = ExtResource("3_sa6vb")
+[node name="WallJump" type="Node" parent="Jump" node_paths=PackedStringArray("player")]
+script = ExtResource("5_m5vos")
+player = NodePath("../..")
 
-[node name="Gravity" type="Node" parent="."]
+[node name="WallTimer" type="Timer" parent="Jump/WallJump"]
+process_callback = 0
+wait_time = 0.1
+one_shot = true
+
+[node name="Move" type="Node" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("3_sa6vb")
+player = NodePath("..")
+
+[node name="Gravity" type="Node" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("4_0pydb")
+player = NodePath("..")
 
 [node name="Camera" type="Camera2D" parent="."]
 limit_smoothed = true
@@ -45,3 +58,4 @@ editor_draw_limits = true
 editor_draw_drag_margin = true
 
 [connection signal="timeout" from="Jump/CoyoteTimer" to="Jump" method="_on_coyote_timer_timeout"]
+[connection signal="timeout" from="Jump/WallJump/WallTimer" to="Jump/WallJump" method="_on_wall_timer_timeout"]

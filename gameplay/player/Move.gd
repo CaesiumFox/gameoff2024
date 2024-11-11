@@ -1,12 +1,9 @@
 extends Node
 
 @export var enabled: bool = true
+@export var player: CharacterBody2D
 
-var player: CharacterBody2D
 var move_input: float = 0.0
-
-func _ready() -> void:
-    player = get_parent()
 
 func _physics_process(delta: float) -> void:
     if not enabled: return
