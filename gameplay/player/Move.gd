@@ -8,9 +8,25 @@ var move_input: float = 0.0
 func _ready() -> void:
     player = get_parent()
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
     if not enabled: return
-
-    move_input = Input.get_axis("move_left", "move_right")
-
-    player.velocity.x = move_input * PhysicsCalculator.speed()    
+    
+    var vel := Input.get_axis("move_left", "move_right") * PhysicsCalculator.speed()
+    if vel < 0.01 and vel > -0.01: vel = 0.0
+    
+    var acc := (PhysicsCalculator.ground_movement_acceleration()
+        if player.is_on_floor()
+        else PhysicsCalculator.air_movement_acceleration())
+    var dec := (PhysicsCalculator.ground_movement_deceleration()
+        if player.is_on_floor()
+        else PhysicsCalculator.air_movement_deceleration())
+    
+    var pos := acc if player.velocity.x > 0 else dec
+    var neg := dec if player.velocity.x > 0 else acc
+    
+    if vel < player.velocity.x:
+        player.velocity.x -= neg * delta
+        if player.velocity.x < vel: player.velocity.x = vel
+    else:
+        player.velocity.x += pos * delta
+        if player.velocity.x > vel: player.velocity.x = vel

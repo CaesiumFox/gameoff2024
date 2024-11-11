@@ -18,7 +18,10 @@ func load_level(scene: PackedScene) -> void:
         remove_child(current_level)
     current_level = level
     add_child(current_level)
-    player.position = level.get_spawn_point()
+    player.position = level.spawn_point
+    player.prepare_for_load()
+    level.view_box_changed.connect(player.set_camera_limits)
+    player.set_camera_limits(level.view_box)
     level_loaded.emit()
 
 func restart_level() -> void:

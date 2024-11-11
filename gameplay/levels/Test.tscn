@@ -11,7 +11,13 @@ script = SubResource("GDScript_fyrs6")
 collision_mask = 0
 
 [node name="Shape" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PackedVector2Array(0, 384, 0, 128, 32, 128, 32, 320, 384, 320, 384, 288, 576, 288, 576, 192, 768, 192, 768, 384, 1152, 384, 1152, 576, 1408, 576, 1408, 536, 1600, 536, 1600, 472, 1856, 472, 1856, 128, 1920, 128, 1920, 640, 1024, 640, 1024, 448, 512, 448, 512, 384)
+polygon = PackedVector2Array(0, 384, 0, 128, 32, 128, 32, 320, 384, 320, 384, 288, 568, 288, 568, 256, 576, 256, 576, 192, 768, 192, 768, 256, 800, 256, 800, 320, 832, 320, 832, 384, 1152, 384, 1152, 576, 1408, 576, 1408, 536, 1600, 536, 1600, 472, 1856, 472, 1856, 128, 1920, 128, 1920, 640, 1024, 640, 1024, 448, 512, 448, 512, 384)
 
 [node name="Spawn" type="Marker2D" parent="."]
-position = Vector2(192, 192)
+position = Vector2(192, 304)
+
+[node name="TL" type="Marker2D" parent="."]
+position = Vector2(0, 128)
+
+[node name="BR" type="Marker2D" parent="."]
+position = Vector2(1920, 640)
