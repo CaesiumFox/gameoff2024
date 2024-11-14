@@ -8,7 +8,7 @@ var move_input: float = 0.0
 func _physics_process(delta: float) -> void:
     if not enabled: return
     
-    var vel := Input.get_axis("move_left", "move_right") * PhysicsCalculator.speed()
+    var vel := Input.get_axis("game_left", "game_right") * PhysicsCalculator.speed()
     if vel < 0.01 and vel > -0.01: vel = 0.0
     
     var acc := (PhysicsCalculator.ground_movement_acceleration()

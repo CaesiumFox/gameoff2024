@@ -19,8 +19,8 @@ var coyote_works: bool = false
 func _physics_process(_delta: float) -> void:
     if not enabled: return
 
-    want_to_jump = want_to_jump or Input.is_action_just_pressed("jump")
-    want_to_jump = want_to_jump and not Input.is_action_just_released("jump")
+    want_to_jump = want_to_jump or Input.is_action_just_pressed("game_jump")
+    want_to_jump = want_to_jump and not Input.is_action_just_released("game_jump")
     var on_ground := player.is_on_floor() or (air_jumps_left > 0 and ray.is_colliding())
     
     if on_ground and not was_on_ground:
