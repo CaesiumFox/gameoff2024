@@ -1,6 +1,6 @@
 extends Node
 
-const UNIT: float = 32
+const UNIT: float = 16
 
 const BASE_JUMP_HEIGHT: float = 3.0 * UNIT
 const BASE_JUMP_LENGTH: float = 6.0 * UNIT

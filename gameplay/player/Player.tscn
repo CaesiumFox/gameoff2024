@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://gameplay/player/WallJump.gd" id="5_m5vos"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dpbum"]
-size = Vector2(24, 24)
+size = Vector2(12, 12)
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 4
@@ -19,8 +19,8 @@ script = ExtResource("1_nltvs")
 shape = SubResource("RectangleShape2D_dpbum")
 
 [node name="JumpRay" type="RayCast2D" parent="."]
-position = Vector2(0, 12)
-target_position = Vector2(0, 8)
+position = Vector2(0, 6)
+target_position = Vector2(0, 4)
 
 [node name="Jump" type="Node" parent="." node_paths=PackedStringArray("player", "ray")]
 script = ExtResource("2_pr0e3")
