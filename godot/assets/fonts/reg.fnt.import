@@ -1,0 +1,17 @@
+[remap]
+
+importer="font_data_bmfont"
+type="FontFile"
+uid="uid://cete333x78mls"
+path="res://.godot/imported/reg.fnt-4aee8eb661ddb0207804411f9ba6228d.fontdata"
+
+[deps]
+
+source_file="res://assets/fonts/reg.fnt"
+dest_files=["res://.godot/imported/reg.fnt-4aee8eb661ddb0207804411f9ba6228d.fontdata"]
+
+[params]
+
+fallbacks=[]
+compress=true
+scaling_mode=2

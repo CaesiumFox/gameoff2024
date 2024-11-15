@@ -15,14 +15,17 @@ def transform(path_in, path_out):
     lines = file.readlines()
     file.close()
 
-    pages = list(map(to_page_def, lines[0].split()))
+    name, spacing_str = lines[0].split()
+    spacing = int(spacing_str)
+
+    pages = list(map(to_page_def, lines[1].split()))
     page_ids = {}
     for i in range(len(pages)):
         page_ids[pages[i][0]] = i
 
     vals = []
 
-    for line in lines[1:]:
+    for line in lines[2:]:
         l = line.strip()
         if len(l) < 4:
             continue
@@ -43,7 +46,7 @@ def transform(path_in, path_out):
     out_lines = []
     out_lines.append(" ".join([
         "info",
-        "face=\"big\"",
+        f"face=\"{name}\"",
         "size=16",
         "bold=0",
         "italic=0",
@@ -53,7 +56,7 @@ def transform(path_in, path_out):
         "smooth=0",
         "aa=1",
         "padding=0,0,0,0",
-        "spacing=1,0"
+        "spacing=0,0"
     ]))
     out_lines.append(" ".join([
         "common",
@@ -80,7 +83,7 @@ def transform(path_in, path_out):
             "height=16",
             f"xoffset={b}",
             "yoffset=0",
-            f"xadvance={a + 1}",
+            f"xadvance={a + b + spacing}",
             f"page={page_ids[chr_page(c)]}",
             "chnl=15"
         ]))
@@ -95,3 +98,5 @@ def transform(path_in, path_out):
 
 if __name__ == "__main__":
     transform("assets/fonts/big.txt", "godot/assets/fonts/big.fnt")
+    transform("assets/fonts/reg.txt", "godot/assets/fonts/reg.fnt")
+    transform("assets/fonts/spe.txt", "godot/assets/fonts/spe.fnt")
