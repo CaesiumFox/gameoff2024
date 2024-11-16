@@ -12,8 +12,8 @@ func _ready() -> void:
 
 func _on_body_entered(body: CollisionObject2D) -> void:
     if body.collision_layer & (1 << 2) > 0:
-        monitorable = false
-        monitoring = false
+        set_deferred("monitorable", false)
+        set_deferred("monitoring", false)
         view.speed_scale = 4.0
         falling = true
         velocity.x = 0
