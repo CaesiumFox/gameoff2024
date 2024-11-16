@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://uupwdeado2j2"]
+
+[ext_resource type="PackedScene" uid="uid://d131hwcs5mgd5" path="res://gameplay/elements/spikes/Spike.tscn" id="1_y5dd5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tdg5u"]
+size = Vector2(4, 2)
+
+[node name="Right" type="Node2D"]
+
+[node name="Spike" parent="." instance=ExtResource("1_y5dd5")]
+variant = 2
+
+[node name="Shape" type="CollisionShape2D" parent="Spike"]
+position = Vector2(-4, 5)
+shape = SubResource("RectangleShape2D_tdg5u")

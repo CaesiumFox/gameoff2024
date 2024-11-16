@@ -200,6 +200,7 @@ console_switch={
 2d_physics/layer_6="damage"
 2d_physics/layer_7="interact"
 2d_physics/layer_8="collect"
+2d_physics/layer_9="exit"
 
 [rendering]
 

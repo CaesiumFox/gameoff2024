@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=4 uid="uid://b27m3op5uoa3a"]
 
 [ext_resource type="TileSet" uid="uid://b3c1hcw6x6y0p" path="res://assets/tiles0_0.tres" id="1_wkmps"]
-[ext_resource type="PackedScene" uid="uid://lukwf4jblxo8" path="res://gameplay/coin/Coin.tscn" id="2_56bkd"]
+[ext_resource type="PackedScene" uid="uid://lukwf4jblxo8" path="res://gameplay/elements/Coin.tscn" id="2_56bkd"]
 
 [sub_resource type="GDScript" id="GDScript_fyrs6"]
 script/source = "extends Level

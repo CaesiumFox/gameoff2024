@@ -1,10 +1,11 @@
 extends Area2D
 
-signal collect
+signal collect(id: int)
 
 var falling: bool = false
 var velocity: Vector2 = Vector2(0, -100)
 
+@export var id: int = 0
 @onready var view: AnimatedSprite2D = $View
 
 func _ready() -> void:
@@ -19,7 +20,8 @@ func _on_body_entered(body: CollisionObject2D) -> void:
         velocity.x = 0
         velocity.y = -250
         velocity = velocity.rotated(deg_to_rad(randf_range(-10, 10)))
-        collect.emit()
+        z_index = 1
+        collect.emit(id)
 
 func _process(delta: float) -> void:
     if not falling: return

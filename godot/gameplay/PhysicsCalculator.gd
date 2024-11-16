@@ -2,9 +2,9 @@ extends Node
 
 const UNIT: float = 16
 
-const BASE_JUMP_HEIGHT: float = 3.0 * UNIT
-const BASE_JUMP_LENGTH: float = 6.0 * UNIT
-const BASE_SPEED: float = 10.0 * UNIT
+const BASE_JUMP_HEIGHT: float = 2.1 * UNIT
+const BASE_JUMP_LENGTH: float = 4.0 * UNIT
+const BASE_SPEED: float = 7.0 * UNIT
 
 const BASE_JUMP_TIME: float = BASE_JUMP_LENGTH / BASE_SPEED
 const BASE_JUMP_SPEED: float = 4.0 * BASE_JUMP_HEIGHT / BASE_JUMP_TIME

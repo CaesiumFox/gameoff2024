@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+signal death
+signal win
+
 @onready var jump: Node = $Jump
 @onready var move: Node = $Move
 @onready var gravity: Node = $Gravity
@@ -23,3 +26,15 @@ func set_camera_limits(view_box: Rect2) -> void:
     camera.limit_top = int(view_box.position.y)
     camera.limit_right = int(view_box.end.x)
     camera.limit_bottom = int(view_box.end.y)
+
+
+func _on_hit_box_area_entered(area: Area2D) -> void:
+    print("enter")
+    if area.collision_layer & (1 << 5) > 0:  # damage
+        death.emit()
+        print("death")
+    elif area.collision_layer & (1 << 8) > 0:  # exit
+        win.emit()
+        print("win")
+    else:
+        pass

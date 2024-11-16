@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dkcewkefukuy7"]
+[gd_scene load_steps=8 format=3 uid="uid://dkcewkefukuy7"]
 
 [ext_resource type="Script" path="res://gameplay/player/Player.gd" id="1_nltvs"]
 [ext_resource type="Script" path="res://gameplay/player/Jump.gd" id="2_pr0e3"]
@@ -9,6 +9,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dpbum"]
 size = Vector2(12, 12)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dgsbn"]
+size = Vector2(11, 11)
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 4
 platform_floor_layers = 1
@@ -17,6 +20,13 @@ script = ExtResource("1_nltvs")
 
 [node name="Shape" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_dpbum")
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 288
+
+[node name="Shape" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("RectangleShape2D_dgsbn")
 
 [node name="JumpRay" type="RayCast2D" parent="."]
 position = Vector2(0, 6)
@@ -57,5 +67,6 @@ drag_vertical_enabled = true
 editor_draw_limits = true
 editor_draw_drag_margin = true
 
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
 [connection signal="timeout" from="Jump/CoyoteTimer" to="Jump" method="_on_coyote_timer_timeout"]
 [connection signal="timeout" from="Jump/WallJump/WallTimer" to="Jump/WallJump" method="_on_wall_timer_timeout"]
