@@ -5,6 +5,12 @@ extends CharacterBody2D
 @onready var gravity: Node = $Gravity
 @onready var camera: Camera2D = $Camera
 
+@onready var shape: CollisionShape2D = $Shape
+
+func _ready() -> void:
+    (shape.shape as RectangleShape2D).size.x -= 2 * safe_margin
+    (shape.shape as RectangleShape2D).size.y -= 2 * safe_margin
+
 func _physics_process(_delta: float) -> void:
     move_and_slide()
 
