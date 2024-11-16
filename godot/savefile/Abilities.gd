@@ -2,7 +2,7 @@ extends Saver
 class_name Abilities
 
 var air_jumps: int = 0
-var wall_jump: bool = true
+var wall_jump: bool = false
 
 func save_data(file: ConfigFile) -> void:
     file.set_value("Abilities", "air_jumps", air_jumps)
