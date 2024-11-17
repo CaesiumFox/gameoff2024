@@ -5,6 +5,9 @@ extends Node
 
 var move_input: float = 0.0
 
+func reset() -> void:
+    move_input = 0.0
+
 func _physics_process(delta: float) -> void:
     if not enabled: return
     

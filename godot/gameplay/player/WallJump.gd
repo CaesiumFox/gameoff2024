@@ -11,6 +11,12 @@ var was_on_wall: int = 0
 var on_wall: int = 0
 var timer_works: int = 0
 
+func reset() -> void:
+    wall_timer.stop()
+    was_on_wall = 0
+    on_wall = 0
+    timer_works = 0
+
 func _physics_process(_delta: float) -> void:
     if player.is_on_wall() and player.get_slide_collision_count() > 0:
         on_wall = 1 if player.get_last_slide_collision().get_normal().x > 0 else -1

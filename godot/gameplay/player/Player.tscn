@@ -1,16 +1,31 @@
-[gd_scene load_steps=8 format=3 uid="uid://dkcewkefukuy7"]
+[gd_scene load_steps=14 format=3 uid="uid://dkcewkefukuy7"]
 
 [ext_resource type="Script" path="res://gameplay/player/Player.gd" id="1_nltvs"]
 [ext_resource type="Script" path="res://gameplay/player/Jump.gd" id="2_pr0e3"]
 [ext_resource type="Script" path="res://gameplay/player/Move.gd" id="3_sa6vb"]
 [ext_resource type="Script" path="res://gameplay/player/Gravity.gd" id="4_0pydb"]
 [ext_resource type="Script" path="res://gameplay/player/WallJump.gd" id="5_m5vos"]
+[ext_resource type="AudioStream" uid="uid://4b5nlcfvvggh" path="res://assets/sfx/death.ogg" id="6_n4nga"]
+[ext_resource type="AudioStream" uid="uid://dwt3k680y0uh4" path="res://assets/sfx/jump.ogg" id="7_0o0v8"]
+[ext_resource type="AudioStream" uid="uid://drbsbq0iq5iif" path="res://assets/sfx/land.ogg" id="8_2t1qq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dpbum"]
 size = Vector2(12, 12)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dgsbn"]
 size = Vector2(11, 11)
+
+[sub_resource type="Curve" id="Curve_eamgd"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.05912, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_oxieu"]
+_data = [Vector2(0.00386101, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_sisp6"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 4
@@ -67,6 +82,75 @@ drag_vertical_enabled = true
 editor_draw_limits = true
 editor_draw_drag_margin = true
 
+[node name="JumpParticles" type="CPUParticles2D" parent="."]
+process_mode = 3
+z_index = -1
+position = Vector2(0, 6)
+emitting = false
+lifetime = 0.2
+one_shot = true
+explosiveness = 1.0
+direction = Vector2(0, -1)
+spread = 90.0
+gravity = Vector2(0, 100)
+initial_velocity_min = 40.0
+initial_velocity_max = 40.0
+scale_amount_curve = SubResource("Curve_eamgd")
+
+[node name="DeathParticles" type="CPUParticles2D" parent="."]
+process_mode = 3
+z_index = -1
+emitting = false
+amount = 16
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+linear_accel_min = -100.0
+linear_accel_max = -100.0
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_oxieu")
+color = Color(0.733333, 0, 1, 1)
+
+[node name="LandParticles" type="CPUParticles2D" parent="."]
+process_mode = 3
+position = Vector2(0, 6)
+emitting = false
+amount = 12
+lifetime = 0.35
+one_shot = true
+explosiveness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(6, 0)
+direction = Vector2(0, -1)
+spread = 30.0
+gravity = Vector2(0, 200)
+initial_velocity_min = 40.0
+initial_velocity_max = 40.0
+scale_amount_curve = SubResource("Curve_sisp6")
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("6_n4nga")
+bus = &"PlayerSound"
+
+[node name="JumpSound" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("7_0o0v8")
+bus = &"PlayerSound"
+
+[node name="LandSound" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("8_2t1qq")
+bus = &"PlayerSound"
+
+[connection signal="death" from="." to="." method="_on_death"]
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
+[connection signal="hit_ground" from="Jump" to="." method="_on_jump_hit_ground"]
+[connection signal="jump" from="Jump" to="." method="_on_jump_jump"]
 [connection signal="timeout" from="Jump/CoyoteTimer" to="Jump" method="_on_coyote_timer_timeout"]
 [connection signal="timeout" from="Jump/WallJump/WallTimer" to="Jump/WallJump" method="_on_wall_timer_timeout"]

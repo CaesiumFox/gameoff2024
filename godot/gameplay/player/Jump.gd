@@ -2,6 +2,7 @@ extends Node
 
 signal jump(air: bool)
 signal air_jump_reset(amount: int)
+signal hit_ground
 
 @export var enabled: bool = true
 @export var player: CharacterBody2D
@@ -15,6 +16,13 @@ var air_jumps_left: int = 0
 var was_on_ground: bool = false
 var coyote_works: bool = false
 
+func reset() -> void:
+    coyote_timer.stop()
+    wall_jump.reset()
+    want_to_jump = false
+    reset_air_jumps()
+    was_on_ground = false
+    coyote_works = false
 
 func _physics_process(_delta: float) -> void:
     if not enabled: return
@@ -24,6 +32,7 @@ func _physics_process(_delta: float) -> void:
     var on_ground := player.is_on_floor() or (air_jumps_left > 0 and ray.is_colliding())
     
     if on_ground and not was_on_ground:
+        hit_ground.emit()
         was_on_ground = true
         reset_air_jumps()
         if coyote_works:

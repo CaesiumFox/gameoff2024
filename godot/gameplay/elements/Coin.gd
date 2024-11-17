@@ -7,6 +7,7 @@ var velocity: Vector2 = Vector2(0, -100)
 
 @export var id: int = 0
 @onready var view: AnimatedSprite2D = $View
+@onready var collect_sound: AudioStreamPlayer = $CollectSound
 
 func _ready() -> void:
     view.play()
@@ -32,3 +33,6 @@ func _on_viewed_screen_exited() -> void:
     if not falling: return
     falling = false
     visible = false
+
+func _on_collect(_id: int) -> void:
+    collect_sound.play()

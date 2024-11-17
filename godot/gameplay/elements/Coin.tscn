@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://lukwf4jblxo8"]
+[gd_scene load_steps=10 format=3 uid="uid://lukwf4jblxo8"]
 
 [ext_resource type="Texture2D" uid="uid://dsgotgahmquxy" path="res://assets/tiles0.png" id="1_0035c"]
 [ext_resource type="Script" path="res://gameplay/elements/Coin.gd" id="1_dge65"]
+[ext_resource type="AudioStream" uid="uid://dp6f46ri8jen8" path="res://assets/sfx/coin.ogg" id="3_0twxx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yg4n8"]
 radius = 6.0
@@ -59,5 +60,11 @@ speed_scale = 1.5
 position = Vector2(-1.19209e-07, -1.19209e-07)
 scale = Vector2(1.2, 1.2)
 
+[node name="CollectSound" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("3_0twxx")
+bus = &"PlayerSound"
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="collect" from="." to="." method="_on_collect"]
 [connection signal="screen_exited" from="Viewed" to="." method="_on_viewed_screen_exited"]
