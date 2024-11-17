@@ -15,6 +15,7 @@ signal win
 @onready var jump_sound: AudioStreamPlayer = $JumpSound
 @onready var death_sound: AudioStreamPlayer = $DeathSound
 @onready var land_sound: AudioStreamPlayer = $LandSound
+@onready var animator: Node = $Animator
 
 func _ready() -> void:
     (shape.shape as RectangleShape2D).size.x -= 2 * safe_margin
@@ -27,6 +28,7 @@ func reset() -> void:
     jump.reset()
     move.reset()
     gravity.reset()
+    animator.reset()
 
 func prepare_for_load() -> void:
     jump.reset_air_jumps()

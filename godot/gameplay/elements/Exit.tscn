@@ -5,6 +5,7 @@
 [sub_resource type="AtlasTexture" id="AtlasTexture_500ic"]
 atlas = ExtResource("1_a1ndr")
 region = Rect2(144, 12, 36, 24)
+filter_clip = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ida5c"]
 size = Vector2(12, 12)

@@ -1,18 +1,32 @@
 extends Node
 
+signal start_left
+signal start_right
+signal stop
+
 @export var enabled: bool = true
 @export var player: CharacterBody2D
 
-var move_input: float = 0.0
+var old_vel: float = 0.0
 
 func reset() -> void:
-    move_input = 0.0
+    old_vel = 0.0
 
 func _physics_process(delta: float) -> void:
     if not enabled: return
     
     var vel := Input.get_axis("game_left", "game_right") * PhysicsCalculator.speed()
-    if vel < 0.01 and vel > -0.01: vel = 0.0
+    
+    if sign(old_vel) != sign(vel):
+        if vel < 0.01 and vel > -0.01:
+            vel = 0.0
+            stop.emit()
+        elif vel <= -0.01:
+            start_left.emit()
+        else:
+            start_right.emit()
+
+    old_vel = vel
     
     var acc := (PhysicsCalculator.ground_movement_acceleration()
         if player.is_on_floor()

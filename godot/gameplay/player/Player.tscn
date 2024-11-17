@@ -1,13 +1,113 @@
-[gd_scene load_steps=14 format=3 uid="uid://dkcewkefukuy7"]
+[gd_scene load_steps=25 format=3 uid="uid://dkcewkefukuy7"]
 
 [ext_resource type="Script" path="res://gameplay/player/Player.gd" id="1_nltvs"]
+[ext_resource type="Texture2D" uid="uid://dx2sldyxbnh17" path="res://assets/player.png" id="2_oowts"]
 [ext_resource type="Script" path="res://gameplay/player/Jump.gd" id="2_pr0e3"]
+[ext_resource type="Script" path="res://gameplay/player/View.gd" id="3_hkm5l"]
 [ext_resource type="Script" path="res://gameplay/player/Move.gd" id="3_sa6vb"]
 [ext_resource type="Script" path="res://gameplay/player/Gravity.gd" id="4_0pydb"]
+[ext_resource type="Script" path="res://gameplay/player/Animator.gd" id="4_ntffy"]
 [ext_resource type="Script" path="res://gameplay/player/WallJump.gd" id="5_m5vos"]
 [ext_resource type="AudioStream" uid="uid://4b5nlcfvvggh" path="res://assets/sfx/death.ogg" id="6_n4nga"]
 [ext_resource type="AudioStream" uid="uid://dwt3k680y0uh4" path="res://assets/sfx/jump.ogg" id="7_0o0v8"]
 [ext_resource type="AudioStream" uid="uid://drbsbq0iq5iif" path="res://assets/sfx/land.ogg" id="8_2t1qq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g6qvv"]
+atlas = ExtResource("2_oowts")
+region = Rect2(0, 0, 12, 12)
+
+[sub_resource type="Animation" id="Animation_ke62u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("View:frame_xy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_tlnlp"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("View:frame_xy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(1, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jvfyx"]
+resource_name = "walk"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("View:frame_xy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(2, 0), Vector2(3, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vg5pt"]
+_data = {
+"RESET": SubResource("Animation_ke62u"),
+"idle": SubResource("Animation_tlnlp"),
+"walk": SubResource("Animation_jvfyx")
+}
+
+[sub_resource type="Animation" id="Animation_jd072"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("View:invincible_xy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gapgg"]
+resource_name = "invincible"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("View:invincible_xy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(0, 2), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jxtn1"]
+_data = {
+"RESET": SubResource("Animation_jd072"),
+"invincible": SubResource("Animation_gapgg")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dpbum"]
 size = Vector2(12, 12)
@@ -33,6 +133,28 @@ platform_floor_layers = 1
 platform_wall_layers = 1
 script = ExtResource("1_nltvs")
 
+[node name="View" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_g6qvv")
+script = ExtResource("3_hkm5l")
+
+[node name="Animator" type="Node" parent="." node_paths=PackedStringArray("player", "sprite")]
+process_mode = 3
+script = ExtResource("4_ntffy")
+player = NodePath("..")
+sprite = NodePath("../View")
+
+[node name="Movement" type="AnimationPlayer" parent="Animator"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_vg5pt")
+}
+
+[node name="Invincibility" type="AnimationPlayer" parent="Animator"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_jxtn1")
+}
+
 [node name="Shape" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_dpbum")
 
@@ -54,7 +176,7 @@ ray = NodePath("../JumpRay")
 
 [node name="CoyoteTimer" type="Timer" parent="Jump"]
 process_callback = 0
-wait_time = 0.1
+wait_time = 0.05
 one_shot = true
 
 [node name="WallJump" type="Node" parent="Jump" node_paths=PackedStringArray("player")]
@@ -149,8 +271,16 @@ stream = ExtResource("8_2t1qq")
 bus = &"PlayerSound"
 
 [connection signal="death" from="." to="." method="_on_death"]
+[connection signal="death" from="." to="Animator" method="_on_player_death"]
+[connection signal="win" from="." to="Animator" method="_on_player_win"]
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
 [connection signal="hit_ground" from="Jump" to="." method="_on_jump_hit_ground"]
+[connection signal="hit_ground" from="Jump" to="Animator" method="_on_jump_hit_ground"]
 [connection signal="jump" from="Jump" to="." method="_on_jump_jump"]
+[connection signal="jump" from="Jump" to="Animator" method="_on_jump_jump"]
+[connection signal="leave_ground" from="Jump" to="Animator" method="_on_jump_leave_ground"]
 [connection signal="timeout" from="Jump/CoyoteTimer" to="Jump" method="_on_coyote_timer_timeout"]
 [connection signal="timeout" from="Jump/WallJump/WallTimer" to="Jump/WallJump" method="_on_wall_timer_timeout"]
+[connection signal="start_left" from="Move" to="Animator" method="_on_move_start_left"]
+[connection signal="start_right" from="Move" to="Animator" method="_on_move_start_right"]
+[connection signal="stop" from="Move" to="Animator" method="_on_move_stop"]

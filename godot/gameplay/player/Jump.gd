@@ -3,6 +3,7 @@ extends Node
 signal jump(air: bool)
 signal air_jump_reset(amount: int)
 signal hit_ground
+signal leave_ground
 
 @export var enabled: bool = true
 @export var player: CharacterBody2D
@@ -53,6 +54,7 @@ func _physics_process(_delta: float) -> void:
         if was_on_ground:
             was_on_ground = false
             coyote_works = true
+            leave_ground.emit()
             coyote_timer.start()
         if want_to_jump and air_jumps_left > 0:
             want_to_jump = false
