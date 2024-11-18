@@ -16,6 +16,7 @@ func load_level(scene: PackedScene) -> void:
         player = player_scene.instantiate() as Player
         add_child(player)
         player.death.connect(plan_restart)
+        player.win.connect(record_win)
     var level := scene.instantiate() as Level
     if current_level != null:
         remove_child(current_level)
@@ -43,6 +44,9 @@ func plan_restart() -> void:
     restarting = true
     timer.start()
     get_tree().paused = true
+
+func record_win() -> void:
+    pass
 
 func _on_timer_timeout() -> void:
     restart_level()

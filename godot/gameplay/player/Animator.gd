@@ -9,6 +9,9 @@ var dead: bool = false
 var free_fall: bool = false
 var move: int = 0
 
+func _ready() -> void:
+    pass
+
 func _physics_process(_delta: float) -> void:
     if free_fall and not dead:
         movement.stop()
@@ -29,10 +32,12 @@ func reset() -> void:
     move = 0
     dead = false
     free_fall = not player.is_on_floor()
+    stop_all()
+    movement.play("idle")
 
 func stop_all() -> void:
     movement.stop()
-    invincibility.stop()
+    invincibility.play("RESET")
 
 func _on_player_death() -> void:
     if dead: return

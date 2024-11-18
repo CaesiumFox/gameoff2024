@@ -1,12 +1,6 @@
-[gd_resource type="TileSet" load_steps=10 format=3 uid="uid://b3c1hcw6x6y0p"]
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://b3c1hcw6x6y0p"]
 
 [ext_resource type="Texture2D" uid="uid://dsgotgahmquxy" path="res://assets/tiles0.png" id="1_2j2qj"]
-[ext_resource type="PackedScene" uid="uid://pcs5lpnaafuo" path="res://gameplay/elements/spikes/Left.tscn" id="2_3wh1v"]
-[ext_resource type="PackedScene" uid="uid://bmrbngq4h2ww6" path="res://gameplay/elements/spikes/Mid.tscn" id="3_tsq6e"]
-[ext_resource type="PackedScene" uid="uid://uupwdeado2j2" path="res://gameplay/elements/spikes/Right.tscn" id="4_encku"]
-[ext_resource type="PackedScene" uid="uid://br2b4bf4pgoie" path="res://gameplay/elements/spikes/Big.tscn" id="5_xdeo5"]
-[ext_resource type="PackedScene" uid="uid://yg852vnfxlqs" path="res://gameplay/elements/spikes/Dot.tscn" id="6_eftyh"]
-[ext_resource type="PackedScene" uid="uid://cxkprcrkwv8jm" path="res://gameplay/elements/spikes/Mid180.tscn" id="7_8u3yy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_npcew"]
 texture = ExtResource("1_2j2qj")
@@ -1281,14 +1275,16 @@ texture_region_size = Vector2i(12, 12)
 11:11/0/terrains_peering_bit/left_side = 0
 11:11/0/terrains_peering_bit/top_left_corner = 0
 11:11/0/terrains_peering_bit/top_side = 0
-
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_dq05s"]
-scenes/1/scene = ExtResource("2_3wh1v")
-scenes/2/scene = ExtResource("3_tsq6e")
-scenes/3/scene = ExtResource("4_encku")
-scenes/4/scene = ExtResource("5_xdeo5")
-scenes/5/scene = ExtResource("6_eftyh")
-scenes/6/scene = ExtResource("7_8u3yy")
+12:0/0 = 0
+12:0/0/z_index = -1
+13:0/0 = 0
+13:0/0/z_index = -1
+14:0/0 = 0
+14:0/0/z_index = -1
+15:0/0 = 0
+15:0/0/z_index = -1
+15:1/0 = 0
+15:1/0/z_index = -1
 
 [resource]
 tile_size = Vector2i(12, 12)
@@ -1304,4 +1300,3 @@ terrain_set_2/mode = 0
 terrain_set_2/terrain_0/name = "Colored"
 terrain_set_2/terrain_0/color = Color(0, 0, 1, 1)
 sources/0 = SubResource("TileSetAtlasSource_npcew")
-sources/1 = SubResource("TileSetScenesCollectionSource_dq05s")

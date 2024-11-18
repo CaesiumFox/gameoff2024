@@ -38,7 +38,7 @@ tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("View:frame_xy")
-tracks/0/interp = 1
+tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
@@ -55,7 +55,7 @@ tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("View:frame_xy")
-tracks/0/interp = 1
+tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.25),
@@ -87,14 +87,14 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_gapgg"]
-resource_name = "invincible"
+resource_name = "inv"
 length = 0.2
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("View:invincible_xy")
-tracks/0/interp = 1
+tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1),
@@ -106,7 +106,7 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jxtn1"]
 _data = {
 "RESET": SubResource("Animation_jd072"),
-"invincible": SubResource("Animation_gapgg")
+"inv": SubResource("Animation_gapgg")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dpbum"]

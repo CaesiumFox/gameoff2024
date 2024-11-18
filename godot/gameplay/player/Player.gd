@@ -29,6 +29,8 @@ func reset() -> void:
     move.reset()
     gravity.reset()
     animator.reset()
+    velocity.x = 0
+    velocity.y = 0
 
 func prepare_for_load() -> void:
     jump.reset_air_jumps()

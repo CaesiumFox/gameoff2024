@@ -44,19 +44,23 @@ animations = [{
 }]
 
 [node name="Coin" type="Area2D"]
+process_mode = 3
 z_index = -1
 collision_layer = 128
 collision_mask = 4
 script = ExtResource("1_dge65")
 
 [node name="Shape" type="CollisionShape2D" parent="."]
+process_mode = 1
 shape = SubResource("CircleShape2D_yg4n8")
 
 [node name="View" type="AnimatedSprite2D" parent="."]
+process_mode = 3
 sprite_frames = SubResource("SpriteFrames_pwimu")
 speed_scale = 1.5
 
 [node name="Viewed" type="VisibleOnScreenNotifier2D" parent="."]
+process_mode = 3
 position = Vector2(-1.19209e-07, -1.19209e-07)
 scale = Vector2(1.2, 1.2)
 
