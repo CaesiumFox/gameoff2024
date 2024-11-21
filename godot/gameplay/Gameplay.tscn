@@ -4,12 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://dkcewkefukuy7" path="res://gameplay/player/Player.tscn" id="2_2jc81"]
 
 [node name="Gameplay" type="Node2D"]
+process_mode = 3
 script = ExtResource("1_io5ka")
 player_scene = ExtResource("2_2jc81")
 
 [node name="Timer" type="Timer" parent="."]
 process_mode = 3
-wait_time = 0.5
 one_shot = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

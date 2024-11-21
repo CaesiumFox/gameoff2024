@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=3 uid="uid://3a6gajtfwxfo"]
+
+[ext_resource type="Theme" uid="uid://70yhvrg7ebw" path="res://ui/theme.tres" id="1_pqttv"]
+[ext_resource type="Theme" uid="uid://byyfyow8w62ue" path="res://ui/main_menu_theme.tres" id="2_126dp"]
+[ext_resource type="Script" path="res://ui/MainMenu.gd" id="2_pd1sh"]
+[ext_resource type="Script" path="res://ui/PlayButton.gd" id="3_c24vm"]
+[ext_resource type="Script" path="res://ui/OptionsButton.gd" id="4_sdeul"]
+[ext_resource type="Script" path="res://ui/QuitButton.gd" id="5_trftf"]
+
+[node name="MainMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_pqttv")
+script = ExtResource("2_pd1sh")
+
+[node name="MainButtons" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -120.0
+offset_right = 64.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_126dp")
+alignment = 1
+
+[node name="PlayButton" type="Button" parent="MainButtons"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../QuitButton")
+focus_neighbor_bottom = NodePath("../OptionsButton")
+flat = true
+script = ExtResource("3_c24vm")
+translation_id = "MM_PLAY"
+
+[node name="OptionsButton" type="Button" parent="MainButtons"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../PlayButton")
+focus_neighbor_bottom = NodePath("../QuitButton")
+flat = true
+script = ExtResource("4_sdeul")
+translation_id = "MM_OPTIONS"
+
+[node name="QuitButton" type="Button" parent="MainButtons"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../OptionsButton")
+focus_neighbor_bottom = NodePath("../PlayButton")
+flat = true
+script = ExtResource("5_trftf")
+translation_id = "MM_QUIT"
+
+[connection signal="play_requested" from="MainButtons/PlayButton" to="." method="_on_play_button_play_requested"]
+[connection signal="pressed" from="MainButtons/PlayButton" to="MainButtons/PlayButton" method="_on_pressed"]
+[connection signal="pressed" from="MainButtons/OptionsButton" to="MainButtons/OptionsButton" method="_on_pressed"]
+[connection signal="pressed" from="MainButtons/QuitButton" to="MainButtons/QuitButton" method="_on_pressed"]
+[connection signal="quit_requested" from="MainButtons/QuitButton" to="." method="_on_quit_button_quit_requested"]

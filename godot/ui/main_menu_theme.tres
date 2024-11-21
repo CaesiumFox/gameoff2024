@@ -1,0 +1,11 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://byyfyow8w62ue"]
+
+[ext_resource type="FontFile" uid="uid://bx8uq1tdx4ah2" path="res://assets/fonts/big.fnt" id="1_skl0f"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lwsae"]
+
+[resource]
+Button/colors/font_hover_pressed_color = Color(1, 0.733333, 0, 1)
+Button/colors/font_pressed_color = Color(1, 0.733333, 0, 1)
+Button/fonts/font = ExtResource("1_skl0f")
+Button/styles/focus = SubResource("StyleBoxEmpty_lwsae")

@@ -1,6 +1,9 @@
 extends Node2D
+class_name Gameplay
 
 signal level_loaded
+signal level_exit
+signal player_death
 
 @export var player_scene: PackedScene
 @onready var timer: Timer = $Timer
@@ -26,6 +29,7 @@ func load_level(scene: PackedScene) -> void:
     level.view_box_changed.connect(player.set_camera_limits)
     
     player.position = level.spawn_point
+    
     player.prepare_for_load()
     player.set_camera_limits(level.view_box)
     player.reset()
@@ -43,10 +47,11 @@ func plan_restart() -> void:
     if restarting: return
     restarting = true
     timer.start()
+    player_death.emit()
     get_tree().paused = true
 
 func record_win() -> void:
-    pass
+    level_exit.emit()
 
 func _on_timer_timeout() -> void:
     restart_level()

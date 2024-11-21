@@ -128,6 +128,7 @@ _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [node name="Player" type="CharacterBody2D"]
+process_mode = 1
 collision_layer = 4
 platform_floor_layers = 1
 platform_wall_layers = 1
