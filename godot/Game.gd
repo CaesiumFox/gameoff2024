@@ -8,7 +8,7 @@ var gameplay: Gameplay
 var main_menu: MainMenu
 
 var gameplay_scene := preload("res://gameplay/Gameplay.tscn")
-var main_menu_scene := preload("res://ui/MainMenu.tscn")
+var main_menu_scene := preload("res://ui/main_menu/MainMenu.tscn")
 var level_scenes: Array[PackedScene] = [
     preload("res://gameplay/levels/Level001.tscn")
 ]

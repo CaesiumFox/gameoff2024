@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://3a6gajtfwxfo"]
 
 [ext_resource type="Theme" uid="uid://70yhvrg7ebw" path="res://ui/theme.tres" id="1_pqttv"]
-[ext_resource type="Theme" uid="uid://byyfyow8w62ue" path="res://ui/main_menu_theme.tres" id="2_126dp"]
-[ext_resource type="Script" path="res://ui/MainMenu.gd" id="2_pd1sh"]
-[ext_resource type="Script" path="res://ui/PlayButton.gd" id="3_c24vm"]
-[ext_resource type="Script" path="res://ui/OptionsButton.gd" id="4_sdeul"]
-[ext_resource type="Script" path="res://ui/QuitButton.gd" id="5_trftf"]
+[ext_resource type="Theme" uid="uid://byyfyow8w62ue" path="res://ui/main_menu/main_menu_theme.tres" id="2_126dp"]
+[ext_resource type="Script" path="res://ui/main_menu/MainMenu.gd" id="2_pd1sh"]
+[ext_resource type="Script" path="res://ui/main_menu/PlayButton.gd" id="3_c24vm"]
+[ext_resource type="Script" path="res://ui/main_menu/OptionsButton.gd" id="4_sdeul"]
+[ext_resource type="Script" path="res://ui/main_menu/QuitButton.gd" id="5_trftf"]
 
 [node name="MainMenu" type="Control"]
 process_mode = 3

@@ -13,7 +13,7 @@ func _on_mouse_entered() -> void:
     grab_focus()
 
 func _on_focus_entered() -> void:
-    text = "> " + tr(translation_id) + " <"
+    text = "\u203a " + tr(translation_id) + " \u2039"
 
 func _on_focus_exited() -> void:
     text = tr(translation_id)
