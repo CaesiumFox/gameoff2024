@@ -1,4 +1,6 @@
 extends MainMenuButton
 
+signal options_requested
+
 func _on_pressed() -> void:
-    print("options")
+    options_requested.emit()

@@ -1,11 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://3a6gajtfwxfo"]
+[gd_scene load_steps=5 format=3 uid="uid://3a6gajtfwxfo"]
 
 [ext_resource type="Theme" uid="uid://70yhvrg7ebw" path="res://ui/theme.tres" id="1_pqttv"]
 [ext_resource type="Theme" uid="uid://byyfyow8w62ue" path="res://ui/main_menu/main_menu_theme.tres" id="2_126dp"]
 [ext_resource type="Script" path="res://ui/main_menu/MainMenu.gd" id="2_pd1sh"]
-[ext_resource type="Script" path="res://ui/main_menu/PlayButton.gd" id="3_c24vm"]
-[ext_resource type="Script" path="res://ui/main_menu/OptionsButton.gd" id="4_sdeul"]
-[ext_resource type="Script" path="res://ui/main_menu/QuitButton.gd" id="5_trftf"]
+[ext_resource type="PackedScene" uid="uid://cw17j3fqx4p6x" path="res://ui/main_menu/MainMenuButton.tscn" id="4_ilpic"]
 
 [node name="MainMenu" type="Control"]
 process_mode = 3
@@ -15,6 +13,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_neighbor_top = NodePath("MainButtons/QuitButton")
+focus_neighbor_bottom = NodePath("MainButtons/PlayButton")
+focus_next = NodePath("MainButtons/PlayButton")
+focus_previous = NodePath("MainButtons/QuitButton")
+focus_mode = 2
 theme = ExtResource("1_pqttv")
 script = ExtResource("2_pd1sh")
 
@@ -33,32 +36,35 @@ grow_vertical = 0
 theme = ExtResource("2_126dp")
 alignment = 1
 
-[node name="PlayButton" type="Button" parent="MainButtons"]
+[node name="PlayButton" parent="MainButtons" instance=ExtResource("4_ilpic")]
 layout_mode = 2
 focus_neighbor_top = NodePath("../QuitButton")
 focus_neighbor_bottom = NodePath("../OptionsButton")
-flat = true
-script = ExtResource("3_c24vm")
+focus_next = NodePath("../OptionsButton")
+focus_previous = NodePath("../QuitButton")
 translation_id = "MM_PLAY"
 
-[node name="OptionsButton" type="Button" parent="MainButtons"]
+[node name="OptionsButton" parent="MainButtons" instance=ExtResource("4_ilpic")]
 layout_mode = 2
 focus_neighbor_top = NodePath("../PlayButton")
 focus_neighbor_bottom = NodePath("../QuitButton")
-flat = true
-script = ExtResource("4_sdeul")
+focus_next = NodePath("../QuitButton")
+focus_previous = NodePath("../PlayButton")
 translation_id = "MM_OPTIONS"
 
-[node name="QuitButton" type="Button" parent="MainButtons"]
+[node name="QuitButton" parent="MainButtons" instance=ExtResource("4_ilpic")]
 layout_mode = 2
 focus_neighbor_top = NodePath("../OptionsButton")
 focus_neighbor_bottom = NodePath("../PlayButton")
-flat = true
-script = ExtResource("5_trftf")
+focus_next = NodePath("../PlayButton")
+focus_previous = NodePath("../OptionsButton")
 translation_id = "MM_QUIT"
 
-[connection signal="play_requested" from="MainButtons/PlayButton" to="." method="_on_play_button_play_requested"]
-[connection signal="pressed" from="MainButtons/PlayButton" to="MainButtons/PlayButton" method="_on_pressed"]
-[connection signal="pressed" from="MainButtons/OptionsButton" to="MainButtons/OptionsButton" method="_on_pressed"]
-[connection signal="pressed" from="MainButtons/QuitButton" to="MainButtons/QuitButton" method="_on_pressed"]
-[connection signal="quit_requested" from="MainButtons/QuitButton" to="." method="_on_quit_button_quit_requested"]
+[node name="WaitTimer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
+[connection signal="selected" from="MainButtons/PlayButton" to="." method="_on_play_button_selected"]
+[connection signal="selected" from="MainButtons/OptionsButton" to="." method="_on_options_button_selected"]
+[connection signal="selected" from="MainButtons/QuitButton" to="." method="_on_quit_button_selected"]
+[connection signal="timeout" from="WaitTimer" to="." method="_on_wait_timer_timeout"]
