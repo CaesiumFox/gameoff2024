@@ -2,6 +2,7 @@ extends Node2D
 class_name Level
 
 signal view_box_changed(view_box: Rect2)
+signal coin_collected
 
 @export var spawn_point := Vector2(0, 0)
 @export var view_box := Rect2(-100000, -100000, 200000, 200000):
@@ -11,8 +12,14 @@ signal view_box_changed(view_box: Rect2)
         view_box = new_view_box
         view_box_changed.emit()
 
+func _init() -> void:
+    process_mode = ProcessMode.PROCESS_MODE_PAUSABLE
+
 func _ready() -> void:
     update_by_markers()
+    var coin_node := get_node_or_null("Coin") as Coin
+    if coin_node:
+        coin_node.collect.connect(func(_id): coin_collected.emit())
 
 func update_by_markers() -> void:
     var tl := Vector2(-100000, -100000)

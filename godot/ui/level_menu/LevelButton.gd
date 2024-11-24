@@ -4,7 +4,7 @@ class_name LevelButton
 
 signal selected(id: int)
 
-@export var level_id: int = 1:
+@export var level_id: int = 0:
     get:
         return level_id
     set(new_level_id):
@@ -25,32 +25,11 @@ signal selected(id: int)
         completed = new_completed
         update_status()
 
-@export var best_time: float = 0.0:
+@export var star_count: int = 0:
     get:
-        return best_time
-    set(new_best_time):
-        best_time = new_best_time
-        update_status()
-
-@export var star_1_threshold: float = 0.0:
-    get:
-        return star_1_threshold
-    set(new_star_1_threshold):
-        star_1_threshold = new_star_1_threshold
-        update_status()
-
-@export var star_2_threshold: float = 0.0:
-    get:
-        return star_2_threshold
-    set(new_star_2_threshold):
-        star_2_threshold = new_star_2_threshold
-        update_status()
-
-@export var star_3_threshold: float = 0.0:
-    get:
-        return star_3_threshold
-    set(new_star_3_threshold):
-        star_3_threshold = new_star_3_threshold
+        return star_count
+    set(new_star_count):
+        star_count = new_star_count
         update_status()
 
 @export var coin_collect: bool = false:
@@ -59,7 +38,6 @@ signal selected(id: int)
     set(new_coin_collect):
         coin_collect = new_coin_collect
         update_status()
-
 
 @onready var complete_decoration: TextureRect = $CompleteDecoration
 @onready var name_label: Label = $Name
@@ -78,17 +56,17 @@ func update_status() -> void:
         return
 
     if name_label:    
-        name_label.text = tr("NUMBERED_LEVEL").format({ id = level_id })
+        name_label.text = tr("NUMBERED_LEVEL").format({ id = level_id + 1 })
 
     if complete_decoration:
         complete_decoration.visible = completed
 
     if star_1_indicator:
-        star_1_indicator.collected = completed and best_time <= star_1_threshold
+        star_1_indicator.collected = completed and star_count >= 1
     if star_2_indicator:
-        star_2_indicator.collected = completed and best_time <= star_2_threshold
+        star_2_indicator.collected = completed and star_count >= 2
     if star_3_indicator:
-        star_3_indicator.collected = completed and best_time <= star_3_threshold
+        star_3_indicator.collected = completed and star_count >= 3
 
     if coin_indicator:
         coin_indicator.collected = completed and coin_collect

@@ -15,19 +15,9 @@ var buttons: Array[LevelButton] = []
 func _ready() -> void:
     for i in range(12):
         var button = LEVEL_BUTTON.instantiate() as LevelButton
-        button.level_id = i + 1
-        
-        # TODO: load from save file
-        button.unlocked = true
-        button.completed = false
-        button.best_time = 20
-        button.star_1_threshold = 10
-        button.star_2_threshold = 8
-        button.star_3_threshold = 6
-        button.coin_collect = false
+        button.level_id = i
         button.focus_entered.connect(_on_level_button_focus)
         button.selected.connect(_on_level_button_select)
-        
         buttons.append(button)
 
     for i in range(12):
@@ -60,6 +50,12 @@ func reset() -> void:
     grab_focus()
     point_sound.stop()
     select_sound.stop()
+    for i in range(12):
+        buttons[i].unlocked = SaveManager.data.levels.levels[i].unlocked
+        buttons[i].completed = SaveManager.data.levels.levels[i].completed
+        buttons[i].star_count = SaveManager.data.levels.levels[i].star_count()
+        buttons[i].coin_collect = SaveManager.data.levels.levels[i].coin_collected
+        
 
 func _process(_delta: float) -> void:
     if Input.is_action_just_pressed("ui_cancel"):

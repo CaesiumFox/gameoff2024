@@ -1,5 +1,7 @@
 keys,en,ru
 MM_PLAY,PLAY,ИГРАТЬ
 MM_OPTIONS,OPTIONS,НАСТРОЙКИ
-MM_QUIT,QUIT,ВЫХОД
+MM_QUIT,QUIT,ВЫЙТИ
 NUMBERED_LEVEL,Level {id},Уровень {id}
+PM_RESUME,RESUME,ПРОДОЛЖИТЬ
+PM_QUIT,QUIT,ВЫЙТИ

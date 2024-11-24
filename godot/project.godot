@@ -22,6 +22,7 @@ config/icon="res://icon.svg"
 
 PhysicsCalculator="*res://gameplay/PhysicsCalculator.gd"
 SaveManager="*res://savefile/SaveManager.gd"
+LevelMetadata="*res://gameplay/levels/LevelMetadata.gd"
 
 [display]
 

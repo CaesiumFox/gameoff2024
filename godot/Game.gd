@@ -7,12 +7,24 @@ extends Node
 var gameplay: Gameplay
 var main_menu: MainMenu
 var level_menu: LevelMenu
+var current_level_id: int = 0
 
 var gameplay_scene := preload("res://gameplay/Gameplay.tscn")
 var main_menu_scene := preload("res://ui/main_menu/MainMenu.tscn")
 var level_menu_scene := preload("res://ui/level_menu/LevelMenu.tscn")
 var level_scenes: Array[PackedScene] = [
-    preload("res://gameplay/levels/Level001.tscn")
+    preload("res://gameplay/levels/Level_1.tscn"),
+    preload("res://gameplay/levels/Level_1.tscn"),
+    preload("res://gameplay/levels/Level_1.tscn"),
+    preload("res://gameplay/levels/Level_1.tscn"),
+    preload("res://gameplay/levels/Level_1.tscn"),
+    preload("res://gameplay/levels/Level_1.tscn"),
+    preload("res://gameplay/levels/Level_1.tscn"),
+    preload("res://gameplay/levels/Level_1.tscn"),
+    preload("res://gameplay/levels/Level_1.tscn"),
+    preload("res://gameplay/levels/Level_1.tscn"),
+    preload("res://gameplay/levels/Level_1.tscn"),
+    preload("res://gameplay/levels/Level_1.tscn"),
 ]
 
 var lock: bool = false
@@ -34,7 +46,8 @@ func _ready() -> void:
     gameplay = gameplay_scene.instantiate() as Gameplay
     gameplay.level_loaded.connect(shade_out)
     gameplay.player_death.connect(func(): death_shade_timer.start())
-    gameplay.level_exit.connect(win)
+    gameplay.win.connect(win)
+    gameplay.level_exit.connect(level_exit)
 
     # Init
     add_child(main_menu)
@@ -56,14 +69,15 @@ func play() -> void:
     shade_out()
     lock = false
 
-func level_selected(_id: int) -> void:
+func level_selected(id: int) -> void:
     if lock: return
     lock = true
     shade_in()
     await shading_animation.animation_finished
     remove_child(level_menu)
     add_child(gameplay)
-    gameplay.load_level(level_scenes[0])
+    gameplay.load_level(level_scenes[id])
+    current_level_id = id
     lock = false
 
 func level_menu_back() -> void:
@@ -77,13 +91,29 @@ func level_menu_back() -> void:
     shade_out()
     lock = false
 
-func win() -> void:
+func level_exit() -> void:
     if lock: return
     lock = true
     shade_in()
     await shading_animation.animation_finished
     remove_child(gameplay)
     add_child(level_menu)
+    level_menu.reset()
+    shade_out()
+    lock = false
+
+func win(time: float, coin: bool) -> void:
+    if lock: return
+    lock = true
+    shade_in()
+    await shading_animation.animation_finished
+    remove_child(gameplay)
+    add_child(level_menu)
+    SaveManager.data.levels.levels[current_level_id].try_set_best_time(time)
+    SaveManager.data.levels.levels[current_level_id].try_set_coin(coin)
+    SaveManager.data.levels.levels[current_level_id].completed = true
+    if current_level_id < 11:
+        SaveManager.data.levels.levels[current_level_id + 1].unlocked = true
     level_menu.reset()
     shade_out()
     lock = false

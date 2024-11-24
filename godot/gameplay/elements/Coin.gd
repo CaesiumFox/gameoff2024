@@ -1,4 +1,5 @@
 extends Area2D
+class_name Coin
 
 signal collect(id: int)
 

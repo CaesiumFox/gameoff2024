@@ -1,15 +1,80 @@
-[gd_scene load_steps=3 format=3 uid="uid://deglo5vpok0js"]
+[gd_scene load_steps=7 format=3 uid="uid://deglo5vpok0js"]
 
 [ext_resource type="Script" path="res://gameplay/Gameplay.gd" id="1_io5ka"]
 [ext_resource type="PackedScene" uid="uid://dkcewkefukuy7" path="res://gameplay/player/Player.tscn" id="2_2jc81"]
+[ext_resource type="Script" path="res://gameplay/Stopwatch.gd" id="3_xi031"]
+[ext_resource type="FontFile" uid="uid://c4kcltgptp5vi" path="res://assets/fonts/spe.fnt" id="4_6ucyl"]
+[ext_resource type="PackedScene" uid="uid://cw17j3fqx4p6x" path="res://ui/main_menu/MainMenuButton.tscn" id="5_25wqp"]
+[ext_resource type="Theme" uid="uid://byyfyow8w62ue" path="res://ui/main_menu/main_menu_theme.tres" id="5_mvt8k"]
 
 [node name="Gameplay" type="Node2D"]
 process_mode = 3
 script = ExtResource("1_io5ka")
 player_scene = ExtResource("2_2jc81")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="RestartTimer" type="Timer" parent="."]
 process_mode = 3
 one_shot = true
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="Stopwatch" type="Node" parent="."]
+script = ExtResource("3_xi031")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="TopLeft" type="VBoxContainer" parent="HUD"]
+offset_right = 54.0
+offset_bottom = 43.0
+
+[node name="Time" type="Label" parent="HUD/TopLeft"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_6ucyl")
+text = "T: 0"
+
+[node name="PauseMenu" type="CanvasLayer" parent="."]
+process_mode = 2
+layer = 2
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="PauseMenu"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.529412)
+
+[node name="Buttons" type="VBoxContainer" parent="PauseMenu/ColorRect"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_right = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_mvt8k")
+alignment = 1
+
+[node name="ResumeButton" parent="PauseMenu/ColorRect/Buttons" instance=ExtResource("5_25wqp")]
+layout_mode = 2
+focus_neighbor_top = NodePath("../QuitButton")
+focus_neighbor_bottom = NodePath("../QuitButton")
+focus_next = NodePath("../QuitButton")
+focus_previous = NodePath("../QuitButton")
+translation_id = "PM_RESUME"
+select_effects = false
+
+[node name="QuitButton" parent="PauseMenu/ColorRect/Buttons" instance=ExtResource("5_25wqp")]
+layout_mode = 2
+focus_neighbor_top = NodePath("../ResumeButton")
+focus_neighbor_bottom = NodePath("../ResumeButton")
+focus_next = NodePath("../ResumeButton")
+focus_previous = NodePath("../ResumeButton")
+translation_id = "PM_QUIT"
+select_effects = false
+
+[connection signal="timeout" from="RestartTimer" to="." method="_on_timer_timeout"]
+[connection signal="selected" from="PauseMenu/ColorRect/Buttons/ResumeButton" to="." method="_on_resume_button_selected"]
+[connection signal="selected" from="PauseMenu/ColorRect/Buttons/QuitButton" to="." method="_on_quit_button_selected"]

@@ -19,35 +19,40 @@ atlas = ExtResource("2_hdqaw")
 region = Rect2(1, 77, 62, 36)
 filter_clip = true
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4vi7w"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_pl6wg"]
+resource_local_to_scene = true
 atlas = ExtResource("2_hdqaw")
-region = Rect2(64, 12, 12, 12)
+region = Rect2(64, 0, 12, 12)
 filter_clip = true
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wmnbs"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_eqi5q"]
+resource_local_to_scene = true
 atlas = ExtResource("2_hdqaw")
-region = Rect2(64, 12, 12, 12)
+region = Rect2(64, 0, 12, 12)
 filter_clip = true
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_46nmw"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_4l6w8"]
+resource_local_to_scene = true
 atlas = ExtResource("2_hdqaw")
-region = Rect2(64, 12, 12, 12)
+region = Rect2(64, 0, 12, 12)
 filter_clip = true
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_urc3y"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_0tlq2"]
+resource_local_to_scene = true
 atlas = ExtResource("2_hdqaw")
 region = Rect2(76, 0, 12, 12)
 filter_clip = true
 
 [node name="LevelButton" type="TextureButton"]
+visible = false
 offset_right = 64.0
 offset_bottom = 38.0
 theme = ExtResource("1_jegv2")
+disabled = true
 texture_normal = SubResource("AtlasTexture_okt7l")
 texture_hover = SubResource("AtlasTexture_knew0")
 texture_focused = SubResource("AtlasTexture_knew0")
 script = ExtResource("3_qoq0a")
-unlocked = true
 
 [node name="CompleteDecoration" type="TextureRect" parent="."]
 visible = false
@@ -77,11 +82,10 @@ offset_right = 17.0
 offset_bottom = -5.0
 grow_vertical = 0
 mouse_filter = 2
-texture = SubResource("AtlasTexture_4vi7w")
+texture = SubResource("AtlasTexture_pl6wg")
 script = ExtResource("3_nj5gh")
 off = Vector2(64, 0)
 on = Vector2(64, 12)
-collected = true
 
 [node name="Star2Indicator" type="TextureRect" parent="."]
 layout_mode = 1
@@ -94,11 +98,10 @@ offset_right = 30.0
 offset_bottom = -5.0
 grow_vertical = 0
 mouse_filter = 2
-texture = SubResource("AtlasTexture_wmnbs")
+texture = SubResource("AtlasTexture_eqi5q")
 script = ExtResource("3_nj5gh")
 off = Vector2(64, 0)
 on = Vector2(64, 12)
-collected = true
 
 [node name="Star3Indicator" type="TextureRect" parent="."]
 layout_mode = 1
@@ -111,11 +114,10 @@ offset_right = 43.0
 offset_bottom = -5.0
 grow_vertical = 0
 mouse_filter = 2
-texture = SubResource("AtlasTexture_46nmw")
+texture = SubResource("AtlasTexture_4l6w8")
 script = ExtResource("3_nj5gh")
 off = Vector2(64, 0)
 on = Vector2(64, 12)
-collected = true
 
 [node name="CoinIndicator" type="TextureRect" parent="."]
 layout_mode = 1
@@ -131,7 +133,7 @@ offset_bottom = -4.0
 grow_horizontal = 0
 grow_vertical = 0
 mouse_filter = 2
-texture = SubResource("AtlasTexture_urc3y")
+texture = SubResource("AtlasTexture_0tlq2")
 script = ExtResource("3_nj5gh")
 off = Vector2(76, 0)
 on = Vector2(76, 12)

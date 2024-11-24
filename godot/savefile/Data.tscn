@@ -1,10 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://0jhu2oyqscqx"]
+[gd_scene load_steps=4 format=3 uid="uid://0jhu2oyqscqx"]
 
 [ext_resource type="Script" path="res://savefile/Data.gd" id="1_bxib3"]
 [ext_resource type="Script" path="res://savefile/Abilities.gd" id="2_nsfjk"]
+[ext_resource type="Script" path="res://savefile/Levels.gd" id="3_7oj5g"]
 
 [node name="Data" type="Node"]
 script = ExtResource("1_bxib3")
 
 [node name="Abilities" type="Node" parent="."]
 script = ExtResource("2_nsfjk")
+
+[node name="Levels" type="Node" parent="."]
+script = ExtResource("3_7oj5g")

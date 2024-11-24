@@ -4,6 +4,7 @@ class_name MainMenuButton
 signal selected
 
 @export var translation_id: String
+@export var select_effects: bool = true
 
 @onready var point_sound: AudioStreamPlayer = $PointSound
 @onready var select_sound: AudioStreamPlayer = $SelectSound
@@ -26,6 +27,7 @@ func _on_focus_exited() -> void:
     text = tr(translation_id)
 
 func _on_pressed() -> void:
-    blinker.play("blink")
-    select_sound.play()
+    if select_effects:
+        blinker.play("blink")
+        select_sound.play()
     selected.emit()
