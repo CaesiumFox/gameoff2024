@@ -29,6 +29,8 @@ columns = 3
 
 [node name="PointSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_fagbu")
+volume_db = -15.0
 
 [node name="SelectSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_iw3tf")
+volume_db = -10.0

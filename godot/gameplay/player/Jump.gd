@@ -1,16 +1,15 @@
-extends Node
+extends Ability
+class_name JumpAbility
 
 signal jump(air: bool)
 signal air_jump_reset(amount: int)
 signal hit_ground
 signal leave_ground
 
-@export var enabled: bool = true
-@export var player: CharacterBody2D
 @export var ray: RayCast2D
 
 @onready var coyote_timer := $CoyoteTimer as Timer
-@onready var wall_jump := $WallJump as Node
+@onready var wall_jump := $WallJump as WallJumpAbility
 
 var want_to_jump: bool = false
 var air_jumps_left: int = 0
@@ -25,9 +24,7 @@ func reset() -> void:
     was_on_ground = false
     coyote_works = false
 
-func _physics_process(_delta: float) -> void:
-    if not enabled: return
-
+func action(_delta: float) -> void:
     want_to_jump = want_to_jump or Input.is_action_just_pressed("game_jump")
     want_to_jump = want_to_jump and not Input.is_action_just_released("game_jump")
     var on_ground := player.is_on_floor() or (air_jumps_left > 0 and ray.is_colliding())

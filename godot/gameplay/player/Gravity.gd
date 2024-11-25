@@ -1,11 +1,9 @@
-extends Node
-
-@export var enabled: bool = true
-@export var player: CharacterBody2D
+extends Ability
+class_name GravityAbility
 
 func reset() -> void:
     pass
 
-func _physics_process(delta: float) -> void:
+func action(delta: float) -> void:
     if not enabled: return
     player.velocity.y += PhysicsCalculator.gravity() * delta

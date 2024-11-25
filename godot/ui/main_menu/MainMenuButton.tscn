@@ -48,9 +48,11 @@ script = ExtResource("1_celtk")
 
 [node name="PointSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_b6hde")
+volume_db = -15.0
 
 [node name="SelectSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_gukf3")
+volume_db = -10.0
 
 [node name="Blinker" type="AnimationPlayer" parent="."]
 libraries = {

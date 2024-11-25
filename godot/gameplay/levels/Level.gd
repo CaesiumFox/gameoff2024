@@ -21,6 +21,9 @@ func _ready() -> void:
     if coin_node:
         coin_node.collect.connect(func(_id): coin_collected.emit())
 
+func set_up() -> void:
+    PhysicsCalculator.inverted_gravity = false
+
 func update_by_markers() -> void:
     var tl := Vector2(-100000, -100000)
     var br := Vector2(100000, 100000)

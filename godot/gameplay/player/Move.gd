@@ -1,20 +1,16 @@
-extends Node
+extends Ability
+class_name MoveAbility
 
 signal start_left
 signal start_right
 signal stop
-
-@export var enabled: bool = true
-@export var player: CharacterBody2D
 
 var old_vel: float = 0.0
 
 func reset() -> void:
     old_vel = 0.0
 
-func _physics_process(delta: float) -> void:
-    if not enabled: return
-    
+func action(delta: float) -> void:    
     var vel := Input.get_axis("game_left", "game_right") * PhysicsCalculator.speed()
     
     if sign(old_vel) != sign(vel):

@@ -33,6 +33,7 @@ func load_level(scene: PackedScene) -> void:
     
     level.view_box_changed.connect(player.set_camera_limits)
     level.coin_collected.connect(register_coin_collected)
+    level.set_up()
     coin_collected = false
     
     player.position = level.spawn_point
@@ -79,7 +80,6 @@ func _on_timer_timeout() -> void:
     restart_level()
 
 func _on_resume_button_selected() -> void:
-    print("R")
     pause_menu.visible = false
     get_tree().paused = false
     stopwatch.resume()

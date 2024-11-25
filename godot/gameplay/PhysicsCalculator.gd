@@ -1,5 +1,7 @@
 extends Node
 
+signal gravity_changed(upwards: bool)
+
 const UNIT: float = 16
 
 const BASE_JUMP_HEIGHT: float = 2.1 * UNIT
@@ -26,7 +28,14 @@ const BASE_AIR_MOVEMENT_DECELERATION: float = (
 
 var desired_jump_height: float = BASE_JUMP_HEIGHT
 var desired_speed: float = BASE_SPEED
-var inverted_gravity: bool = false
+var inverted_gravity: bool = false:
+    get:
+        return inverted_gravity
+    set(new_inverted_gravity):
+        var did_change: bool = inverted_gravity != new_inverted_gravity
+        inverted_gravity = new_inverted_gravity
+        if did_change:
+            gravity_changed.emit(inverted_gravity)
 
 func _ready() -> void:
     ProjectSettings.set_setting("physics/2d/default_gravity", GRAVITY)

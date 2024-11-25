@@ -1,32 +1,25 @@
 extends Node
+class_name Animator
 
 @export var player: Player
 @export var sprite: PlayerView
-@onready var movement: AnimationPlayer = $Movement
-@onready var invincibility: AnimationPlayer = $Invincibility
+@onready var movement: AnimationPlayer = $Movement as AnimationPlayer
+@onready var invincibility: AnimationPlayer = $Invincibility as AnimationPlayer
 
 var dead: bool = false
 var free_fall: bool = false
 var move: int = 0
 
 func _ready() -> void:
-    pass
+    PhysicsCalculator.gravity_changed.connect(_on_gravity_change)
 
 func _physics_process(_delta: float) -> void:
     if free_fall and not dead:
         movement.stop()
-        if PhysicsCalculator.gravity() < 0:
-            sprite.flip_v = true
-            if player.velocity.y < 0:
-                sprite.frame_xy = Vector2(1, 1)
-            else:
-                sprite.frame_xy = Vector2(0, 1)
+        if player.velocity.y * PhysicsCalculator.gravity() > 0:
+            sprite.frame_xy = Vector2(1, 1)
         else:
-            sprite.flip_v = false
-            if player.velocity.y < 0:
-                sprite.frame_xy = Vector2(0, 1)
-            else:
-                sprite.frame_xy = Vector2(1, 1)
+            sprite.frame_xy = Vector2(0, 1)
 
 func reset() -> void:
     move = 0
@@ -88,3 +81,6 @@ func _on_move_stop() -> void:
     move = 0
     if player.is_on_floor():
         movement.play("idle")
+
+func _on_gravity_change(upwards: bool) -> void:
+    sprite.flip_v = upwards

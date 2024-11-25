@@ -1,9 +1,7 @@
-extends Node
+extends Ability
+class_name WallJumpAbility
 
 signal wall_jump
-
-@export var enabled: bool = true
-@export var player: CharacterBody2D
 
 @onready var wall_timer := $WallTimer as Timer
 
@@ -17,7 +15,7 @@ func reset() -> void:
     on_wall = 0
     timer_works = 0
 
-func _physics_process(_delta: float) -> void:
+func action(_delta: float) -> void:
     if player.is_on_wall() and player.get_slide_collision_count() > 0:
         on_wall = 1 if player.get_last_slide_collision().get_normal().x > 0 else -1
     else:
