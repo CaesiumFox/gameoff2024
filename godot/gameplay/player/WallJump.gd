@@ -1,7 +1,7 @@
 extends Ability
 class_name WallJumpAbility
 
-signal wall_jump
+signal wall_jump(right_wall: bool)
 
 @onready var wall_timer := $WallTimer as Timer
 
@@ -45,7 +45,7 @@ func try_wall_jump() -> bool:
         player.velocity.x = dir * PhysicsCalculator.wall_jump_speed_h()
         timer_works = 0
         wall_timer.stop()
-        wall_jump.emit()
+        wall_jump.emit(dir < 0)
         return true
     return false
 

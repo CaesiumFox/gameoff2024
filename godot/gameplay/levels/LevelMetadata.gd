@@ -11,7 +11,7 @@ class Metadata:
         star_3_threshold = s3
 
 var data: Array[Metadata] = [
-    Metadata.new( 30, 15, 10),
+    Metadata.new( 30, 15,  6),
     Metadata.new(120, 90, 60),
     Metadata.new(120, 90, 60),
     Metadata.new(120, 90, 60),

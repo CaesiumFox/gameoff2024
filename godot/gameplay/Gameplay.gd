@@ -85,5 +85,4 @@ func _on_resume_button_selected() -> void:
     stopwatch.resume()
 
 func _on_quit_button_selected() -> void:
-    print("Q")
     level_exit.emit()

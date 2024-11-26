@@ -1,6 +1,8 @@
 extends Ability
 class_name ConsoleAbility
 
+@export var shield: Shield
+
 @onready var console: Console = $UI/Console
 
 var current_hash: int = 0
@@ -37,9 +39,11 @@ func action(_delta: float) -> void:
             8319217979696709123:  # activate triple jump
                 if SaveManager.data.abilities.air_jumps < 2:
                     SaveManager.data.abilities.air_jumps = 2
-            6802047103474131456:  # add shield
-                pass
-            _: pass
+            -7231277095096570745:  # add shield
+                if shield:
+                    shield.activate()
+            var invalid_hash:
+                print(invalid_hash)
 
 func _on_console_exited(returned_hash: int) -> void:
     console_opened = false

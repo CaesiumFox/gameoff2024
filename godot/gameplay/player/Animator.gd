@@ -84,3 +84,9 @@ func _on_move_stop() -> void:
 
 func _on_gravity_change(upwards: bool) -> void:
     sprite.flip_v = upwards
+
+func _on_shield_broken() -> void:
+    invincibility.play("inv")
+
+func _on_shield_iframes_end() -> void:
+    invincibility.play("RESET")
