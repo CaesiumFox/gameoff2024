@@ -14,17 +14,17 @@ var main_menu_scene := preload("res://ui/main_menu/MainMenu.tscn")
 var level_menu_scene := preload("res://ui/level_menu/LevelMenu.tscn")
 var level_scenes: Array[PackedScene] = [
     preload("res://gameplay/levels/Level_1.tscn"),
-    preload("res://gameplay/levels/Level_1.tscn"),
-    preload("res://gameplay/levels/Level_1.tscn"),
-    preload("res://gameplay/levels/Level_1.tscn"),
-    preload("res://gameplay/levels/Level_1.tscn"),
-    preload("res://gameplay/levels/Level_1.tscn"),
-    preload("res://gameplay/levels/Level_1.tscn"),
-    preload("res://gameplay/levels/Level_1.tscn"),
-    preload("res://gameplay/levels/Level_1.tscn"),
-    preload("res://gameplay/levels/Level_1.tscn"),
-    preload("res://gameplay/levels/Level_1.tscn"),
-    preload("res://gameplay/levels/Level_1.tscn"),
+    preload("res://gameplay/levels/LevelBlank.tscn"),
+    preload("res://gameplay/levels/LevelBlank.tscn"),
+    preload("res://gameplay/levels/LevelBlank.tscn"),
+    preload("res://gameplay/levels/LevelBlank.tscn"),
+    preload("res://gameplay/levels/LevelBlank.tscn"),
+    preload("res://gameplay/levels/LevelBlank.tscn"),
+    preload("res://gameplay/levels/LevelBlank.tscn"),
+    preload("res://gameplay/levels/LevelBlank.tscn"),
+    preload("res://gameplay/levels/LevelBlank.tscn"),
+    preload("res://gameplay/levels/LevelBlank.tscn"),
+    preload("res://gameplay/levels/LevelBlank.tscn"),
 ]
 
 var lock: bool = false
