@@ -40,3 +40,6 @@ func action(delta: float) -> void:
     else:
         player.velocity.x += pos * delta
         if player.velocity.x > vel: player.velocity.x = vel
+
+func _on_just_disabled() -> void:
+    player.velocity.x = 0

@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://vxf8leb6uqk7"]
 
-[ext_resource type="Theme" uid="uid://70yhvrg7ebw" path="res://ui/theme.tres" id="1_jegv2"]
+[ext_resource type="Theme" uid="uid://70yhvrg7ebw" path="res://ui/theme/theme.tres" id="1_jegv2"]
 [ext_resource type="Texture2D" uid="uid://cxwwsu1cahlnm" path="res://assets/level_menu.png" id="2_hdqaw"]
 [ext_resource type="Script" path="res://ui/level_menu/CollectedIndicator.gd" id="3_nj5gh"]
 [ext_resource type="Script" path="res://ui/level_menu/LevelButton.gd" id="3_qoq0a"]
@@ -44,7 +44,6 @@ region = Rect2(76, 0, 12, 12)
 filter_clip = true
 
 [node name="LevelButton" type="TextureButton"]
-visible = false
 offset_right = 64.0
 offset_bottom = 38.0
 theme = ExtResource("1_jegv2")
@@ -65,11 +64,12 @@ texture = SubResource("AtlasTexture_1288j")
 
 [node name="Name" type="Label" parent="."]
 layout_mode = 0
-offset_left = 5.0
+offset_left = 2.0
 offset_top = 1.0
-offset_right = 59.0
+offset_right = 62.0
 offset_bottom = 17.0
-text = "NUMBERED_LEVEL"
+text = "NUM_LVL"
+horizontal_alignment = 1
 
 [node name="Star1Indicator" type="TextureRect" parent="."]
 layout_mode = 1

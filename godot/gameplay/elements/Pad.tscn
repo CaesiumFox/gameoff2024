@@ -1,0 +1,108 @@
+[gd_scene load_steps=10 format=3 uid="uid://c4x12fhcm1n4u"]
+
+[ext_resource type="Script" path="res://gameplay/elements/Pad.gd" id="1_uqyem"]
+[ext_resource type="Texture2D" uid="uid://dsgotgahmquxy" path="res://assets/tiles0.png" id="1_wf6i3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_84u3w"]
+size = Vector2(10, 2)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dh0lv"]
+atlas = ExtResource("1_wf6i3")
+region = Rect2(168, 48, 12, 12)
+filter_clip = true
+
+[sub_resource type="Animation" id="Animation_smmof"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("View:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("AtlasTexture_dh0lv")]
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vpo3g"]
+atlas = ExtResource("1_wf6i3")
+region = Rect2(180, 48, 12, 12)
+filter_clip = true
+
+[sub_resource type="Animation" id="Animation_c76hk"]
+resource_name = "bounce"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("View:texture")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [SubResource("AtlasTexture_vpo3g"), SubResource("AtlasTexture_dh0lv")]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Particles")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"restart"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a8nor"]
+_data = {
+"RESET": SubResource("Animation_smmof"),
+"bounce": SubResource("Animation_c76hk")
+}
+
+[sub_resource type="Curve" id="Curve_d1bts"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.414097, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="Pad" type="Area2D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_uqyem")
+
+[node name="Shape" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_84u3w")
+
+[node name="View" type="Sprite2D" parent="."]
+position = Vector2(0, -6)
+texture = SubResource("AtlasTexture_dh0lv")
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_a8nor")
+}
+
+[node name="Particles" type="CPUParticles2D" parent="."]
+emitting = false
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(5, 1)
+direction = Vector2(0, -1)
+spread = 0.0
+gravity = Vector2(0, 96)
+initial_velocity_min = 46.0
+initial_velocity_max = 50.0
+scale_amount_curve = SubResource("Curve_d1bts")
+color = Color(0.733333, 0, 1, 1)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

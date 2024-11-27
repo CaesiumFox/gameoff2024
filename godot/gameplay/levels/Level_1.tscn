@@ -15,7 +15,7 @@ size = Vector2(768, 2)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ftq07"]
 size = Vector2(16, 6)
 
-[node name="Level001" type="Node2D"]
+[node name="Level_1" type="Node2D"]
 script = ExtResource("1_wbjwm")
 
 [node name="Map" type="TileMapLayer" parent="."]

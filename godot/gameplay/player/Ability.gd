@@ -1,7 +1,16 @@
 extends Node
 class_name Ability
 
-@export var enabled: bool = true
+signal just_enabled
+signal just_disabled
+
+@export var enabled: bool = true:
+    get:
+        return enabled
+    set(new):
+        enabled = new
+        (just_enabled if new else just_disabled).emit()
+
 @export var player: CharacterBody2D
 @export var prevented: Array[Ability] = []
 

@@ -1,7 +1,7 @@
 [gd_resource type="AudioBusLayout" format=3 uid="uid://byynf2m16w4bu"]
 
 [resource]
-bus/1/name = &"PlayerSound"
+bus/1/name = &"Sound"
 bus/1/solo = false
 bus/1/mute = false
 bus/1/bypass_fx = false

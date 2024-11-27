@@ -1,20 +1,37 @@
 extends Node
 
+enum State {
+    MAIN,
+    LEVEL,
+    PLAY,
+    ACH,
+    RECORDS,
+    OPTIONS,
+}
+
 @onready var shading: TextureRect = $ShadingLayer/Shading
 @onready var shading_animation: AnimationPlayer = $ShadingAnimation
 @onready var death_shade_timer: Timer = $DeathShadeTimer
 
 var gameplay: Gameplay
 var main_menu: MainMenu
+var achievements: AchievementsMenu
+var records: RecordsMenu
+var options: OptionsMenu
 var level_menu: LevelMenu
 var current_level_id: int = 0
 
+var state: State = State.MAIN
+
 var gameplay_scene := preload("res://gameplay/Gameplay.tscn")
 var main_menu_scene := preload("res://ui/main_menu/MainMenu.tscn")
+var achievements_scene := preload("res://ui/achievements/Achievements.tscn")
+var records_scene := preload("res://ui/records/Records.tscn")
+var options_scene := preload("res://ui/options/Options.tscn")
 var level_menu_scene := preload("res://ui/level_menu/LevelMenu.tscn")
 var level_scenes: Array[PackedScene] = [
     preload("res://gameplay/levels/Level_1.tscn"),
-    preload("res://gameplay/levels/LevelBlank.tscn"),
+    preload("res://gameplay/levels/Level_2.tscn"),
     preload("res://gameplay/levels/LevelBlank.tscn"),
     preload("res://gameplay/levels/LevelBlank.tscn"),
     preload("res://gameplay/levels/LevelBlank.tscn"),
@@ -34,8 +51,23 @@ func _ready() -> void:
     
     # Main Menu
     main_menu = main_menu_scene.instantiate() as MainMenu
-    main_menu.quit_requested.connect(quit)
     main_menu.play_requested.connect(play)
+    main_menu.achievements_requested.connect(show_achievements)
+    main_menu.records_requested.connect(show_records)
+    main_menu.options_requested.connect(show_options)
+    main_menu.quit_requested.connect(quit)
+
+    # Achievements
+    achievements = achievements_scene.instantiate() as AchievementsMenu
+    achievements.back_requested.connect(hide_achievements)
+
+    # Records
+    records = records_scene.instantiate() as RecordsMenu
+    records.back_requested.connect(hide_records)
+
+    # Options
+    options = options_scene.instantiate() as OptionsMenu
+    options.back_requested.connect(hide_options)
 
     # Level Menu
     level_menu = level_menu_scene.instantiate() as LevelMenu
@@ -58,12 +90,92 @@ func quit() -> void:
     get_tree().quit()
     lock = false
 
+func show_achievements() -> void:
+    if lock: return
+    lock = true
+    shade_in()
+    await shading_animation.animation_finished
+    remove_child(main_menu)
+    state = State.ACH
+    add_child(achievements)
+    achievements.reload()
+    shade_out()
+    lock = false
+    pass
+    
+func hide_achievements() -> void:
+    if lock: return
+    lock = true
+    shade_in()
+    await shading_animation.animation_finished
+    remove_child(achievements)
+    state = State.MAIN
+    add_child(main_menu)
+    main_menu.reset()
+    shade_out()
+    lock = false
+    pass
+
+func show_records() -> void:
+    if lock: return
+    lock = true
+    shade_in()
+    await shading_animation.animation_finished
+    remove_child(main_menu)
+    state = State.RECORDS
+    add_child(records)
+    records.reload()
+    shade_out()
+    lock = false
+    pass
+    
+func hide_records() -> void:
+    if lock: return
+    lock = true
+    shade_in()
+    await shading_animation.animation_finished
+    remove_child(records)
+    state = State.MAIN
+    add_child(main_menu)
+    main_menu.reset()
+    shade_out()
+    lock = false
+    pass
+
+
+func show_options() -> void:
+    if lock: return
+    lock = true
+    shade_in()
+    await shading_animation.animation_finished
+    remove_child(main_menu)
+    state = State.RECORDS
+    add_child(options)
+    options.reload()
+    shade_out()
+    lock = false
+    pass
+    
+func hide_options() -> void:
+    if lock: return
+    lock = true
+    shade_in()
+    await shading_animation.animation_finished
+    remove_child(options)
+    state = State.MAIN
+    add_child(main_menu)
+    main_menu.reset()
+    shade_out()
+    lock = false
+    pass
+
 func play() -> void:
     if lock: return
     lock = true
     shade_in()
     await shading_animation.animation_finished
     remove_child(main_menu)
+    state = State.LEVEL
     add_child(level_menu)
     level_menu.reset()
     shade_out()
@@ -75,6 +187,7 @@ func level_selected(id: int) -> void:
     shade_in()
     await shading_animation.animation_finished
     remove_child(level_menu)
+    state = State.PLAY
     add_child(gameplay)
     gameplay.load_level(level_scenes[id])
     current_level_id = id
@@ -86,6 +199,7 @@ func level_menu_back() -> void:
     shade_in()
     await shading_animation.animation_finished
     remove_child(level_menu)
+    state = State.MAIN
     add_child(main_menu)
     main_menu.reset()
     shade_out()
@@ -97,6 +211,7 @@ func level_exit() -> void:
     shade_in()
     await shading_animation.animation_finished
     remove_child(gameplay)
+    state = State.LEVEL
     add_child(level_menu)
     level_menu.reset()
     shade_out()
@@ -108,6 +223,7 @@ func win(time: float, coin: bool) -> void:
     shade_in()
     await shading_animation.animation_finished
     remove_child(gameplay)
+    state = State.LEVEL
     add_child(level_menu)
     SaveManager.data.levels.levels[current_level_id].try_set_best_time(time)
     SaveManager.data.levels.levels[current_level_id].try_set_coin(coin)

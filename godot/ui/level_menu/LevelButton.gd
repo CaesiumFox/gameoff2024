@@ -56,7 +56,7 @@ func update_status() -> void:
         return
 
     if name_label:    
-        name_label.text = tr("NUMBERED_LEVEL").format({ id = level_id + 1 })
+        name_label.text = tr("NUM_LVL").format({ id = level_id + 1 })
 
     if complete_decoration:
         complete_decoration.visible = completed

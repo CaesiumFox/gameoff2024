@@ -1,7 +1,28 @@
 keys,en,ru
 MM_PLAY,PLAY,ИГРАТЬ
 MM_OPTIONS,OPTIONS,НАСТРОЙКИ
+MM_ACHIEVEMENTS,ACHIEVEMENTS,ДОСТИЖЕНИЯ
+MM_RECORDS,RECORDS,РЕКОРДЫ
 MM_QUIT,QUIT,ВЫЙТИ
-NUMBERED_LEVEL,Level {id},Уровень {id}
+NUM_LVL,Level {id},Уровень {id}
 PM_RESUME,RESUME,ПРОДОЛЖИТЬ
+PM_RESTART,RESTART,ЗАНОВО
 PM_QUIT,QUIT,ВЫЙТИ
+A_1_0,EN_A_1_0,RU_A_1_0
+A_1_1,EN_A_1_1,RU_A_1_1
+A_2_0,Collect 4 stars,Соберите 4 звезды
+A_2_1,Collected 4 stars,Собрано 4 звезды
+A_3_0,EN_A_3_0,RU_A_3_0
+A_3_1,EN_A_3_1,RU_A_3_1
+A_4_0,Collect everything,Соберите всё
+A_4_1,Collected everything,Собрано всё
+A_5_0,EN_A_5_0,RU_A_5_0
+A_5_1,EN_A_5_1,RU_A_5_1
+HINT_WJ,Wall jumps are unlocked forever,Прыжки по стенам разблокированы навсегда
+HINT_DJ,Double jump is unlocked forever,Двойной прыжок разблокирован навсегда
+HINT_TJ,Triple jump is unlocked forever,Тройной прыжок разблокирован навсегда
+T_BEST,Best,Лучшее
+O_SFX,Sound,Звук
+O_MUSIC,Music,Музыка
+O_LANGUAGE,Language,Язык
+O_FULLSCREEN,Fullscreen,Полный экран

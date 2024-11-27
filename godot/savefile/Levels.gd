@@ -6,6 +6,8 @@ var levels: Array[LevelData] = []
 func _ready() -> void:
     for i in range(12):
         levels.append(LevelData.new())
+        levels[i].level_id = i
+        levels[i].unlocked = true  # TODO: remove
     levels[0].unlocked = true
 
 func save_data(file: ConfigFile) -> void:

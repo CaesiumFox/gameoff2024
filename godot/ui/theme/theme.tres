@@ -1,0 +1,61 @@
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://70yhvrg7ebw"]
+
+[ext_resource type="Texture2D" uid="uid://bekreg51bwpfu" path="res://assets/slider.png" id="1_rxf8l"]
+[ext_resource type="FontFile" uid="uid://cete333x78mls" path="res://assets/fonts/reg.fnt" id="2_3c135"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fxpmq"]
+atlas = ExtResource("1_rxf8l")
+region = Rect2(0, 0, 8, 8)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i67ia"]
+atlas = ExtResource("1_rxf8l")
+region = Rect2(8, 0, 8, 8)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0xiib"]
+atlas = ExtResource("1_rxf8l")
+region = Rect2(16, 0, 8, 8)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8i364"]
+atlas = ExtResource("1_rxf8l")
+region = Rect2(24, 0, 1, 8)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_um7ba"]
+color = Color(1, 1, 1, 1)
+grow_begin = 0.0
+grow_end = 0.0
+thickness = 2
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_gnojn"]
+color = Color(1, 1, 1, 1)
+grow_begin = 0.0
+grow_end = 0.0
+thickness = 2
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_velau"]
+color = Color(0.733333, 0, 1, 1)
+grow_begin = 0.0
+grow_end = 0.0
+thickness = 2
+
+[resource]
+default_font = ExtResource("2_3c135")
+default_font_size = 16
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_disabled_color = Color(0.733333, 0, 1, 1)
+Button/colors/font_focus_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(1, 0.733333, 0, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_disabled_color = Color(0.733333, 0, 1, 1)
+Button/constants/h_separation = 0
+HSlider/icons/grabber = SubResource("AtlasTexture_fxpmq")
+HSlider/icons/grabber_disabled = SubResource("AtlasTexture_i67ia")
+HSlider/icons/grabber_highlight = SubResource("AtlasTexture_0xiib")
+HSlider/icons/tick = SubResource("AtlasTexture_8i364")
+HSlider/styles/grabber_area = SubResource("StyleBoxLine_um7ba")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxLine_gnojn")
+HSlider/styles/slider = SubResource("StyleBoxLine_velau")

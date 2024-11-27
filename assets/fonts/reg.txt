@@ -1,4 +1,4 @@
-reg 2
+reg 1
 0|reg00.png 4|reg04.png 32|reg20.png
 ' ' 2
 '!' 1

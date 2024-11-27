@@ -44,6 +44,8 @@ func reset() -> void:
     danger_zones = 0
     velocity.x = 0
     velocity.y = 0
+    jump.reset_air_jumps()
+    camera.reset_smoothing()
 
 func prepare_for_load() -> void:
     jump.reset_air_jumps()

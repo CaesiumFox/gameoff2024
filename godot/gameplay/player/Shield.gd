@@ -20,11 +20,13 @@ var invincible: bool = false
 
 func _ready() -> void:
     progress_bar.max_value = cool_down.wait_time
+    reset()
 
 func _process(_delta: float) -> void:
     progress_bar.value = cool_down.time_left
 
 func reset() -> void:
+    active = false
     can_activate = true
     invincible = false
     working.stop()
