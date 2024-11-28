@@ -4,6 +4,7 @@ class_name RecordsMenu
 signal back_requested
 
 @onready var table: GridContainer = $Center/Table
+@onready var deaths: Label = $Deaths
 
 var level_names: Array[Label] = []
 var best_times: Array[Label] = []
@@ -17,6 +18,7 @@ func time_show(x: float) -> String:
     return String.num(x, 2)
 
 func _ready() -> void:
+    deaths.text = "D %d" % SaveManager.data.levels.total_deaths_count()
     for i in range(12):
         var level_name := Label.new()
         var best_time := Label.new()
@@ -50,7 +52,7 @@ func _ready() -> void:
         table.add_child(star3_time)
 
 func reload() -> void:
-    grab_focus()
+    deaths.text = "D %d" % SaveManager.data.levels.total_deaths_count()
     for i in range(12):
         best_times[i].text = time_show(SaveManager.data.levels.levels[i].best_time)
 

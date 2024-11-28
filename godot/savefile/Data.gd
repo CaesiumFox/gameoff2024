@@ -4,6 +4,10 @@ class_name Data
 @onready var abilities := $Abilities as Abilities
 @onready var levels: Levels = $Levels
 
+func reset() -> void:
+    abilities.reset()
+    levels.reset()
+
 func save_data(file: ConfigFile) -> void:
     abilities.save_data(file)
     levels.save_data(file)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://3a6gajtfwxfo"]
 
-[ext_resource type="Theme" uid="uid://70yhvrg7ebw" path="res://ui/theme/theme.tres" id="1_pqttv"]
+[ext_resource type="Theme" uid="uid://70yhvrg7ebw" path="res://ui/theme.tres" id="1_pqttv"]
 [ext_resource type="Theme" uid="uid://byyfyow8w62ue" path="res://ui/main_menu/main_menu_theme.tres" id="2_126dp"]
 [ext_resource type="Script" path="res://ui/main_menu/MainMenu.gd" id="2_pd1sh"]
 [ext_resource type="PackedScene" uid="uid://cw17j3fqx4p6x" path="res://ui/main_menu/MainMenuButton.tscn" id="4_ilpic"]
@@ -61,17 +61,25 @@ translation_id = "MM_RECORDS"
 [node name="OptionsButton" parent="MainButtons" instance=ExtResource("4_ilpic")]
 layout_mode = 2
 focus_neighbor_top = NodePath("../RecordsButton")
-focus_neighbor_bottom = NodePath("../QuitButton")
-focus_next = NodePath("../QuitButton")
+focus_neighbor_bottom = NodePath("../CreditsButton")
+focus_next = NodePath("../CreditsButton")
 focus_previous = NodePath("../RecordsButton")
 translation_id = "MM_OPTIONS"
 
-[node name="QuitButton" parent="MainButtons" instance=ExtResource("4_ilpic")]
+[node name="CreditsButton" parent="MainButtons" instance=ExtResource("4_ilpic")]
 layout_mode = 2
 focus_neighbor_top = NodePath("../OptionsButton")
+focus_neighbor_bottom = NodePath("../QuitButton")
+focus_next = NodePath("../QuitButton")
+focus_previous = NodePath("../OptionsButton")
+translation_id = "MM_CREDITS"
+
+[node name="QuitButton" parent="MainButtons" instance=ExtResource("4_ilpic")]
+layout_mode = 2
+focus_neighbor_top = NodePath("../CreditsButton")
 focus_neighbor_bottom = NodePath("../PlayButton")
 focus_next = NodePath("../PlayButton")
-focus_previous = NodePath("../OptionsButton")
+focus_previous = NodePath("../CreditsButton")
 translation_id = "MM_QUIT"
 
 [node name="WaitTimer" type="Timer" parent="."]
@@ -82,5 +90,6 @@ one_shot = true
 [connection signal="selected" from="MainButtons/AchievementsButton" to="." method="_on_achievements_button_selected"]
 [connection signal="selected" from="MainButtons/RecordsButton" to="." method="_on_records_button_selected"]
 [connection signal="selected" from="MainButtons/OptionsButton" to="." method="_on_options_button_selected"]
+[connection signal="selected" from="MainButtons/CreditsButton" to="." method="_on_credits_button_selected"]
 [connection signal="selected" from="MainButtons/QuitButton" to="." method="_on_quit_button_selected"]
 [connection signal="timeout" from="WaitTimer" to="." method="_on_wait_timer_timeout"]

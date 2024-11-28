@@ -5,6 +5,7 @@ signal play_requested
 signal achievements_requested
 signal records_requested
 signal options_requested
+signal credits_requested
 signal quit_requested
 
 @onready var wait_timer: Timer = $WaitTimer
@@ -20,6 +21,7 @@ func reset() -> void:
     grab_focus()
     for node in main_buttons.get_children():
         if node is MainMenuButton:
+            (node as MainMenuButton).reload_locale()
             (node as MainMenuButton).reset_animation()
 
 func _on_play_button_selected() -> void:
@@ -45,6 +47,12 @@ func _on_options_button_selected() -> void:
     no_return = true
     wait_timer.start()
     signal_to_emit = options_requested
+
+func _on_credits_button_selected() -> void:
+    if no_return: return
+    no_return = true
+    wait_timer.start()
+    signal_to_emit = credits_requested
 
 func _on_quit_button_selected() -> void:
     if no_return: return

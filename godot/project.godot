@@ -21,8 +21,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 PhysicsCalculator="*res://gameplay/PhysicsCalculator.gd"
-SaveManager="*res://savefile/SaveManager.gd"
 LevelMetadata="*res://gameplay/levels/LevelMetadata.gd"
+SaveManager="*res://savefile/SaveManager.tscn"
 
 [display]
 
@@ -157,7 +157,6 @@ console_clear={
 [internationalization]
 
 locale/translations=PackedStringArray("res://translations.en.translation", "res://translations.ru.translation")
-locale/test="en"
 
 [layer_names]
 

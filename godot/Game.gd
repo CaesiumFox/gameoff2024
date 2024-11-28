@@ -6,6 +6,7 @@ enum State {
     PLAY,
     ACH,
     RECORDS,
+    CREDITS,
     OPTIONS,
 }
 
@@ -18,6 +19,7 @@ var main_menu: MainMenu
 var achievements: AchievementsMenu
 var records: RecordsMenu
 var options: OptionsMenu
+var credits: CreditsMenu
 var level_menu: LevelMenu
 var current_level_id: int = 0
 
@@ -28,6 +30,7 @@ var main_menu_scene := preload("res://ui/main_menu/MainMenu.tscn")
 var achievements_scene := preload("res://ui/achievements/Achievements.tscn")
 var records_scene := preload("res://ui/records/Records.tscn")
 var options_scene := preload("res://ui/options/Options.tscn")
+var credits_scene := preload("res://ui/credits/Credits.tscn")
 var level_menu_scene := preload("res://ui/level_menu/LevelMenu.tscn")
 var level_scenes: Array[PackedScene] = [
     preload("res://gameplay/levels/Level_1.tscn"),
@@ -55,6 +58,7 @@ func _ready() -> void:
     main_menu.achievements_requested.connect(show_achievements)
     main_menu.records_requested.connect(show_records)
     main_menu.options_requested.connect(show_options)
+    main_menu.credits_requested.connect(show_credits)
     main_menu.quit_requested.connect(quit)
 
     # Achievements
@@ -69,6 +73,10 @@ func _ready() -> void:
     options = options_scene.instantiate() as OptionsMenu
     options.back_requested.connect(hide_options)
 
+    # Credits
+    credits = credits_scene.instantiate() as CreditsMenu
+    credits.back_requested.connect(hide_credits)
+
     # Level Menu
     level_menu = level_menu_scene.instantiate() as LevelMenu
     level_menu.selected.connect(level_selected)
@@ -77,7 +85,7 @@ func _ready() -> void:
     # Gameplay
     gameplay = gameplay_scene.instantiate() as Gameplay
     gameplay.level_loaded.connect(shade_out)
-    gameplay.player_death.connect(func(): death_shade_timer.start())
+    gameplay.player_death.connect(death)
     gameplay.win.connect(win)
     gameplay.level_exit.connect(level_exit)
 
@@ -142,7 +150,6 @@ func hide_records() -> void:
     lock = false
     pass
 
-
 func show_options() -> void:
     if lock: return
     lock = true
@@ -159,9 +166,36 @@ func show_options() -> void:
 func hide_options() -> void:
     if lock: return
     lock = true
+    SaveManager.save_settings()
     shade_in()
     await shading_animation.animation_finished
     remove_child(options)
+    state = State.MAIN
+    add_child(main_menu)
+    main_menu.reset()
+    shade_out()
+    lock = false
+    pass
+
+func show_credits() -> void:
+    if lock: return
+    lock = true
+    shade_in()
+    await shading_animation.animation_finished
+    remove_child(main_menu)
+    state = State.RECORDS
+    add_child(credits)
+    credits.reload()
+    shade_out()
+    lock = false
+    pass
+    
+func hide_credits() -> void:
+    if lock: return
+    lock = true
+    shade_in()
+    await shading_animation.animation_finished
+    remove_child(credits)
     state = State.MAIN
     add_child(main_menu)
     main_menu.reset()
@@ -213,9 +247,14 @@ func level_exit() -> void:
     remove_child(gameplay)
     state = State.LEVEL
     add_child(level_menu)
+    SaveManager.save_file()
     level_menu.reset()
     shade_out()
     lock = false
+
+func death() -> void:
+    death_shade_timer.start()
+    SaveManager.data.levels.levels[current_level_id].deaths += 1
 
 func win(time: float, coin: bool) -> void:
     if lock: return
@@ -230,6 +269,7 @@ func win(time: float, coin: bool) -> void:
     SaveManager.data.levels.levels[current_level_id].completed = true
     if current_level_id < 11:
         SaveManager.data.levels.levels[current_level_id + 1].unlocked = true
+    SaveManager.save_file()
     level_menu.reset()
     shade_out()
     lock = false

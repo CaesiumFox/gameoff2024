@@ -3,6 +3,7 @@ MM_PLAY,PLAY,ИГРАТЬ
 MM_OPTIONS,OPTIONS,НАСТРОЙКИ
 MM_ACHIEVEMENTS,ACHIEVEMENTS,ДОСТИЖЕНИЯ
 MM_RECORDS,RECORDS,РЕКОРДЫ
+MM_CREDITS,CREDITS,ТИТРЫ
 MM_QUIT,QUIT,ВЫЙТИ
 NUM_LVL,Level {id},Уровень {id}
 PM_RESUME,RESUME,ПРОДОЛЖИТЬ
@@ -22,7 +23,11 @@ HINT_WJ,Wall jumps are unlocked forever,Прыжки по стенам разб�
 HINT_DJ,Double jump is unlocked forever,Двойной прыжок разблокирован навсегда
 HINT_TJ,Triple jump is unlocked forever,Тройной прыжок разблокирован навсегда
 T_BEST,Best,Лучшее
+O_AUDIO,Audio,Аудио
+O_MASTER,Master,Мастер
 O_SFX,Sound,Звук
 O_MUSIC,Music,Музыка
 O_LANGUAGE,Language,Язык
 O_FULLSCREEN,Fullscreen,Полный экран
+O_MY_NAME,English,Русский
+O_RESET,Reset save file,Сбросить сохранения

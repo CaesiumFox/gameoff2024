@@ -13,6 +13,12 @@ signal selected
 func _ready() -> void:
     text = tr(translation_id)
 
+func reload_locale() -> void:
+    if has_focus():
+        text = "\u203a " + tr(translation_id) + " \u2039"
+    else:
+        text = tr(translation_id)
+
 func reset_animation() -> void:
     blinker.play("RESET")
 

@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://dhgi085kyigc0"]
+
+[ext_resource type="Script" path="res://savefile/SaveManager.gd" id="1_ig75g"]
+[ext_resource type="PackedScene" uid="uid://0jhu2oyqscqx" path="res://savefile/Data.tscn" id="2_p8rjb"]
+[ext_resource type="PackedScene" uid="uid://d3bwn2rkwpgnq" path="res://savefile/Settings.tscn" id="3_vuy3m"]
+
+[node name="SaveManager" type="Node"]
+script = ExtResource("1_ig75g")
+
+[node name="Data" parent="." instance=ExtResource("2_p8rjb")]
+
+[node name="Settings" parent="." instance=ExtResource("3_vuy3m")]

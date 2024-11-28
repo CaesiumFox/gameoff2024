@@ -1,12 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://8yxq81ob3pdd"]
+[gd_scene load_steps=6 format=3 uid="uid://8yxq81ob3pdd"]
 
-[ext_resource type="Theme" uid="uid://70yhvrg7ebw" path="res://ui/theme/theme.tres" id="1_d0nom"]
+[ext_resource type="Theme" uid="uid://70yhvrg7ebw" path="res://ui/theme.tres" id="1_d0nom"]
 [ext_resource type="Script" path="res://ui/records/Records.gd" id="2_b82ur"]
 [ext_resource type="Texture2D" uid="uid://cxwwsu1cahlnm" path="res://assets/level_menu.png" id="3_44k8c"]
+[ext_resource type="FontFile" uid="uid://c4kcltgptp5vi" path="res://assets/fonts/spe.fnt" id="4_xxty5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vdilv"]
 atlas = ExtResource("3_44k8c")
 region = Rect2(64, 12, 12, 12)
+filter_clip = true
 
 [node name="Times" type="Control"]
 layout_mode = 3
@@ -92,3 +94,11 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = SubResource("AtlasTexture_vdilv")
+
+[node name="Deaths" type="Label" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_right = 42.0
+offset_bottom = 16.0
+theme_override_fonts/font = ExtResource("4_xxty5")
+text = "D 0"

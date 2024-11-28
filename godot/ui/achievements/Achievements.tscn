@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://ui/achievements/Achievements.gd" id="1_tkc4b"]
 [ext_resource type="PackedScene" uid="uid://ktpcywh6e5tr" path="res://ui/achievements/Achievement.tscn" id="2_5r5vf"]
-[ext_resource type="Theme" uid="uid://70yhvrg7ebw" path="res://ui/theme/theme.tres" id="3_hkuab"]
+[ext_resource type="Theme" uid="uid://70yhvrg7ebw" path="res://ui/theme.tres" id="3_hkuab"]
 [ext_resource type="Texture2D" uid="uid://chkp5rhucac5h" path="res://assets/codes.png" id="3_pxb2w"]
 
 [sub_resource type="Shader" id="Shader_qxdif"]

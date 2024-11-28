@@ -8,6 +8,13 @@ var best_time: float = INF
 var coin_collected: bool = false
 var deaths: int = 0
 
+func reset() -> void:
+    unlocked = level_id == 0
+    completed = false
+    best_time = INF
+    coin_collected = false
+    deaths = 0
+
 func save_data(file: ConfigFile) -> void:
     file.set_value("level_%d" % level_id, "unlocked"      , unlocked      )
     file.set_value("level_%d" % level_id, "completed"     , completed     )
