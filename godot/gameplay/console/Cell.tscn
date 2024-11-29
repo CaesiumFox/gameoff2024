@@ -28,5 +28,8 @@ texture_pressed = SubResource("AtlasTexture_4tw2u")
 texture_focused = SubResource("AtlasTexture_143wj")
 script = ExtResource("2_yx8bc")
 
+[connection signal="button_down" from="." to="." method="_on_button_down"]
+[connection signal="button_up" from="." to="." method="_on_button_up"]
+[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="toggled" from="." to="." method="_on_toggled"]

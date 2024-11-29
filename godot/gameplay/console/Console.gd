@@ -1,9 +1,11 @@
-extends TextureRect
+extends Control
 class_name Console
 
 signal exited(hash: int)
 
 const CELL := preload("res://gameplay/console/Cell.tscn")
+
+@onready var grid: GridContainer = %Grid
 
 var cells: Array[ConsoleCell] = []
 var value: int = 0
@@ -19,15 +21,13 @@ func _ready() -> void:
     for y in range(6):
         for x in range(6):
             var cell := CELL.instantiate() as ConsoleCell
-            cell.position.x = 2 + 14 * x
-            cell.position.y = 2 + 14 * y
             cell.switch.connect(_on_switch)
             cell.index = xytoindex.call(x, y)
             cells.append(cell)
 
     for y in range(6):
         for x in range(6):
-            add_child(cells[xytoindex.call(x, y)])
+            grid.add_child(cells[xytoindex.call(x, y)])
     
     for y in range(6):
         for x in range(6):
@@ -77,3 +77,9 @@ func value_hash() -> int:
     ctx.start(HashingContext.HASH_SHA256)
     ctx.update(input)
     return ctx.finish().decode_s64(0)
+
+func _on_back_pressed() -> void:
+    exited.emit(value_hash())
+
+func _on_button_pressed() -> void:
+    reset_values()

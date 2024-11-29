@@ -2,7 +2,7 @@ extends Control
 class_name LevelMenu
 
 signal selected(id: int)
-signal back
+signal back_requested
 
 const LEVEL_BUTTON: PackedScene = preload("res://ui/level_menu/LevelButton.tscn")
 
@@ -59,7 +59,7 @@ func reset() -> void:
 
 func _process(_delta: float) -> void:
     if Input.is_action_just_pressed("ui_cancel"):
-        back.emit()
+        back_requested.emit()
 
 func _on_level_button_focus() -> void:
     point_sound.play()
@@ -67,3 +67,8 @@ func _on_level_button_focus() -> void:
 func _on_level_button_select(id: int) -> void:
     select_sound.play()
     selected.emit(id)
+
+
+
+func _on_back_button_pressed() -> void:
+    back_requested.emit()

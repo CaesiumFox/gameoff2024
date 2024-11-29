@@ -1,8 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://bwnhtdduwl13u"]
+[gd_scene load_steps=9 format=3 uid="uid://bwnhtdduwl13u"]
 
 [ext_resource type="Script" path="res://ui/level_menu/LevelMenu.gd" id="1_7cr7p"]
 [ext_resource type="AudioStream" uid="uid://ibiqxk0peqso" path="res://assets/sfx/ui_point.ogg" id="2_fagbu"]
+[ext_resource type="Texture2D" uid="uid://bmy7nrayfqr8k" path="res://assets/back_button.png" id="2_j4ggy"]
 [ext_resource type="AudioStream" uid="uid://dq7uo6vdyyfl1" path="res://assets/sfx/ui_select.ogg" id="3_iw3tf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dtvam"]
+atlas = ExtResource("2_j4ggy")
+region = Rect2(0, 0, 12, 12)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bm2il"]
+atlas = ExtResource("2_j4ggy")
+region = Rect2(12, 0, 12, 12)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4l0hx"]
+atlas = ExtResource("2_j4ggy")
+region = Rect2(12, 0, 12, 12)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1obeb"]
+atlas = ExtResource("2_j4ggy")
+region = Rect2(12, 0, 12, 12)
+filter_clip = true
 
 [node name="LevelMenu" type="Control"]
 layout_mode = 3
@@ -27,6 +48,14 @@ unique_name_in_owner = true
 layout_mode = 2
 columns = 3
 
+[node name="BackButton" type="TextureButton" parent="."]
+offset_right = 12.0
+offset_bottom = 12.0
+texture_normal = SubResource("AtlasTexture_dtvam")
+texture_pressed = SubResource("AtlasTexture_bm2il")
+texture_hover = SubResource("AtlasTexture_4l0hx")
+texture_focused = SubResource("AtlasTexture_1obeb")
+
 [node name="PointSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_fagbu")
 volume_db = -15.0
@@ -36,3 +65,5 @@ bus = &"Sound"
 stream = ExtResource("3_iw3tf")
 volume_db = -10.0
 bus = &"Sound"
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

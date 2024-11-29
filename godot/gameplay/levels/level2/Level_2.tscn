@@ -1,14 +1,15 @@
 [gd_scene load_steps=28 format=4 uid="uid://d1qc2s6boueup"]
 
-[ext_resource type="Script" path="res://gameplay/levels/Level_2.gd" id="1_sax3l"]
+[ext_resource type="Script" path="res://gameplay/levels/level2/Level_2.gd" id="1_sax3l"]
 [ext_resource type="TileSet" uid="uid://b3c1hcw6x6y0p" path="res://assets/tiles0_0.tres" id="2_8i7y1"]
 [ext_resource type="PackedScene" uid="uid://d131hwcs5mgd5" path="res://gameplay/elements/Damage.tscn" id="3_exlq3"]
 [ext_resource type="PackedScene" uid="uid://c4x12fhcm1n4u" path="res://gameplay/elements/Pad.tscn" id="3_siekg"]
 [ext_resource type="PackedScene" uid="uid://lukwf4jblxo8" path="res://gameplay/elements/Coin.tscn" id="4_onjdc"]
 [ext_resource type="PackedScene" uid="uid://3xgycv5wxm7e" path="res://gameplay/elements/Button.tscn" id="5_20868"]
 [ext_resource type="PackedScene" uid="uid://cbaaxryfl454c" path="res://gameplay/elements/Exit.tscn" id="5_glqln"]
-[ext_resource type="Script" path="res://gameplay/levels/Level_2_Circuit.gd" id="5_r15o5"]
+[ext_resource type="Script" path="res://gameplay/levels/level2/Level_2_Circuit.gd" id="5_r15o5"]
 [ext_resource type="Texture2D" uid="uid://dsgotgahmquxy" path="res://assets/tiles0.png" id="6_8luku"]
+[ext_resource type="Script" path="res://gameplay/levels/Mover.gd" id="8_7owp2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rubjj"]
 size = Vector2(4, 36)
@@ -59,10 +60,6 @@ _data = {
 }
 point_count = 3
 
-[sub_resource type="GDScript" id="GDScript_76xm1"]
-script/source = "extends Mover
-"
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mwfjw"]
 size = Vector2(16, 2)
 
@@ -87,7 +84,7 @@ size = Vector2(74, 2)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u4myh"]
 size = Vector2(100, 6)
 
-[node name="Level2" type="Node2D"]
+[node name="Level_2" type="Node2D"]
 script = ExtResource("1_sax3l")
 
 [node name="Map" type="TileMapLayer" parent="."]
@@ -227,7 +224,7 @@ metadata/_edit_lock_ = true
 
 [node name="Path1" type="Path2D" parent="Moving"]
 curve = SubResource("Curve2D_a8ipg")
-script = SubResource("GDScript_76xm1")
+script = ExtResource("8_7owp2")
 
 [node name="Moving" type="PathFollow2D" parent="Moving/Path1"]
 position = Vector2(192, 372)

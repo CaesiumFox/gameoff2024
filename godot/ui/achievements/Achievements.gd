@@ -68,3 +68,8 @@ func _on_achievement_4_request_description(achieved: bool) -> void:
 
 func _on_achievement_5_request_description(achieved: bool) -> void:
     description.text = tr("A_5_1" if achieved else "A_5_0")
+
+
+
+func _on_back_button_pressed() -> void:
+    back_requested.emit()

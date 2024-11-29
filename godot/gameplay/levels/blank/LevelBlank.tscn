@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=4 uid="uid://d3q86q6dmg4of"]
 
-[ext_resource type="Script" path="res://gameplay/levels/LevelBlank.gd" id="1_wb7vx"]
+[ext_resource type="Script" path="res://gameplay/levels/blank/LevelBlank.gd" id="1_wb7vx"]
 [ext_resource type="TileSet" uid="uid://b3c1hcw6x6y0p" path="res://assets/tiles0_0.tres" id="2_getjk"]
 [ext_resource type="PackedScene" uid="uid://lukwf4jblxo8" path="res://gameplay/elements/Coin.tscn" id="3_sq122"]
 [ext_resource type="PackedScene" uid="uid://cbaaxryfl454c" path="res://gameplay/elements/Exit.tscn" id="4_sm73w"]

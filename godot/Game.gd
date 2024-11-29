@@ -33,18 +33,18 @@ var options_scene := preload("res://ui/options/Options.tscn")
 var credits_scene := preload("res://ui/credits/Credits.tscn")
 var level_menu_scene := preload("res://ui/level_menu/LevelMenu.tscn")
 var level_scenes: Array[PackedScene] = [
-    preload("res://gameplay/levels/Level_1.tscn"),
-    preload("res://gameplay/levels/Level_2.tscn"),
-    preload("res://gameplay/levels/LevelBlank.tscn"),
-    preload("res://gameplay/levels/LevelBlank.tscn"),
-    preload("res://gameplay/levels/LevelBlank.tscn"),
-    preload("res://gameplay/levels/LevelBlank.tscn"),
-    preload("res://gameplay/levels/LevelBlank.tscn"),
-    preload("res://gameplay/levels/LevelBlank.tscn"),
-    preload("res://gameplay/levels/LevelBlank.tscn"),
-    preload("res://gameplay/levels/LevelBlank.tscn"),
-    preload("res://gameplay/levels/LevelBlank.tscn"),
-    preload("res://gameplay/levels/LevelBlank.tscn"),
+    preload("res://gameplay/levels/level1/Level_1.tscn"),
+    preload("res://gameplay/levels/level2/Level_2.tscn"),
+    preload("res://gameplay/levels/level3/Level_3.tscn"),
+    preload("res://gameplay/levels/level4/Level_4.tscn"),
+    preload("res://gameplay/levels/blank/LevelBlank.tscn"),
+    preload("res://gameplay/levels/blank/LevelBlank.tscn"),
+    preload("res://gameplay/levels/blank/LevelBlank.tscn"),
+    preload("res://gameplay/levels/blank/LevelBlank.tscn"),
+    preload("res://gameplay/levels/blank/LevelBlank.tscn"),
+    preload("res://gameplay/levels/blank/LevelBlank.tscn"),
+    preload("res://gameplay/levels/blank/LevelBlank.tscn"),
+    preload("res://gameplay/levels/blank/LevelBlank.tscn"),
 ]
 
 var lock: bool = false
@@ -80,7 +80,7 @@ func _ready() -> void:
     # Level Menu
     level_menu = level_menu_scene.instantiate() as LevelMenu
     level_menu.selected.connect(level_selected)
-    level_menu.back.connect(level_menu_back)
+    level_menu.back_requested.connect(level_menu_back)
 
     # Gameplay
     gameplay = gameplay_scene.instantiate() as Gameplay

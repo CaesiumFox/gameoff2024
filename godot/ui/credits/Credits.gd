@@ -9,3 +9,6 @@ func reload() -> void:
 func _process(_delta: float) -> void:
     if Input.is_action_just_pressed("ui_cancel"):
         back_requested.emit()
+
+func _on_back_button_pressed() -> void:
+    back_requested.emit()

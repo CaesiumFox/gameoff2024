@@ -1,7 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://brki1nnel7bji"]
+[gd_scene load_steps=8 format=3 uid="uid://brki1nnel7bji"]
 
 [ext_resource type="Theme" uid="uid://70yhvrg7ebw" path="res://ui/theme.tres" id="1_u232s"]
 [ext_resource type="Script" path="res://ui/credits/Credits.gd" id="2_bflv6"]
+[ext_resource type="Texture2D" uid="uid://bmy7nrayfqr8k" path="res://assets/back_button.png" id="3_7wogo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rsm5u"]
+atlas = ExtResource("3_7wogo")
+region = Rect2(0, 0, 12, 12)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1idfd"]
+atlas = ExtResource("3_7wogo")
+region = Rect2(12, 0, 12, 12)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8g31e"]
+atlas = ExtResource("3_7wogo")
+region = Rect2(12, 0, 12, 12)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ls4ln"]
+atlas = ExtResource("3_7wogo")
+region = Rect2(12, 0, 12, 12)
+filter_clip = true
 
 [node name="Credits" type="Control"]
 layout_mode = 3
@@ -26,3 +47,13 @@ text = "[center]Game by: Stepan Adveev, 2024
 Engine: Godot
 [/center]"
 fit_content = true
+
+[node name="BackButton" type="TextureButton" parent="."]
+offset_right = 12.0
+offset_bottom = 12.0
+texture_normal = SubResource("AtlasTexture_rsm5u")
+texture_pressed = SubResource("AtlasTexture_1idfd")
+texture_hover = SubResource("AtlasTexture_8g31e")
+texture_focused = SubResource("AtlasTexture_ls4ln")
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

@@ -1,16 +1,37 @@
-[gd_scene load_steps=8 format=3 uid="uid://cu7lnu8p1f0ff"]
+[gd_scene load_steps=13 format=3 uid="uid://cu7lnu8p1f0ff"]
 
 [ext_resource type="Theme" uid="uid://70yhvrg7ebw" path="res://ui/theme.tres" id="1_krcbd"]
 [ext_resource type="Script" path="res://ui/options/Options.gd" id="2_c1eih"]
 [ext_resource type="AudioStream" uid="uid://ibiqxk0peqso" path="res://assets/sfx/ui_point.ogg" id="3_tmysm"]
 [ext_resource type="FontFile" uid="uid://bx8uq1tdx4ah2" path="res://assets/fonts/big.fnt" id="4_mdt00"]
 [ext_resource type="Script" path="res://ui/options/LanguageSelection.gd" id="5_lneu6"]
+[ext_resource type="Texture2D" uid="uid://bmy7nrayfqr8k" path="res://assets/back_button.png" id="6_ayx8t"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rd5yb"]
 bg_color = Color(0.733333, 0, 1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xthx4"]
 bg_color = Color(1, 0.733333, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_14qur"]
+atlas = ExtResource("6_ayx8t")
+region = Rect2(0, 0, 12, 12)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xjged"]
+atlas = ExtResource("6_ayx8t")
+region = Rect2(12, 0, 12, 12)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dyqcj"]
+atlas = ExtResource("6_ayx8t")
+region = Rect2(12, 0, 12, 12)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n5i3k"]
+atlas = ExtResource("6_ayx8t")
+region = Rect2(12, 0, 12, 12)
+filter_clip = true
 
 [node name="Options" type="Control"]
 layout_mode = 3
@@ -157,6 +178,14 @@ show_percentage = false
 wait_time = 2.0
 one_shot = true
 
+[node name="BackButton" type="TextureButton" parent="."]
+offset_right = 12.0
+offset_bottom = 12.0
+texture_normal = SubResource("AtlasTexture_14qur")
+texture_pressed = SubResource("AtlasTexture_xjged")
+texture_hover = SubResource("AtlasTexture_dyqcj")
+texture_focused = SubResource("AtlasTexture_n5i3k")
+
 [connection signal="focus_entered" from="Center/VBoxContainer/AudioContainer/Audio/MasterSlider" to="." method="_on_master_slider_focus_entered"]
 [connection signal="focus_exited" from="Center/VBoxContainer/AudioContainer/Audio/MasterSlider" to="." method="_on_master_slider_focus_exited"]
 [connection signal="value_changed" from="Center/VBoxContainer/AudioContainer/Audio/MasterSlider" to="." method="_on_master_slider_value_changed"]
@@ -175,3 +204,4 @@ one_shot = true
 [connection signal="button_up" from="Center/VBoxContainer/CenterReset/ResetButton" to="." method="_on_reset_button_button_up"]
 [connection signal="focus_entered" from="Center/VBoxContainer/CenterReset/ResetButton" to="." method="_on_reset_button_focus_entered"]
 [connection signal="timeout" from="Center/VBoxContainer/CenterReset/ResetButton/Timer" to="." method="_on_reset_timer_timeout"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

@@ -127,3 +127,8 @@ func _on_reset_timer_timeout() -> void:
     SaveManager.data.reset()
     SaveManager.save_file()
     back_requested.emit()
+
+
+
+func _on_back_button_pressed() -> void:
+    back_requested.emit()
