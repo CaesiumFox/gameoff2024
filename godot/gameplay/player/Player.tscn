@@ -458,12 +458,15 @@ libraries = {
 
 [node name="BreakSound" type="AudioStreamPlayer" parent="Shield"]
 stream = ExtResource("7_x2t56")
+bus = &"Sound"
 
 [node name="ShieldSound" type="AudioStreamPlayer" parent="Shield"]
 stream = ExtResource("17_gp0ue")
+bus = &"Sound"
 
 [node name="WrongSound" type="AudioStreamPlayer" parent="Shield"]
 stream = ExtResource("14_tppur")
+bus = &"Sound"
 
 [node name="Animator" type="Node" parent="." node_paths=PackedStringArray("player", "sprite")]
 process_mode = 3
@@ -537,12 +540,15 @@ visible = false
 
 [node name="WrongSound" type="AudioStreamPlayer" parent="Console"]
 stream = ExtResource("14_tppur")
+bus = &"Sound"
 
 [node name="InvertSound" type="AudioStreamPlayer" parent="Console"]
 stream = ExtResource("15_v3jhy")
+bus = &"Sound"
 
 [node name="PowerUpSound" type="AudioStreamPlayer" parent="Console"]
 stream = ExtResource("16_wtfsb")
+bus = &"Sound"
 
 [node name="Camera" type="Camera2D" parent="."]
 limit_smoothed = true
