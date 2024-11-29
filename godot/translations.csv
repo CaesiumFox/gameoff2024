@@ -2,7 +2,7 @@ keys,en,ru
 MM_PLAY,PLAY,ИГРАТЬ
 MM_OPTIONS,OPTIONS,НАСТРОЙКИ
 MM_ACHIEVEMENTS,ACHIEVEMENTS,ДОСТИЖЕНИЯ
-MM_RECORDS,RECORDS,РЕКОРДЫ
+MM_STATISTICS,STATISTICS,СТАТИСТИКА
 MM_CREDITS,CREDITS,ТИТРЫ
 MM_QUIT,QUIT,ВЫЙТИ
 NUM_LVL,Level {id},Уровень {id}

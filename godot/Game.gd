@@ -17,7 +17,7 @@ enum State {
 var gameplay: Gameplay
 var main_menu: MainMenu
 var achievements: AchievementsMenu
-var records: RecordsMenu
+var statistics: StatisticsMenu
 var options: OptionsMenu
 var credits: CreditsMenu
 var level_menu: LevelMenu
@@ -28,7 +28,7 @@ var state: State = State.MAIN
 var gameplay_scene := preload("res://gameplay/Gameplay.tscn")
 var main_menu_scene := preload("res://ui/main_menu/MainMenu.tscn")
 var achievements_scene := preload("res://ui/achievements/Achievements.tscn")
-var records_scene := preload("res://ui/records/Records.tscn")
+var statistics_scene := preload("res://ui/statistics/Statistics.tscn")
 var options_scene := preload("res://ui/options/Options.tscn")
 var credits_scene := preload("res://ui/credits/Credits.tscn")
 var level_menu_scene := preload("res://ui/level_menu/LevelMenu.tscn")
@@ -56,7 +56,7 @@ func _ready() -> void:
     main_menu = main_menu_scene.instantiate() as MainMenu
     main_menu.play_requested.connect(play)
     main_menu.achievements_requested.connect(show_achievements)
-    main_menu.records_requested.connect(show_records)
+    main_menu.records_requested.connect(show_statistics)
     main_menu.options_requested.connect(show_options)
     main_menu.credits_requested.connect(show_credits)
     main_menu.quit_requested.connect(quit)
@@ -65,9 +65,9 @@ func _ready() -> void:
     achievements = achievements_scene.instantiate() as AchievementsMenu
     achievements.back_requested.connect(hide_achievements)
 
-    # Records
-    records = records_scene.instantiate() as RecordsMenu
-    records.back_requested.connect(hide_records)
+    # Statistics
+    statistics = statistics_scene.instantiate() as StatisticsMenu
+    statistics.back_requested.connect(hide_statistics)
 
     # Options
     options = options_scene.instantiate() as OptionsMenu
@@ -124,25 +124,25 @@ func hide_achievements() -> void:
     lock = false
     pass
 
-func show_records() -> void:
+func show_statistics() -> void:
     if lock: return
     lock = true
     shade_in()
     await shading_animation.animation_finished
     remove_child(main_menu)
     state = State.RECORDS
-    add_child(records)
-    records.reload()
+    add_child(statistics)
+    statistics.reload()
     shade_out()
     lock = false
     pass
     
-func hide_records() -> void:
+func hide_statistics() -> void:
     if lock: return
     lock = true
     shade_in()
     await shading_animation.animation_finished
-    remove_child(records)
+    remove_child(statistics)
     state = State.MAIN
     add_child(main_menu)
     main_menu.reset()

@@ -36,7 +36,7 @@ func _on_achievements_button_selected() -> void:
     wait_timer.start()
     signal_to_emit = achievements_requested
 
-func _on_records_button_selected() -> void:
+func _on_statistics_button_selected() -> void:
     if no_return: return
     no_return = true
     wait_timer.start()

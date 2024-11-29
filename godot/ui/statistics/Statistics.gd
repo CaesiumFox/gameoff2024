@@ -1,5 +1,5 @@
 extends Control
-class_name RecordsMenu
+class_name StatisticsMenu
 
 signal back_requested
 
