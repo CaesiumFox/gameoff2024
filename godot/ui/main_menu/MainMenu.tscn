@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://3a6gajtfwxfo"]
+[gd_scene load_steps=6 format=3 uid="uid://3a6gajtfwxfo"]
 
 [ext_resource type="Theme" uid="uid://70yhvrg7ebw" path="res://ui/theme.tres" id="1_pqttv"]
 [ext_resource type="Theme" uid="uid://byyfyow8w62ue" path="res://ui/main_menu/main_menu_theme.tres" id="2_126dp"]
 [ext_resource type="Script" path="res://ui/main_menu/MainMenu.gd" id="2_pd1sh"]
 [ext_resource type="PackedScene" uid="uid://cw17j3fqx4p6x" path="res://ui/main_menu/MainMenuButton.tscn" id="4_ilpic"]
+[ext_resource type="Texture2D" uid="uid://dyc4bt123rmpu" path="res://assets/logo.png" id="5_nx6nd"]
 
 [node name="MainMenu" type="Control"]
 process_mode = 3
@@ -85,6 +86,21 @@ translation_id = "MM_QUIT"
 [node name="WaitTimer" type="Timer" parent="."]
 wait_time = 0.25
 one_shot = true
+
+[node name="LogoCenter" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -75.0
+offset_top = 16.0
+offset_right = 75.0
+offset_bottom = 56.0
+grow_horizontal = 2
+
+[node name="Logo" type="TextureRect" parent="LogoCenter"]
+layout_mode = 2
+texture = ExtResource("5_nx6nd")
 
 [connection signal="selected" from="MainButtons/PlayButton" to="." method="_on_play_button_selected"]
 [connection signal="selected" from="MainButtons/AchievementsButton" to="." method="_on_achievements_button_selected"]
