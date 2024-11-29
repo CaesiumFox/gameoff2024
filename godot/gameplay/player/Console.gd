@@ -3,7 +3,10 @@ class_name ConsoleAbility
 
 @export var shield: Shield
 
-@onready var console: Console = $UI/Console
+@onready var console := $UI/Console as Console
+@onready var wrong_sound := $WrongSound as AudioStreamPlayer
+@onready var invert_sound := $InvertSound as AudioStreamPlayer
+@onready var power_up_sound := $PowerUpSound as AudioStreamPlayer
 
 var current_hash: int = 0
 var console_opened: bool = false
@@ -11,6 +14,9 @@ var console_opened: bool = false
 func reset() -> void:
     console_opened = false
     console.visible = false
+    wrong_sound.stop()
+    invert_sound.stop()
+    power_up_sound.stop()
     unlock_abilities()
 
 func action(_delta: float) -> void:
@@ -26,24 +32,31 @@ func action(_delta: float) -> void:
     if Input.is_action_just_pressed("game_execute"):
         match current_hash:
             8794265229978523055:  # all off
-                print("Hello")
+            #    print("Hello")
+                 pass
             -5946216267815589025:  # all on
-                print("World")
+            #    print("World")
+                 pass
             -3385780115000047589:  # invert gravity
+                invert_sound.play()
                 PhysicsCalculator.inverted_gravity = not PhysicsCalculator.inverted_gravity
             -3441390707128674805:  # activate wall jump
-                SaveManager.data.abilities.wall_jump = true
+                if not SaveManager.data.abilities.wall_jump:
+                    power_up_sound.play()
+                    SaveManager.data.abilities.wall_jump = true
             2891475358436697532:  # activate double jump
                 if SaveManager.data.abilities.air_jumps < 1:
+                    power_up_sound.play()
                     SaveManager.data.abilities.air_jumps = 1
             8319217979696709123:  # activate triple jump
                 if SaveManager.data.abilities.air_jumps < 2:
+                    power_up_sound.play()
                     SaveManager.data.abilities.air_jumps = 2
             -7231277095096570745:  # add shield
                 if shield:
                     shield.activate()
-            var invalid_hash:
-                print(invalid_hash)
+            _:
+                wrong_sound.play()
 
 func _on_console_exited(returned_hash: int) -> void:
     console_opened = false

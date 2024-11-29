@@ -14,6 +14,9 @@ var active: bool = false
 @onready var cool_down := $CoolDown as Timer
 @onready var slide := $UI/Slide as AnimationPlayer
 @onready var progress_bar := $UI/NinePatchRect/ProgressBar as ProgressBar
+@onready var break_sound := $BreakSound as AudioStreamPlayer
+@onready var shield_sound := $ShieldSound as AudioStreamPlayer
+@onready var wrong_sound := $WrongSound as AudioStreamPlayer
 
 var can_activate: bool = true
 var invincible: bool = false
@@ -35,10 +38,14 @@ func reset() -> void:
     apply.visible = false
     invincibility.stop()
     cool_down.stop()
+    break_sound.stop()
+    shield_sound.stop()
+    wrong_sound.stop()
     slide.play("RESET")
 
 func activate() -> bool:
     if not can_activate or active:
+        wrong_sound.play()
         return false
     active = true
     apply.visible = true
@@ -46,6 +53,7 @@ func activate() -> bool:
     working.visible = true
     working.play("default")
     can_activate = false
+    shield_sound.play()
     applied.emit()
     return true
 
@@ -56,6 +64,7 @@ func hit() -> bool:
         working.visible = false
         invincible = true
         invincibility.start()
+        break_sound.play()
         slide.play("show")
         cool_down.start()
         broken.emit()

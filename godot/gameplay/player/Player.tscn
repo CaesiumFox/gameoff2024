@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://dkcewkefukuy7"]
+[gd_scene load_steps=60 format=3 uid="uid://dkcewkefukuy7"]
 
 [ext_resource type="Script" path="res://gameplay/player/Player.gd" id="1_nltvs"]
 [ext_resource type="Texture2D" uid="uid://dx2sldyxbnh17" path="res://assets/player.png" id="2_oowts"]
@@ -13,10 +13,15 @@
 [ext_resource type="Texture2D" uid="uid://cgn5dhbhpcoux" path="res://assets/effects.png" id="6_lim03"]
 [ext_resource type="AudioStream" uid="uid://4b5nlcfvvggh" path="res://assets/sfx/death.ogg" id="6_n4nga"]
 [ext_resource type="AudioStream" uid="uid://dwt3k680y0uh4" path="res://assets/sfx/jump.ogg" id="7_0o0v8"]
+[ext_resource type="AudioStream" uid="uid://kihnqsho6veq" path="res://assets/sfx/break.ogg" id="7_x2t56"]
 [ext_resource type="AudioStream" uid="uid://drbsbq0iq5iif" path="res://assets/sfx/land.ogg" id="8_2t1qq"]
 [ext_resource type="PackedScene" uid="uid://ctu1esfcbri4v" path="res://gameplay/console/Console.tscn" id="9_e63p2"]
 [ext_resource type="Script" path="res://gameplay/player/Console.gd" id="9_if23q"]
 [ext_resource type="Script" path="res://gameplay/player/Particles.gd" id="11_ievtd"]
+[ext_resource type="AudioStream" uid="uid://o4d22ju27c75" path="res://assets/sfx/wrong.ogg" id="14_tppur"]
+[ext_resource type="AudioStream" uid="uid://jbm1dbua2cf4" path="res://assets/sfx/invert.ogg" id="15_v3jhy"]
+[ext_resource type="AudioStream" uid="uid://0n7mprjymqh6" path="res://assets/sfx/powerup.ogg" id="16_wtfsb"]
+[ext_resource type="AudioStream" uid="uid://38p148ar6sj4" path="res://assets/sfx/shield.ogg" id="17_gp0ue"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g6qvv"]
 atlas = ExtResource("2_oowts")
@@ -451,6 +456,15 @@ libraries = {
 "": SubResource("AnimationLibrary_k36tb")
 }
 
+[node name="BreakSound" type="AudioStreamPlayer" parent="Shield"]
+stream = ExtResource("7_x2t56")
+
+[node name="ShieldSound" type="AudioStreamPlayer" parent="Shield"]
+stream = ExtResource("17_gp0ue")
+
+[node name="WrongSound" type="AudioStreamPlayer" parent="Shield"]
+stream = ExtResource("14_tppur")
+
 [node name="Animator" type="Node" parent="." node_paths=PackedStringArray("player", "sprite")]
 process_mode = 3
 script = ExtResource("4_ntffy")
@@ -520,6 +534,15 @@ prevented = [NodePath("../Jump"), NodePath("../Jump/WallJump"), NodePath("../Mov
 
 [node name="Console" parent="Console/UI" instance=ExtResource("9_e63p2")]
 visible = false
+
+[node name="WrongSound" type="AudioStreamPlayer" parent="Console"]
+stream = ExtResource("14_tppur")
+
+[node name="InvertSound" type="AudioStreamPlayer" parent="Console"]
+stream = ExtResource("15_v3jhy")
+
+[node name="PowerUpSound" type="AudioStreamPlayer" parent="Console"]
+stream = ExtResource("16_wtfsb")
 
 [node name="Camera" type="Camera2D" parent="."]
 limit_smoothed = true
