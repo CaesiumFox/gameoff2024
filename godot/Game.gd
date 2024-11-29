@@ -261,17 +261,21 @@ func win(time: float, coin: bool) -> void:
     lock = true
     shade_in()
     await shading_animation.animation_finished
-    remove_child(gameplay)
-    state = State.LEVEL
-    add_child(level_menu)
     SaveManager.data.levels.levels[current_level_id].try_set_best_time(time)
     SaveManager.data.levels.levels[current_level_id].try_set_coin(coin)
     SaveManager.data.levels.levels[current_level_id].completed = true
     if current_level_id < 11:
         SaveManager.data.levels.levels[current_level_id + 1].unlocked = true
     SaveManager.save_file()
-    level_menu.reset()
-    shade_out()
+    if current_level_id < 11:
+        current_level_id += 1
+        gameplay.load_level(level_scenes[current_level_id])
+    else:
+        remove_child(gameplay)
+        state = State.LEVEL
+        add_child(level_menu)
+        level_menu.reset()
+        shade_out()
     lock = false
 
 func shade_in() -> void:
