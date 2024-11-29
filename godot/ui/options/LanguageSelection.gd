@@ -7,6 +7,8 @@ var current: String
 var lang_change: Dictionary = {
     "en": { "left": "ru", "right": "ru" },
     "ru": { "left": "en", "right": "en" },
+    "en_US": { "left": "ru", "right": "ru" },
+    "ru_RU": { "left": "en", "right": "en" },
 }
 
 func _ready() -> void:

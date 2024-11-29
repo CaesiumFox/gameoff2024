@@ -1,10 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://c1jhl0yv0pxn3"]
+[gd_scene load_steps=23 format=3 uid="uid://c1jhl0yv0pxn3"]
 
 [ext_resource type="Script" path="res://ui/achievements/Achievements.gd" id="1_tkc4b"]
 [ext_resource type="PackedScene" uid="uid://ktpcywh6e5tr" path="res://ui/achievements/Achievement.tscn" id="2_5r5vf"]
 [ext_resource type="Theme" uid="uid://70yhvrg7ebw" path="res://ui/theme.tres" id="3_hkuab"]
 [ext_resource type="Texture2D" uid="uid://chkp5rhucac5h" path="res://assets/codes.png" id="3_pxb2w"]
 [ext_resource type="Texture2D" uid="uid://bmy7nrayfqr8k" path="res://assets/back_button.png" id="5_0qh0j"]
+[ext_resource type="Texture2D" uid="uid://c4iif6mruw61b" path="res://assets/hints.png" id="6_tya2v"]
 
 [sub_resource type="Shader" id="Shader_qxdif"]
 resource_local_to_scene = true
@@ -241,6 +242,16 @@ atlas = ExtResource("5_0qh0j")
 region = Rect2(12, 0, 12, 12)
 filter_clip = true
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_iepyy"]
+atlas = ExtResource("6_tya2v")
+region = Rect2(50, 9, 17, 9)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rrnrk"]
+atlas = ExtResource("6_tya2v")
+region = Rect2(15, 64, 15, 15)
+filter_clip = true
+
 [node name="Achievements" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -367,10 +378,33 @@ autowrap_mode = 2
 layout_mode = 0
 offset_right = 12.0
 offset_bottom = 12.0
+focus_mode = 0
 texture_normal = SubResource("AtlasTexture_g0cao")
 texture_pressed = SubResource("AtlasTexture_r8isc")
 texture_hover = SubResource("AtlasTexture_78olm")
 texture_focused = SubResource("AtlasTexture_46uaj")
+
+[node name="BackHint" type="VBoxContainer" parent="."]
+layout_mode = 1
+offset_left = 1.0
+offset_top = 15.0
+offset_right = 18.0
+offset_bottom = 42.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 1
+
+[node name="Backspace" type="TextureRect" parent="BackHint"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_iepyy")
+
+[node name="L1" type="TextureRect" parent="BackHint"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_rrnrk")
 
 [connection signal="request_description" from="Center/Achievement1" to="." method="_on_achievement_1_request_description"]
 [connection signal="request_description" from="Center/Achievement2" to="." method="_on_achievement_2_request_description"]

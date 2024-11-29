@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cu7lnu8p1f0ff"]
+[gd_scene load_steps=16 format=3 uid="uid://cu7lnu8p1f0ff"]
 
 [ext_resource type="Theme" uid="uid://70yhvrg7ebw" path="res://ui/theme.tres" id="1_krcbd"]
 [ext_resource type="Script" path="res://ui/options/Options.gd" id="2_c1eih"]
@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://bx8uq1tdx4ah2" path="res://assets/fonts/big.fnt" id="4_mdt00"]
 [ext_resource type="Script" path="res://ui/options/LanguageSelection.gd" id="5_lneu6"]
 [ext_resource type="Texture2D" uid="uid://bmy7nrayfqr8k" path="res://assets/back_button.png" id="6_ayx8t"]
+[ext_resource type="Texture2D" uid="uid://c4iif6mruw61b" path="res://assets/hints.png" id="7_7xw3o"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rd5yb"]
 bg_color = Color(0.733333, 0, 1, 1)
@@ -31,6 +32,16 @@ filter_clip = true
 [sub_resource type="AtlasTexture" id="AtlasTexture_n5i3k"]
 atlas = ExtResource("6_ayx8t")
 region = Rect2(12, 0, 12, 12)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qh16f"]
+atlas = ExtResource("7_7xw3o")
+region = Rect2(50, 9, 17, 9)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p7mjs"]
+atlas = ExtResource("7_7xw3o")
+region = Rect2(15, 64, 15, 15)
 filter_clip = true
 
 [node name="Options" type="Control"]
@@ -179,12 +190,35 @@ wait_time = 2.0
 one_shot = true
 
 [node name="BackButton" type="TextureButton" parent="."]
+layout_mode = 0
 offset_right = 12.0
 offset_bottom = 12.0
+focus_mode = 0
 texture_normal = SubResource("AtlasTexture_14qur")
 texture_pressed = SubResource("AtlasTexture_xjged")
 texture_hover = SubResource("AtlasTexture_dyqcj")
 texture_focused = SubResource("AtlasTexture_n5i3k")
+
+[node name="BackHint" type="VBoxContainer" parent="."]
+offset_left = 1.0
+offset_top = 16.0
+offset_right = 18.0
+offset_bottom = 43.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 1
+
+[node name="Backspace" type="TextureRect" parent="BackHint"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_qh16f")
+
+[node name="L1" type="TextureRect" parent="BackHint"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_p7mjs")
 
 [connection signal="focus_entered" from="Center/VBoxContainer/AudioContainer/Audio/MasterSlider" to="." method="_on_master_slider_focus_entered"]
 [connection signal="focus_exited" from="Center/VBoxContainer/AudioContainer/Audio/MasterSlider" to="." method="_on_master_slider_focus_exited"]
