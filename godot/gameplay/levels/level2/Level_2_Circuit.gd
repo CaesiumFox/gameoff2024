@@ -9,8 +9,6 @@ extends Node2D
 @onready var button_1 := $Button1 as WorldButton
 @onready var laser_1 := $Laser1 as Area2D
 @onready var laser_2 := $Laser2 as Area2D
-@onready var view_1 := $Laser1/View as AnimatedSprite2D
-@onready var view_2 := $Laser2/View as AnimatedSprite2D
 
 var wire_1_val: bool = false:
     get:
@@ -43,8 +41,6 @@ var wire_3_val: bool = false:
 
 func _ready() -> void:
     wire_2_val = true
-    view_1.play("default")
-    view_2.play("default")
 
 func _on_button_click(on: bool) -> void:
     wire_1_val = on

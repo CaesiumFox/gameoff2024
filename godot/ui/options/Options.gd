@@ -27,6 +27,7 @@ var music_index: int
 
 
 func _ready() -> void:
+    SaveManager.load_settings()
     reset_progress.max_value = reset_timer.wait_time
     reload()
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://bmu6g8ng1vaty"]
+[gd_scene load_steps=22 format=4 uid="uid://bmu6g8ng1vaty"]
 
 [ext_resource type="Script" path="res://gameplay/levels/level3/Level_3.gd" id="1_kl4b6"]
 [ext_resource type="TileSet" uid="uid://b3c1hcw6x6y0p" path="res://assets/tiles0_0.tres" id="2_kqr4j"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://d131hwcs5mgd5" path="res://gameplay/elements/Damage.tscn" id="5_cog80"]
 [ext_resource type="Texture2D" uid="uid://dsgotgahmquxy" path="res://assets/tiles0.png" id="6_f1lru"]
 [ext_resource type="PackedScene" uid="uid://3xgycv5wxm7e" path="res://gameplay/elements/Button.tscn" id="7_6j01t"]
+[ext_resource type="Script" path="res://gameplay/elements/Beam.gd" id="7_ei5ts"]
 [ext_resource type="PackedScene" uid="uid://lukwf4jblxo8" path="res://gameplay/elements/Coin.tscn" id="8_prae6"]
 [ext_resource type="PackedScene" uid="uid://cbaaxryfl454c" path="res://gameplay/elements/Exit.tscn" id="9_ik10v"]
 [ext_resource type="Texture2D" uid="uid://c4iif6mruw61b" path="res://assets/hints.png" id="10_ck8og"]
@@ -100,6 +101,7 @@ rotation = 1.5708
 scale = Vector2(2, 1)
 sprite_frames = SubResource("SpriteFrames_1p5sf")
 frame_progress = 0.276741
+script = ExtResource("7_ei5ts")
 
 [node name="View2" type="AnimatedSprite2D" parent="Circuit/Laser1"]
 position = Vector2(72, 0)
@@ -107,6 +109,7 @@ rotation = 1.5708
 scale = Vector2(2, 1)
 sprite_frames = SubResource("SpriteFrames_1p5sf")
 frame_progress = 0.276741
+script = ExtResource("7_ei5ts")
 
 [node name="Wire1" type="TileMapLayer" parent="Circuit"]
 z_index = 1
