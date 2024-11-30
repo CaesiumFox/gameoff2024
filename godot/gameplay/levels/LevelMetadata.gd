@@ -14,7 +14,7 @@ var data: Array[Metadata] = [
     Metadata.new( 30, 15,  6),
     Metadata.new( 60, 40, 20),
     Metadata.new( 30, 12,  6),
-    Metadata.new(120, 90, 60),
+    Metadata.new( 40, 20, 10),
     Metadata.new(120, 90, 60),
     Metadata.new(120, 90, 60),
     Metadata.new(120, 90, 60),
