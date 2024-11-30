@@ -37,9 +37,9 @@ func _ready() -> void:
     already = true
     
     music_1.music_repeat.connect(repeat_main_menu)
-    music_2.music_repeat.connect(prepare_switch)
-    music_3.music_repeat.connect(prepare_switch)
-    music_4.music_repeat.connect(prepare_switch)
+    music_2.music_repeat.connect(change_gameplay_music)
+    music_3.music_repeat.connect(change_gameplay_music)
+    music_4.music_repeat.connect(change_gameplay_music)
     
     tracks.append(music_1)
     tracks.append(music_2)
@@ -60,13 +60,19 @@ func start() -> void:
     tracks[current].play_music()
 
 func repeat_main_menu() -> void:
-    prepare_switch(0)
+    prepare_switch(0, true)
 
-func prepare_switch(next_id: int = -1) -> void:
+func enable_gameplay_music() -> void:
+    prepare_switch(-1, true)
+
+func change_gameplay_music() -> void:
+    prepare_switch(-1, false)
+
+func prepare_switch(next_id: int, fast: bool) -> void:
     next = gen() if next_id == -1 else next_id
     if current != next:
         var tween := create_tween()
-        tween.tween_property(tracks[current], "volume_db", -80, 1)
+        tween.tween_property(tracks[current], "volume_db", -80, 1 if fast else 5)
         tween.tween_callback(switch)
 
 func switch() -> void:

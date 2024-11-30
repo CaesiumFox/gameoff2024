@@ -218,7 +218,7 @@ func play() -> void:
 func level_selected(id: int) -> void:
     if lock: return
     lock = true
-    Music.prepare_switch()
+    Music.enable_gameplay_music()
     shade_in()
     await shading_animation.animation_finished
     remove_child(level_menu)
