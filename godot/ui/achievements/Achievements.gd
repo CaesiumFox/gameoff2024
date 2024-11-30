@@ -11,32 +11,32 @@ signal back_requested
 @onready var description := $Bottom/Description as Label
 
 func cond1() -> bool:
-    # Inverted Gravity is granted for
-    # collecting _ stars
-    return false
-
-func cond2() -> bool:
     # Wall Jump is granted for
     # collecting 4 stars
     return SaveManager.data.levels.total_star_count() >= 4
 
-func cond3() -> bool:
+func cond2() -> bool:
     # Double Jump is granted for
-    # collecting _ coins
-    return false
+    # collecting 9 stars
+    return SaveManager.data.levels.total_star_count() >= 9
+
+func cond3() -> bool:
+    # Shield is granted for
+    # collecting 30 stars
+    return SaveManager.data.levels.total_star_count() >= 30
 
 func cond4() -> bool:
+    # Inversion is granted for
+    # collecting 5 coins
+    return SaveManager.data.levels.total_coin_count() >= 12
+
+func cond5() -> bool:
     # Triple Jump is granted for
     # collecting everything
     return (
-        SaveManager.data.levels.total_star_count() >= 3 * 12
+        SaveManager.data.levels.total_star_count() >= 36
         and SaveManager.data.levels.total_coin_count() >= 12
     )
-
-func cond5() -> bool:
-    # Shield is granted for
-    # collecting _ coins
-    return false
 
 func _ready() -> void:
     reload()
