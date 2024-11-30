@@ -121,7 +121,6 @@ func _on_shield_iframes_end() -> void:
     if danger_zones > 0:
         death.emit()
 
-
 func _on_hit_box_body_entered(_body: Node2D) -> void:
     _on_hit_box_area_entered(null)
 
