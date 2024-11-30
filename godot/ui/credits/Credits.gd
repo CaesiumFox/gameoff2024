@@ -12,3 +12,6 @@ func _process(_delta: float) -> void:
 
 func _on_back_button_pressed() -> void:
     back_requested.emit()
+
+func _on_rich_text_label_meta_clicked(meta: String) -> void:
+    OS.shell_open(meta)

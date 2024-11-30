@@ -56,8 +56,14 @@ grow_vertical = 2
 bbcode_enabled = true
 text = "[center]Game by: Stepan Adveev, 2024
 Engine: Godot
+
+Music by: Juhani Junkala
+[url=https://opengameart.org/content/5-chiptunes-action]https://opengameart.org/content/
+5-chiptunes-action[/url]
 [/center]"
 fit_content = true
+meta_underlined = false
+hint_underlined = false
 
 [node name="BackButton" type="TextureButton" parent="."]
 layout_mode = 0
@@ -91,4 +97,5 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = SubResource("AtlasTexture_ycwvc")
 
+[connection signal="meta_clicked" from="RichTextLabel" to="." method="_on_rich_text_label_meta_clicked"]
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

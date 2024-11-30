@@ -53,7 +53,10 @@ func _process(_delta: float) -> void:
 
 
 func _on_master_slider_value_changed(value: float) -> void:
-    SaveManager.settings.master_volume = value
+    if value == master_slider.min_value:
+        SaveManager.settings.master_volume = -INF
+    else:
+        SaveManager.settings.master_volume = value
     point_sound.play()
 
 func _on_master_slider_focus_entered() -> void:
@@ -66,7 +69,10 @@ func _on_master_slider_focus_exited() -> void:
 
 
 func _on_sfx_slider_value_changed(value: float) -> void:
-    SaveManager.settings.sfx_volume = value
+    if value == sfx_slider.min_value:
+        SaveManager.settings.sfx_volume = -INF
+    else:
+        SaveManager.settings.sfx_volume = value
     point_sound.play()
 
 func _on_sfx_slider_focus_entered() -> void:
@@ -79,7 +85,10 @@ func _on_sfx_slider_focus_exited() -> void:
 
 
 func _on_music_slider_value_changed(value: float) -> void:
-    SaveManager.settings.music_volume = value
+    if value == music_slider.min_value:
+        SaveManager.settings.music_volume = -INF
+    else:
+        SaveManager.settings.music_volume = value
     point_sound.play()
 
 func _on_music_slider_focus_entered() -> void:

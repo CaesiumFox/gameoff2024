@@ -6,21 +6,33 @@ var master_volume: float = 0:
         return master_volume
     set(new):
         master_volume = new
-        AudioServer.set_bus_volume_db(master_index, master_volume)
+        if master_volume == -INF:
+            AudioServer.set_bus_mute(master_index, true)
+        else:
+            AudioServer.set_bus_mute(master_index, false)
+            AudioServer.set_bus_volume_db(master_index, master_volume)
 
 var sfx_volume: float = 0:
     get:
         return sfx_volume
     set(new):
         sfx_volume = new
-        AudioServer.set_bus_volume_db(sfx_index, sfx_volume)
+        if sfx_volume == -INF:
+            AudioServer.set_bus_mute(sfx_index, true)
+        else:
+            AudioServer.set_bus_mute(sfx_index, false)
+            AudioServer.set_bus_volume_db(sfx_index, sfx_volume)
 
 var music_volume: float = 0:
     get:
         return music_volume
     set(new):
         music_volume = new
-        AudioServer.set_bus_volume_db(music_index, music_volume)
+        if music_volume == -INF:
+            AudioServer.set_bus_mute(music_index, true)
+        else:
+            AudioServer.set_bus_mute(music_index, false)
+            AudioServer.set_bus_volume_db(music_index, music_volume)
 
 var full_screen: bool = true:
     get:

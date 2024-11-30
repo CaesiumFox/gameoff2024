@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=3 uid="uid://b04dfbwuawaxj"]
+
+[ext_resource type="Script" path="res://music_server/MusicServer.gd" id="1_jg13r"]
+[ext_resource type="AudioStream" uid="uid://bbuklmpidb8vu" path="res://assets/music/Juhani Junkala [Retro Game Music Pack] Ending.wav" id="1_lvlvh"]
+[ext_resource type="AudioStream" uid="uid://u0tgmd27i2sw" path="res://assets/music/Juhani Junkala [Retro Game Music Pack] Level 1.wav" id="2_pyj2t"]
+[ext_resource type="Script" path="res://music_server/LoopedMusic.gd" id="3_caygk"]
+[ext_resource type="AudioStream" uid="uid://bc0s7h68i3b4g" path="res://assets/music/Juhani Junkala [Retro Game Music Pack] Level 2.wav" id="3_ebw45"]
+[ext_resource type="AudioStream" uid="uid://oi1xisxylwks" path="res://assets/music/Juhani Junkala [Retro Game Music Pack] Level 3.wav" id="4_enkl1"]
+
+[node name="MusicServer" type="Node"]
+process_mode = 3
+script = ExtResource("1_jg13r")
+
+[node name="Music1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_lvlvh")
+volume_db = -4.0
+bus = &"Music"
+script = ExtResource("3_caygk")
+
+[node name="Music2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_pyj2t")
+volume_db = -6.0
+bus = &"Music"
+script = ExtResource("3_caygk")
+
+[node name="Music3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ebw45")
+volume_db = -6.0
+bus = &"Music"
+script = ExtResource("3_caygk")
+
+[node name="Music4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_enkl1")
+volume_db = -6.0
+bus = &"Music"
+script = ExtResource("3_caygk")

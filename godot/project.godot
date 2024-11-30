@@ -23,6 +23,7 @@ config/icon="res://icon.png"
 PhysicsCalculator="*res://gameplay/PhysicsCalculator.gd"
 LevelMetadata="*res://gameplay/levels/LevelMetadata.gd"
 SaveManager="*res://savefile/SaveManager.tscn"
+Music="*res://music_server/MusicServer.tscn"
 
 [display]
 
