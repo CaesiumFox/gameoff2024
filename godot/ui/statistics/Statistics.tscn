@@ -51,6 +51,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_adrsy")
 script = ExtResource("2_m7c6u")
+normal = Color(1, 1, 1, 1)
+highlight = Color(1, 0.733333, 0, 1)
 
 [node name="Center" type="CenterContainer" parent="."]
 layout_mode = 1
