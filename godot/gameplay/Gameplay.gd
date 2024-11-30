@@ -18,6 +18,11 @@ var level_scene: PackedScene = null
 var restarting: bool = false
 var coin_collected: bool = true
 
+@onready var wall_jump := %WallJump as TextureRect
+@onready var double_jump := %DoubleJump as TextureRect
+@onready var triple_jump := %TripleJump as TextureRect
+@onready var irl_time := %IRLTime as Label
+
 func load_level(scene: PackedScene) -> void:
     level_scene = scene
     if player == null:
@@ -56,6 +61,12 @@ func _process(_delta: float) -> void:
         pause_menu.visible = true
         $PauseMenu/ColorRect/Buttons/ResumeButton.grab_focus()
         stopwatch.pause()
+    wall_jump.visible = SaveManager.data.abilities.wall_jump
+    double_jump.visible = SaveManager.data.abilities.air_jumps == 1
+    triple_jump.visible = SaveManager.data.abilities.air_jumps == 2
+    
+    var time = Time.get_time_dict_from_system()
+    irl_time.text = "%02d:%02d:%02d" % [time.hour, time.minute, time.second]
 
 func restart_level() -> void:
     if level_scene == null:
