@@ -38,7 +38,7 @@ var level_scenes: Array[PackedScene] = [
     preload("res://gameplay/levels/level3/Level_3.tscn"),
     preload("res://gameplay/levels/level4/Level_4.tscn"),
     preload("res://gameplay/levels/level5/Level_5.tscn"),
-    preload("res://gameplay/levels/blank/LevelBlank.tscn"),
+    preload("res://gameplay/levels/level6/Level_6.tscn"),
     preload("res://gameplay/levels/blank/LevelBlank.tscn"),
     preload("res://gameplay/levels/blank/LevelBlank.tscn"),
     preload("res://gameplay/levels/blank/LevelBlank.tscn"),
