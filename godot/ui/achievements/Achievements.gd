@@ -28,7 +28,7 @@ func cond3() -> bool:
 func cond4() -> bool:
     # Inversion is granted for
     # collecting 5 coins
-    return SaveManager.data.levels.total_coin_count() >= 12
+    return SaveManager.data.levels.total_coin_count() >= 5
 
 func cond5() -> bool:
     # Triple Jump is granted for

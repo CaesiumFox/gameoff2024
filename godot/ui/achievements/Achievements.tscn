@@ -133,7 +133,7 @@ void fragment() {
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rvq7t"]
 resource_local_to_scene = true
 shader = SubResource("Shader_jqlyy")
-shader_parameter/id = 0
+shader_parameter/id = 4
 shader_parameter/base = ExtResource("3_pxb2w")
 
 [sub_resource type="Shader" id="Shader_px5gp"]
@@ -176,7 +176,7 @@ void fragment() {
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_shu8l"]
 resource_local_to_scene = true
 shader = SubResource("Shader_px5gp")
-shader_parameter/id = 4
+shader_parameter/id = 0
 shader_parameter/base = ExtResource("3_pxb2w")
 
 [sub_resource type="Shader" id="Shader_w1hxi"]
