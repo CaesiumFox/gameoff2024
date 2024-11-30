@@ -57,22 +57,17 @@ func set_camera_limits(view_box: Rect2) -> void:
     camera.limit_right = int(view_box.end.x)
     camera.limit_bottom = int(view_box.end.y)
 
-func _on_hit_box_area_entered(area: Area2D) -> void:
-    if area.collision_layer & (1 << 5) > 0:  # damage
-        if not shield.hit():
-            death.emit()
-        else:
-            danger_zones += 1
-            #print("I ", danger_zones)
-    elif area.collision_layer & (1 << 8) > 0:  # exit
-        win.emit()
+func _on_hit_box_area_entered(_area: Area2D) -> void:
+    if not shield.hit():
+        death.emit()
     else:
-        pass
+        danger_zones += 1
 
-func _on_hit_box_area_exited(area: Area2D) -> void:
-    if area.collision_layer & (1 << 5) > 0:  # damage
-        danger_zones -= 1
-        #print("D ", danger_zones)
+func _on_hit_box_area_exited(_area: Area2D) -> void:
+    danger_zones -= 1
+
+func _on_win_box_area_entered(_area: Area2D) -> void:
+    win.emit()
 
 func _on_jump_jump(_air: bool) -> void:
     jump_particles.restart()
@@ -125,3 +120,16 @@ func _on_shield_iframes_end() -> void:
     #print("C ", danger_zones)
     if danger_zones > 0:
         death.emit()
+
+
+func _on_hit_box_body_entered(_body: Node2D) -> void:
+    _on_hit_box_area_entered(null)
+
+func _on_hit_box_body_exited(_body: Node2D) -> void:
+    _on_hit_box_area_exited(null)
+
+func _on_squish_box_body_entered(_body: Node2D) -> void:
+    _on_hit_box_area_entered(null)
+
+func _on_squish_box_body_exited(_body: Node2D) -> void:
+    _on_hit_box_area_exited(null)

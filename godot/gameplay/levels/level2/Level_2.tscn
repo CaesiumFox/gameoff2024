@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://d1qc2s6boueup"]
+[gd_scene load_steps=21 format=4 uid="uid://d1qc2s6boueup"]
 
 [ext_resource type="Script" path="res://gameplay/levels/level2/Level_2.gd" id="1_sax3l"]
 [ext_resource type="TileSet" uid="uid://b3c1hcw6x6y0p" path="res://assets/tiles0_0.tres" id="2_8i7y1"]
@@ -62,27 +62,6 @@ point_count = 3
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mwfjw"]
 size = Vector2(16, 2)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ybfr"]
-size = Vector2(28, 6)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jnvvs"]
-size = Vector2(40, 6)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_n5hh5"]
-size = Vector2(84, 2)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7vndr"]
-size = Vector2(132, 2)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_33ydi"]
-size = Vector2(4, 6)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_r702x"]
-size = Vector2(74, 2)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_u4myh"]
-size = Vector2(100, 6)
 
 [node name="Level_2" type="Node2D"]
 script = ExtResource("1_sax3l")
@@ -244,73 +223,6 @@ shape = SubResource("RectangleShape2D_mwfjw")
 process_callback = 0
 wait_time = 3.0
 autostart = true
-
-[node name="Damage" parent="." instance=ExtResource("3_exlq3")]
-metadata/_edit_lock_ = true
-
-[node name="Spike1" type="CollisionShape2D" parent="Damage"]
-position = Vector2(126, 369)
-shape = SubResource("RectangleShape2D_0ybfr")
-
-[node name="Spike2" type="CollisionShape2D" parent="Damage"]
-position = Vector2(204, 297)
-shape = SubResource("RectangleShape2D_jnvvs")
-
-[node name="Spike3" type="CollisionShape2D" parent="Damage"]
-position = Vector2(138, 179)
-shape = SubResource("RectangleShape2D_n5hh5")
-
-[node name="Spike4" type="CollisionShape2D" parent="Damage"]
-position = Vector2(138, 193)
-shape = SubResource("RectangleShape2D_7vndr")
-
-[node name="Spike5" type="CollisionShape2D" parent="Damage"]
-position = Vector2(234, 213)
-shape = SubResource("RectangleShape2D_33ydi")
-
-[node name="Spike6" type="CollisionShape2D" parent="Damage"]
-position = Vector2(133, 119)
-shape = SubResource("RectangleShape2D_r702x")
-
-[node name="Spike7" type="CollisionShape2D" parent="Damage"]
-position = Vector2(306, 51)
-shape = SubResource("RectangleShape2D_33ydi")
-
-[node name="Spike8" type="CollisionShape2D" parent="Damage"]
-position = Vector2(318, 39)
-shape = SubResource("RectangleShape2D_33ydi")
-
-[node name="Spike9" type="CollisionShape2D" parent="Damage"]
-position = Vector2(330, 27)
-shape = SubResource("RectangleShape2D_33ydi")
-
-[node name="Spike10" type="CollisionShape2D" parent="Damage"]
-position = Vector2(342, 15)
-shape = SubResource("RectangleShape2D_33ydi")
-
-[node name="Spike11" type="CollisionShape2D" parent="Damage"]
-position = Vector2(438, 15)
-shape = SubResource("RectangleShape2D_33ydi")
-
-[node name="Spike12" type="CollisionShape2D" parent="Damage"]
-position = Vector2(450, 27)
-shape = SubResource("RectangleShape2D_33ydi")
-
-[node name="Spike13" type="CollisionShape2D" parent="Damage"]
-position = Vector2(462, 39)
-shape = SubResource("RectangleShape2D_33ydi")
-
-[node name="Spike14" type="CollisionShape2D" parent="Damage"]
-position = Vector2(474, 51)
-shape = SubResource("RectangleShape2D_33ydi")
-
-[node name="Spike15" type="CollisionShape2D" parent="Damage"]
-position = Vector2(390, 69)
-shape = SubResource("RectangleShape2D_33ydi")
-
-[node name="Spike16" type="CollisionShape2D" parent="Damage"]
-position = Vector2(390, 159)
-shape = SubResource("RectangleShape2D_u4myh")
 
 [node name="TL" type="Marker2D" parent="."]
 metadata/_edit_lock_ = true

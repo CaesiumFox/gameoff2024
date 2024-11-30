@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://bmu6g8ng1vaty"]
+[gd_scene load_steps=21 format=4 uid="uid://bmu6g8ng1vaty"]
 
 [ext_resource type="Script" path="res://gameplay/levels/level3/Level_3.gd" id="1_kl4b6"]
 [ext_resource type="TileSet" uid="uid://b3c1hcw6x6y0p" path="res://assets/tiles0_0.tres" id="2_kqr4j"]
@@ -45,18 +45,6 @@ filter_clip = true
 atlas = ExtResource("6_f1lru")
 region = Rect2(180, 96, 12, 12)
 filter_clip = true
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ldxv"]
-size = Vector2(76, 6)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_h3bco"]
-size = Vector2(60, 2)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_srdax"]
-size = Vector2(24, 2)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7o7bs"]
-size = Vector2(4, 6)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_swa7a"]
 atlas = ExtResource("10_ck8og")
@@ -144,121 +132,6 @@ texture = SubResource("AtlasTexture_ivpx0")
 position = Vector2(186, -384)
 rotation = 3.14159
 
-[node name="Damage" parent="." instance=ExtResource("5_cog80")]
-metadata/_edit_lock_ = true
-
-[node name="Spike1" type="CollisionShape2D" parent="Damage"]
-position = Vector2(186, -105)
-shape = SubResource("RectangleShape2D_3ldxv")
-
-[node name="Spike2" type="CollisionShape2D" parent="Damage"]
-position = Vector2(186, -121)
-shape = SubResource("RectangleShape2D_h3bco")
-
-[node name="Spike3" type="CollisionShape2D" parent="Damage"]
-position = Vector2(42, -121)
-shape = SubResource("RectangleShape2D_h3bco")
-
-[node name="Spike4" type="CollisionShape2D" parent="Damage"]
-position = Vector2(330, -121)
-shape = SubResource("RectangleShape2D_h3bco")
-
-[node name="Spike5" type="CollisionShape2D" parent="Damage"]
-position = Vector2(258, -287)
-shape = SubResource("RectangleShape2D_h3bco")
-
-[node name="Spike6" type="CollisionShape2D" parent="Damage"]
-position = Vector2(186, -287)
-shape = SubResource("RectangleShape2D_h3bco")
-
-[node name="Spike7" type="CollisionShape2D" parent="Damage"]
-position = Vector2(114, -287)
-shape = SubResource("RectangleShape2D_h3bco")
-
-[node name="Spike8" type="CollisionShape2D" parent="Damage"]
-position = Vector2(150, -301)
-shape = SubResource("RectangleShape2D_h3bco")
-
-[node name="Spike9" type="CollisionShape2D" parent="Damage"]
-position = Vector2(222, -301)
-shape = SubResource("RectangleShape2D_h3bco")
-
-[node name="Spike10" type="CollisionShape2D" parent="Damage"]
-position = Vector2(294, -443)
-shape = SubResource("RectangleShape2D_h3bco")
-
-[node name="Spike11" type="CollisionShape2D" parent="Damage"]
-position = Vector2(78, -443)
-shape = SubResource("RectangleShape2D_h3bco")
-
-[node name="Spike12" type="CollisionShape2D" parent="Damage"]
-position = Vector2(132, -179)
-shape = SubResource("RectangleShape2D_srdax")
-
-[node name="Spike13" type="CollisionShape2D" parent="Damage"]
-position = Vector2(240, -179)
-shape = SubResource("RectangleShape2D_srdax")
-
-[node name="Spike14" type="CollisionShape2D" parent="Damage"]
-position = Vector2(54, -63)
-shape = SubResource("RectangleShape2D_7o7bs")
-
-[node name="Spike15" type="CollisionShape2D" parent="Damage"]
-position = Vector2(54, -105)
-shape = SubResource("RectangleShape2D_7o7bs")
-
-[node name="Spike16" type="CollisionShape2D" parent="Damage"]
-position = Vector2(318, -63)
-shape = SubResource("RectangleShape2D_7o7bs")
-
-[node name="Spike17" type="CollisionShape2D" parent="Damage"]
-position = Vector2(318, -105)
-shape = SubResource("RectangleShape2D_7o7bs")
-
-[node name="Spike18" type="CollisionShape2D" parent="Damage"]
-position = Vector2(354, -165)
-shape = SubResource("RectangleShape2D_7o7bs")
-
-[node name="Spike19" type="CollisionShape2D" parent="Damage"]
-position = Vector2(18, -165)
-shape = SubResource("RectangleShape2D_7o7bs")
-
-[node name="Spike20" type="CollisionShape2D" parent="Damage"]
-position = Vector2(18, -243)
-shape = SubResource("RectangleShape2D_7o7bs")
-
-[node name="Spike21" type="CollisionShape2D" parent="Damage"]
-position = Vector2(18, -285)
-shape = SubResource("RectangleShape2D_7o7bs")
-
-[node name="Spike22" type="CollisionShape2D" parent="Damage"]
-position = Vector2(186, -231)
-shape = SubResource("RectangleShape2D_7o7bs")
-
-[node name="Spike23" type="CollisionShape2D" parent="Damage"]
-position = Vector2(354, -243)
-shape = SubResource("RectangleShape2D_7o7bs")
-
-[node name="Spike24" type="CollisionShape2D" parent="Damage"]
-position = Vector2(354, -285)
-shape = SubResource("RectangleShape2D_7o7bs")
-
-[node name="Spike25" type="CollisionShape2D" parent="Damage"]
-position = Vector2(354, -363)
-shape = SubResource("RectangleShape2D_7o7bs")
-
-[node name="Spike26" type="CollisionShape2D" parent="Damage"]
-position = Vector2(354, -405)
-shape = SubResource("RectangleShape2D_7o7bs")
-
-[node name="Spike27" type="CollisionShape2D" parent="Damage"]
-position = Vector2(18, -363)
-shape = SubResource("RectangleShape2D_7o7bs")
-
-[node name="Spike28" type="CollisionShape2D" parent="Damage"]
-position = Vector2(18, -405)
-shape = SubResource("RectangleShape2D_7o7bs")
-
 [node name="TL" type="Marker2D" parent="."]
 position = Vector2(0, -456)
 metadata/_edit_lock_ = true
@@ -277,6 +150,7 @@ position = Vector2(186, -258)
 position = Vector2(186, -426)
 
 [node name="Hint" type="VBoxContainer" parent="."]
+z_index = -1
 offset_left = 163.0
 offset_top = -57.0
 offset_right = 208.0

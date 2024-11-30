@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://dkcewkefukuy7"]
+[gd_scene load_steps=62 format=3 uid="uid://dkcewkefukuy7"]
 
 [ext_resource type="Script" path="res://gameplay/player/Player.gd" id="1_nltvs"]
 [ext_resource type="Texture2D" uid="uid://dx2sldyxbnh17" path="res://assets/player.png" id="2_oowts"]
@@ -340,6 +340,12 @@ size = Vector2(12, 12)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dgsbn"]
 size = Vector2(11, 11)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l4ier"]
+size = Vector2(12, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f6362"]
+size = Vector2(8, 8)
+
 [sub_resource type="Curve" id="Curve_eamgd"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.05912, 0.0, 1, 0]
 point_count = 2
@@ -491,10 +497,24 @@ shape = SubResource("RectangleShape2D_dpbum")
 
 [node name="HitBox" type="Area2D" parent="."]
 collision_layer = 8
-collision_mask = 288
+collision_mask = 32
 
 [node name="Shape" type="CollisionShape2D" parent="HitBox"]
 shape = SubResource("RectangleShape2D_dgsbn")
+
+[node name="WinBox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 256
+
+[node name="Shape" type="CollisionShape2D" parent="WinBox"]
+shape = SubResource("RectangleShape2D_l4ier")
+
+[node name="SquishBox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 3
+
+[node name="Shape" type="CollisionShape2D" parent="SquishBox"]
+shape = SubResource("RectangleShape2D_f6362")
 
 [node name="JumpRay" type="RayCast2D" parent="."]
 position = Vector2(0, 6)
@@ -661,6 +681,13 @@ bus = &"Sound"
 [connection signal="timeout" from="Shield/CoolDown" to="Shield" method="_on_cool_down_timeout"]
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
 [connection signal="area_exited" from="HitBox" to="." method="_on_hit_box_area_exited"]
+[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
+[connection signal="body_exited" from="HitBox" to="." method="_on_hit_box_body_exited"]
+[connection signal="area_entered" from="WinBox" to="." method="_on_win_box_area_entered"]
+[connection signal="area_entered" from="SquishBox" to="." method="_on_hit_box_area_entered"]
+[connection signal="area_exited" from="SquishBox" to="." method="_on_hit_box_area_exited"]
+[connection signal="body_entered" from="SquishBox" to="." method="_on_squish_box_body_entered"]
+[connection signal="body_exited" from="SquishBox" to="." method="_on_squish_box_body_exited"]
 [connection signal="hit_ground" from="Jump" to="." method="_on_jump_hit_ground"]
 [connection signal="hit_ground" from="Jump" to="Animator" method="_on_jump_hit_ground"]
 [connection signal="jump" from="Jump" to="." method="_on_jump_jump"]
