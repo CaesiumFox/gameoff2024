@@ -53,63 +53,62 @@ rotation = 3.14159
 [node name="Buttons" type="Node2D" parent="SceneParts"]
 
 [node name="Button1" parent="SceneParts/Buttons" instance=ExtResource("4_abdyl")]
-position = Vector2(126, -36)
+position = Vector2(162, -12)
 
 [node name="Button2" parent="SceneParts/Buttons" instance=ExtResource("4_abdyl")]
-position = Vector2(90, -36)
+position = Vector2(108, -12)
 
 [node name="Button3" parent="SceneParts/Buttons" instance=ExtResource("4_abdyl")]
-position = Vector2(-90, -36)
+position = Vector2(0, -96)
 
 [node name="Button4" parent="SceneParts/Buttons" instance=ExtResource("4_abdyl")]
-position = Vector2(-126, -36)
+position = Vector2(-162, -12)
 
 [node name="Button5" parent="SceneParts/Buttons" instance=ExtResource("4_abdyl")]
-position = Vector2(-126, 36)
+position = Vector2(-162, 12)
 rotation = 3.14159
 
 [node name="Button6" parent="SceneParts/Buttons" instance=ExtResource("4_abdyl")]
-position = Vector2(-90, 36)
+position = Vector2(0, -119)
 rotation = 3.14159
 
 [node name="Button7" parent="SceneParts/Buttons" instance=ExtResource("4_abdyl")]
-position = Vector2(90, 36)
+position = Vector2(108, 12)
 rotation = 3.14159
 
 [node name="Button8" parent="SceneParts/Buttons" instance=ExtResource("4_abdyl")]
-position = Vector2(126, 36)
+position = Vector2(162, 12)
 rotation = 3.14159
 
 [node name="Button9" parent="SceneParts/Buttons" instance=ExtResource("4_abdyl")]
-position = Vector2(36, -90)
+position = Vector2(-120, 0)
 rotation = 1.5708
 
 [node name="Button10" parent="SceneParts/Buttons" instance=ExtResource("4_abdyl")]
-position = Vector2(36, -126)
+position = Vector2(12, -162)
 rotation = 1.5708
 
 [node name="Button11" parent="SceneParts/Buttons" instance=ExtResource("4_abdyl")]
-position = Vector2(36, 90)
-rotation = 1.5708
+position = Vector2(0, 120)
 
 [node name="Button12" parent="SceneParts/Buttons" instance=ExtResource("4_abdyl")]
-position = Vector2(36, 126)
+position = Vector2(12, 162)
 rotation = 1.5708
 
 [node name="Button13" parent="SceneParts/Buttons" instance=ExtResource("4_abdyl")]
-position = Vector2(-36, 126)
+position = Vector2(-12, 162)
 rotation = -1.5708
 
 [node name="Button14" parent="SceneParts/Buttons" instance=ExtResource("4_abdyl")]
-position = Vector2(-36, 90)
-rotation = -1.5708
+position = Vector2(0, 96)
+rotation = 3.14159
 
 [node name="Button15" parent="SceneParts/Buttons" instance=ExtResource("4_abdyl")]
-position = Vector2(-36, -90)
+position = Vector2(-96, 0)
 rotation = -1.5708
 
 [node name="Button16" parent="SceneParts/Buttons" instance=ExtResource("4_abdyl")]
-position = Vector2(-36, -126)
+position = Vector2(-12, -162)
 rotation = -1.5708
 
 [node name="Moving" type="Node2D" parent="."]

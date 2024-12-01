@@ -9,5 +9,5 @@ func _ready() -> void:
     interpolate(total_cells, Vector2i(~OUT,  OUT), Vector2i(~OUT, ~OUT))
     interpolate(total_cells, Vector2i(~OUT, ~OUT), Vector2i( OUT, ~OUT))
 
-    count = 12
-    delta_cells = [5, 5, 5, 6]
+    count = 14
+    delta_cells = [10, 11]

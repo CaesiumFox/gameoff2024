@@ -417,6 +417,7 @@ visible = false
 sprite_frames = SubResource("SpriteFrames_xe4u1")
 
 [node name="Invincibility" type="Timer" parent="Shield"]
+wait_time = 1.2
 one_shot = true
 
 [node name="CoolDown" type="Timer" parent="Shield"]
