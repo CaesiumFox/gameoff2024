@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://3xgycv5wxm7e"]
+[gd_scene load_steps=10 format=3 uid="uid://3xgycv5wxm7e"]
 
 [ext_resource type="Script" path="res://gameplay/elements/Button.gd" id="1_m5id3"]
 [ext_resource type="Texture2D" uid="uid://dsgotgahmquxy" path="res://assets/tiles0.png" id="2_qj4qa"]
+[ext_resource type="AudioStream" uid="uid://bkdpyrkdohv4q" path="res://assets/sfx/button.ogg" id="3_ev31w"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ymh11"]
 atlas = ExtResource("2_qj4qa")
@@ -71,5 +72,10 @@ libraries = {
 "": SubResource("AnimationLibrary_itosn")
 }
 
+[node name="ClickSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ev31w")
+bus = &"Sound"
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="click" from="." to="." method="_on_click"]

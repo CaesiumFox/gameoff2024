@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://c4x12fhcm1n4u"]
+[gd_scene load_steps=11 format=3 uid="uid://c4x12fhcm1n4u"]
 
 [ext_resource type="Script" path="res://gameplay/elements/Pad.gd" id="1_uqyem"]
 [ext_resource type="Texture2D" uid="uid://dsgotgahmquxy" path="res://assets/tiles0.png" id="1_wf6i3"]
+[ext_resource type="AudioStream" uid="uid://bex0iqvq6uibe" path="res://assets/sfx/pad.ogg" id="3_0xd3t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_84u3w"]
 size = Vector2(10, 2)
@@ -104,5 +105,9 @@ initial_velocity_min = 46.0
 initial_velocity_max = 50.0
 scale_amount_curve = SubResource("Curve_d1bts")
 color = Color(0.733333, 0, 1, 1)
+
+[node name="PadSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_0xd3t")
+bus = &"Sound"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -5,6 +5,7 @@ signal click(on: bool)
 signal press
 signal release
 
+@onready var click_sound := $ClickSound as AudioStreamPlayer
 @onready var animation := $Animation as AnimationPlayer
 
 func _on_body_entered(body: Node2D) -> void:
@@ -22,3 +23,7 @@ func _on_body_exited(body: Node2D) -> void:
         animation.play("RESET")
         click.emit(false)
         release.emit()
+
+func _on_click(on: bool) -> void:
+    click_sound.pitch_scale = 1.0 if on else 0.8
+    click_sound.play()

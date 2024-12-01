@@ -4,6 +4,7 @@ class_name Pad
 const EPS: float = 0.1
 const COEFF: float = sqrt(1.5)
 
+@onready var pad_sound: AudioStreamPlayer = $PadSound
 @onready var animation: AnimationPlayer = $Animation
 
 func _on_body_entered(body: Node2D) -> void:
@@ -24,4 +25,5 @@ func _on_body_entered(body: Node2D) -> void:
     if (body as CollisionObject2D).collision_layer & (1 << 2):  # player
         if body is not Player: return
         (body as Player).velocity.y = new_velocity
+        pad_sound.play()
         animation.play("bounce")
