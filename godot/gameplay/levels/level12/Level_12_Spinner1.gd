@@ -21,10 +21,10 @@ func _ready() -> void:
     interpolate(total_cells, Vector2i( OUT,  ~IN), Vector2i( OUT, ~OUT))
     interpolate(total_cells, Vector2i( OUT, ~OUT), Vector2i(  IN, ~OUT))
 
-    count = 24 * 4
-    delta_cells = [
-        11, 11, 11, 18,
-        11, 11, 11, 18,
-        11, 11, 11, 18,
-        11, 11, 11, 18 + 1,
-    ]
+    #count = 24 * 4
+    #delta_cells = [
+        #11, 11, 11, 18,
+        #11, 11, 11, 18,
+        #11, 11, 11, 18,
+        #11, 11, 11, 18 + 1,
+    #]

@@ -22,5 +22,5 @@ var data: Array[Metadata] = [
     Metadata.new( 60, 45, 30),
     Metadata.new( 40, 25, 15),
     Metadata.new( 45, 30,  5),
-    Metadata.new(  0,  0,  0),
+    Metadata.new(120, 90, 60),
 ]
