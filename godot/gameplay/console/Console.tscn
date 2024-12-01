@@ -1,0 +1,293 @@
+[gd_scene load_steps=22 format=3 uid="uid://ctu1esfcbri4v"]
+
+[ext_resource type="Theme" uid="uid://70yhvrg7ebw" path="res://ui/theme.tres" id="1_gsaq5"]
+[ext_resource type="Texture2D" uid="uid://bfnvuvyjdphdt" path="res://assets/console.png" id="1_r3atn"]
+[ext_resource type="Script" path="res://gameplay/console/Console.gd" id="2_12cwe"]
+[ext_resource type="Texture2D" uid="uid://bmy7nrayfqr8k" path="res://assets/back_button.png" id="3_4wc6g"]
+[ext_resource type="Texture2D" uid="uid://c4iif6mruw61b" path="res://assets/hints.png" id="5_q01t3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uqlbv"]
+atlas = ExtResource("1_r3atn")
+region = Rect2(0, 0, 88, 88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5goxg"]
+atlas = ExtResource("3_4wc6g")
+region = Rect2(0, 0, 12, 12)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wccn1"]
+atlas = ExtResource("3_4wc6g")
+region = Rect2(12, 0, 12, 12)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3hc81"]
+atlas = ExtResource("3_4wc6g")
+region = Rect2(12, 0, 12, 12)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fwuip"]
+atlas = ExtResource("3_4wc6g")
+region = Rect2(12, 0, 12, 12)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bilmf"]
+atlas = ExtResource("3_4wc6g")
+region = Rect2(12, 0, 12, 12)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_02o0i"]
+atlas = ExtResource("5_q01t3")
+region = Rect2(50, 0, 17, 9)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_566bp"]
+atlas = ExtResource("5_q01t3")
+region = Rect2(67, 0, 17, 9)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ad1gk"]
+atlas = ExtResource("5_q01t3")
+region = Rect2(25, 0, 25, 17)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ayyc"]
+atlas = ExtResource("5_q01t3")
+region = Rect2(25, 17, 25, 17)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_12juc"]
+atlas = ExtResource("5_q01t3")
+region = Rect2(15, 34, 15, 15)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yh0wi"]
+atlas = ExtResource("5_q01t3")
+region = Rect2(15, 49, 15, 15)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ttllj"]
+atlas = ExtResource("5_q01t3")
+region = Rect2(30, 34, 25, 9)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7w6ip"]
+atlas = ExtResource("5_q01t3")
+region = Rect2(0, 64, 15, 15)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gvyjf"]
+atlas = ExtResource("5_q01t3")
+region = Rect2(50, 18, 17, 9)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_18h5m"]
+atlas = ExtResource("5_q01t3")
+region = Rect2(67, 18, 17, 9)
+filter_clip = true
+
+[node name="Console" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_gsaq5")
+script = ExtResource("2_12cwe")
+
+[node name="Mid" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_top = -44.0
+offset_right = 44.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_uqlbv")
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 4
+
+[node name="Grid" type="GridContainer" parent="Mid"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -42.0
+offset_top = -42.0
+offset_right = 42.0
+offset_bottom = 42.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 6
+
+[node name="Back" type="TextureButton" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -6.0
+offset_right = 12.0
+offset_bottom = 6.0
+grow_vertical = 2
+focus_mode = 0
+texture_normal = SubResource("AtlasTexture_5goxg")
+texture_pressed = SubResource("AtlasTexture_wccn1")
+texture_hover = SubResource("AtlasTexture_3hc81")
+texture_disabled = SubResource("AtlasTexture_fwuip")
+texture_focused = SubResource("AtlasTexture_bilmf")
+
+[node name="BackHint" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 1.0
+offset_top = 8.0
+offset_right = 18.0
+offset_bottom = 29.0
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 3
+
+[node name="Backspace" type="TextureRect" parent="BackHint"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_02o0i")
+
+[node name="L1" type="TextureRect" parent="BackHint"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_566bp")
+
+[node name="HintPanel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -6.0
+offset_right = 3.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Hint" type="VBoxContainer" parent="HintPanel"]
+layout_mode = 2
+
+[node name="Move" type="HBoxContainer" parent="HintPanel/Hint"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 3
+
+[node name="WASD" type="TextureRect" parent="HintPanel/Hint/Move"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_ad1gk")
+
+[node name="Arrows" type="TextureRect" parent="HintPanel/Hint/Move"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_7ayyc")
+
+[node name="Hat" type="TextureRect" parent="HintPanel/Hint/Move"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_12juc")
+
+[node name="Stick" type="TextureRect" parent="HintPanel/Hint/Move"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_yh0wi")
+
+[node name="Bottom" type="HBoxContainer" parent="HintPanel/Hint"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 15
+
+[node name="Change" type="HBoxContainer" parent="HintPanel/Hint/Bottom"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 3
+
+[node name="Space" type="TextureRect" parent="HintPanel/Hint/Bottom/Change"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_ttllj")
+
+[node name="A" type="TextureRect" parent="HintPanel/Hint/Bottom/Change"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_7w6ip")
+
+[node name="ErasePanel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -51.0
+offset_top = -18.0
+offset_right = -1.0
+offset_bottom = 18.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Erase" type="VBoxContainer" parent="ErasePanel"]
+layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="Erase" type="HBoxContainer" parent="ErasePanel/Erase"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 3
+
+[node name="Backspace" type="TextureRect" parent="ErasePanel/Erase/Erase"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_gvyjf")
+
+[node name="L1" type="TextureRect" parent="ErasePanel/Erase/Erase"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_18h5m")
+
+[node name="Button" type="LinkButton" parent="ErasePanel/Erase"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "C_ERASE"
+underline = 2
+
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="ErasePanel/Erase/Button" to="." method="_on_button_pressed"]

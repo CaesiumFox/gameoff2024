@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://du3tr22avankd"]
+
+[ext_resource type="Texture2D" uid="uid://bfnvuvyjdphdt" path="res://assets/console.png" id="1_w7251"]
+[ext_resource type="Script" path="res://gameplay/console/Cell.gd" id="2_yx8bc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ubf1e"]
+atlas = ExtResource("1_w7251")
+region = Rect2(116, 0, 14, 14)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4tw2u"]
+atlas = ExtResource("1_w7251")
+region = Rect2(102, 0, 14, 14)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_143wj"]
+atlas = ExtResource("1_w7251")
+region = Rect2(88, 0, 14, 14)
+filter_clip = true
+
+[node name="Cell" type="TextureButton"]
+offset_right = 14.0
+offset_bottom = 14.0
+toggle_mode = true
+action_mode = 0
+texture_normal = SubResource("AtlasTexture_ubf1e")
+texture_pressed = SubResource("AtlasTexture_4tw2u")
+texture_focused = SubResource("AtlasTexture_143wj")
+script = ExtResource("2_yx8bc")
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]
+[connection signal="button_up" from="." to="." method="_on_button_up"]
+[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="toggled" from="." to="." method="_on_toggled"]

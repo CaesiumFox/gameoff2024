@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://d866h4mcretv"]
+
+[ext_resource type="Shader" path="res://shaders/check_shader.gdshader" id="1_eufq0"]
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_eufq0")
+shader_parameter/progress = 0.0

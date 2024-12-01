@@ -1,0 +1,34 @@
+keys,en,ru
+MM_PLAY,PLAY,ИГРАТЬ
+MM_OPTIONS,OPTIONS,НАСТРОЙКИ
+MM_ACHIEVEMENTS,ACHIEVEMENTS,ДОСТИЖЕНИЯ
+MM_STATISTICS,STATISTICS,СТАТИСТИКА
+MM_CREDITS,CREDITS,ТИТРЫ
+MM_QUIT,QUIT,ВЫЙТИ
+NUM_LVL,Level {id},Уровень {id}
+PM_RESUME,RESUME,ПРОДОЛЖИТЬ
+PM_RESTART,RESTART,ЗАНОВО
+PM_QUIT,QUIT,ВЫЙТИ
+A_1_0,Collect 4 stars,Соберите 4 звезды
+A_1_1,Collected 4 stars,Собрано 4 звезды
+A_2_0,Collect 9 stars,Соберите 9 звёзд
+A_2_1,Collected 9 stars,Собрано 9 звёзд
+A_3_0,Collect 30 stars,Соберите 30 звёзд
+A_3_1,Collected 30 stars,Собрано 30 звёзд
+A_4_0,Collect 5 coins,Соберите 5 монет
+A_4_1,Collected 5 coins,Собрано 5 монет
+A_5_0,Collect everything,Соберите всё
+A_5_1,Collected everything,Собрано всё
+HINT_WJ,Wall jumps are unlocked forever,Прыжки по стенам разблокированы навсегда
+HINT_DJ,Double jump is unlocked forever,Двойной прыжок разблокирован навсегда
+HINT_TJ,Triple jump is unlocked forever,Тройной прыжок разблокирован навсегда
+T_BEST,Best,Лучшее
+O_AUDIO,Audio,Аудио
+O_MASTER,Master,Мастер
+O_SFX,Sound,Звук
+O_MUSIC,Music,Музыка
+O_LANGUAGE,Language,Язык
+O_FULLSCREEN,Fullscreen,Полный экран
+O_MY_NAME,English,Русский
+O_RESET,Reset save file,Сбросить сохранения
+C_ERASE,Erase,Очистить

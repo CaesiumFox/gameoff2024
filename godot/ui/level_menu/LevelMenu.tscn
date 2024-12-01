@@ -1,0 +1,104 @@
+[gd_scene load_steps=12 format=3 uid="uid://bwnhtdduwl13u"]
+
+[ext_resource type="Script" path="res://ui/level_menu/LevelMenu.gd" id="1_7cr7p"]
+[ext_resource type="AudioStream" uid="uid://ibiqxk0peqso" path="res://assets/sfx/ui_point.ogg" id="2_fagbu"]
+[ext_resource type="Texture2D" uid="uid://bmy7nrayfqr8k" path="res://assets/back_button.png" id="2_j4ggy"]
+[ext_resource type="AudioStream" uid="uid://dq7uo6vdyyfl1" path="res://assets/sfx/ui_select.ogg" id="3_iw3tf"]
+[ext_resource type="Texture2D" uid="uid://c4iif6mruw61b" path="res://assets/hints.png" id="3_ujser"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dtvam"]
+atlas = ExtResource("2_j4ggy")
+region = Rect2(0, 0, 12, 12)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bm2il"]
+atlas = ExtResource("2_j4ggy")
+region = Rect2(12, 0, 12, 12)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4l0hx"]
+atlas = ExtResource("2_j4ggy")
+region = Rect2(12, 0, 12, 12)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1obeb"]
+atlas = ExtResource("2_j4ggy")
+region = Rect2(12, 0, 12, 12)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fgi47"]
+atlas = ExtResource("3_ujser")
+region = Rect2(50, 9, 17, 9)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_do2v8"]
+atlas = ExtResource("3_ujser")
+region = Rect2(15, 64, 15, 15)
+filter_clip = true
+
+[node name="LevelMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 2
+script = ExtResource("1_7cr7p")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Levels" type="GridContainer" parent="CenterContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+columns = 3
+
+[node name="BackButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_right = 12.0
+offset_bottom = 12.0
+focus_mode = 0
+texture_normal = SubResource("AtlasTexture_dtvam")
+texture_pressed = SubResource("AtlasTexture_bm2il")
+texture_hover = SubResource("AtlasTexture_4l0hx")
+texture_focused = SubResource("AtlasTexture_1obeb")
+
+[node name="BackHint" type="VBoxContainer" parent="."]
+layout_mode = 1
+offset_left = 1.0
+offset_top = 16.0
+offset_right = 18.0
+offset_bottom = 43.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 1
+
+[node name="Backspace" type="TextureRect" parent="BackHint"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_fgi47")
+
+[node name="L1" type="TextureRect" parent="BackHint"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_do2v8")
+
+[node name="PointSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_fagbu")
+volume_db = -15.0
+bus = &"Sound"
+
+[node name="SelectSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_iw3tf")
+volume_db = -10.0
+bus = &"Sound"
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

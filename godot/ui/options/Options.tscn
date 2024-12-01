@@ -1,0 +1,280 @@
+[gd_scene load_steps=16 format=3 uid="uid://cu7lnu8p1f0ff"]
+
+[ext_resource type="Theme" uid="uid://70yhvrg7ebw" path="res://ui/theme.tres" id="1_krcbd"]
+[ext_resource type="Script" path="res://ui/options/Options.gd" id="2_c1eih"]
+[ext_resource type="AudioStream" uid="uid://ibiqxk0peqso" path="res://assets/sfx/ui_point.ogg" id="3_tmysm"]
+[ext_resource type="FontFile" uid="uid://bx8uq1tdx4ah2" path="res://assets/fonts/big.fnt" id="4_mdt00"]
+[ext_resource type="Script" path="res://ui/options/LanguageSelection.gd" id="5_lneu6"]
+[ext_resource type="Texture2D" uid="uid://bmy7nrayfqr8k" path="res://assets/back_button.png" id="6_ayx8t"]
+[ext_resource type="Texture2D" uid="uid://c4iif6mruw61b" path="res://assets/hints.png" id="7_7xw3o"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rd5yb"]
+bg_color = Color(0.733333, 0, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xthx4"]
+bg_color = Color(1, 0.733333, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_14qur"]
+atlas = ExtResource("6_ayx8t")
+region = Rect2(0, 0, 12, 12)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xjged"]
+atlas = ExtResource("6_ayx8t")
+region = Rect2(12, 0, 12, 12)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dyqcj"]
+atlas = ExtResource("6_ayx8t")
+region = Rect2(12, 0, 12, 12)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n5i3k"]
+atlas = ExtResource("6_ayx8t")
+region = Rect2(12, 0, 12, 12)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qh16f"]
+atlas = ExtResource("7_7xw3o")
+region = Rect2(50, 9, 17, 9)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p7mjs"]
+atlas = ExtResource("7_7xw3o")
+region = Rect2(15, 64, 15, 15)
+filter_clip = true
+
+[node name="Options" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_bottom = NodePath("Center/VBoxContainer/AudioContainer/Audio/MasterSlider")
+focus_next = NodePath("Center/VBoxContainer/AudioContainer/Audio/MasterSlider")
+focus_mode = 2
+theme = ExtResource("1_krcbd")
+script = ExtResource("2_c1eih")
+modulate_select = Color(1, 0.733333, 0, 1)
+modulate_deselect = Color(1, 1, 1, 1)
+
+[node name="PointSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_tmysm")
+volume_db = -15.0
+bus = &"Sound"
+
+[node name="Center" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Center"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="TitleOptions" type="Label" parent="Center/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_mdt00")
+text = "MM_OPTIONS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AudioContainer" type="VBoxContainer" parent="Center/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = -2
+
+[node name="TitleAudio" type="Label" parent="Center/VBoxContainer/AudioContainer"]
+layout_mode = 2
+text = "O_AUDIO"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Audio" type="GridContainer" parent="Center/VBoxContainer/AudioContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = -2
+columns = 2
+
+[node name="MasterLabel" type="Label" parent="Center/VBoxContainer/AudioContainer/Audio"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "O_MASTER"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="MasterSlider" type="HSlider" parent="Center/VBoxContainer/AudioContainer/Audio"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 16)
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../SFXSlider")
+focus_next = NodePath("../SFXSlider")
+min_value = -24.0
+max_value = 24.0
+value = 6.0
+tick_count = 1
+
+[node name="SFXLabel" type="Label" parent="Center/VBoxContainer/AudioContainer/Audio"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "O_SFX"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="SFXSlider" type="HSlider" parent="Center/VBoxContainer/AudioContainer/Audio"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 16)
+layout_mode = 2
+focus_neighbor_top = NodePath("../MasterSlider")
+focus_neighbor_bottom = NodePath("../MusicSlider")
+focus_next = NodePath("../MusicSlider")
+focus_previous = NodePath("../MasterSlider")
+min_value = -24.0
+max_value = 24.0
+value = 6.0
+tick_count = 1
+
+[node name="MusicLabel" type="Label" parent="Center/VBoxContainer/AudioContainer/Audio"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "O_MUSIC"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="MusicSlider" type="HSlider" parent="Center/VBoxContainer/AudioContainer/Audio"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 16)
+layout_mode = 2
+focus_neighbor_top = NodePath("../SFXSlider")
+focus_neighbor_bottom = NodePath("../../../FullScreen")
+focus_next = NodePath("../../../FullScreen")
+focus_previous = NodePath("../SFXSlider")
+min_value = -24.0
+max_value = 24.0
+value = 6.0
+tick_count = 1
+
+[node name="FullScreen" type="CheckButton" parent="Center/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_top = NodePath("../AudioContainer/Audio/MusicSlider")
+focus_neighbor_bottom = NodePath("../LanguageContainer/LanguageSelection")
+focus_next = NodePath("../LanguageContainer/LanguageSelection")
+focus_previous = NodePath("../AudioContainer/Audio/MusicSlider")
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+text = "O_FULLSCREEN"
+flat = true
+
+[node name="LanguageContainer" type="HBoxContainer" parent="Center/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Left" type="Button" parent="Center/VBoxContainer/LanguageContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "‹"
+flat = true
+
+[node name="LanguageSelection" type="Button" parent="Center/VBoxContainer/LanguageContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_top = NodePath("../../FullScreen")
+focus_neighbor_bottom = NodePath("../../CenterReset/ResetButton")
+focus_next = NodePath("../../CenterReset/ResetButton")
+focus_previous = NodePath("../../FullScreen")
+text = "O_MY_NAME"
+flat = true
+script = ExtResource("5_lneu6")
+
+[node name="Right" type="Button" parent="Center/VBoxContainer/LanguageContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "›"
+flat = true
+
+[node name="CenterReset" type="CenterContainer" parent="Center/VBoxContainer"]
+layout_mode = 2
+
+[node name="ResetButton" type="Button" parent="Center/VBoxContainer/CenterReset"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_top = NodePath("../../LanguageContainer/LanguageSelection")
+focus_previous = NodePath("../../LanguageContainer/LanguageSelection")
+text = "O_RESET"
+flat = true
+
+[node name="Progress" type="ProgressBar" parent="Center/VBoxContainer/CenterReset/ResetButton"]
+visible = false
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -7.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/background = SubResource("StyleBoxFlat_rd5yb")
+theme_override_styles/fill = SubResource("StyleBoxFlat_xthx4")
+show_percentage = false
+
+[node name="Timer" type="Timer" parent="Center/VBoxContainer/CenterReset/ResetButton"]
+wait_time = 2.0
+one_shot = true
+
+[node name="BackButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_right = 12.0
+offset_bottom = 12.0
+focus_mode = 0
+texture_normal = SubResource("AtlasTexture_14qur")
+texture_pressed = SubResource("AtlasTexture_xjged")
+texture_hover = SubResource("AtlasTexture_dyqcj")
+texture_focused = SubResource("AtlasTexture_n5i3k")
+
+[node name="BackHint" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 16.0
+offset_right = 18.0
+offset_bottom = 43.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 1
+
+[node name="Backspace" type="TextureRect" parent="BackHint"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_qh16f")
+
+[node name="L1" type="TextureRect" parent="BackHint"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_p7mjs")
+
+[connection signal="focus_entered" from="Center/VBoxContainer/AudioContainer/Audio/MasterSlider" to="." method="_on_master_slider_focus_entered"]
+[connection signal="focus_exited" from="Center/VBoxContainer/AudioContainer/Audio/MasterSlider" to="." method="_on_master_slider_focus_exited"]
+[connection signal="value_changed" from="Center/VBoxContainer/AudioContainer/Audio/MasterSlider" to="." method="_on_master_slider_value_changed"]
+[connection signal="focus_entered" from="Center/VBoxContainer/AudioContainer/Audio/SFXSlider" to="." method="_on_sfx_slider_focus_entered"]
+[connection signal="focus_exited" from="Center/VBoxContainer/AudioContainer/Audio/SFXSlider" to="." method="_on_sfx_slider_focus_exited"]
+[connection signal="value_changed" from="Center/VBoxContainer/AudioContainer/Audio/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="focus_entered" from="Center/VBoxContainer/AudioContainer/Audio/MusicSlider" to="." method="_on_music_slider_focus_entered"]
+[connection signal="focus_exited" from="Center/VBoxContainer/AudioContainer/Audio/MusicSlider" to="." method="_on_music_slider_focus_exited"]
+[connection signal="value_changed" from="Center/VBoxContainer/AudioContainer/Audio/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="focus_entered" from="Center/VBoxContainer/FullScreen" to="." method="_on_full_screen_focus_entered"]
+[connection signal="focus_exited" from="Center/VBoxContainer/FullScreen" to="." method="_on_full_screen_focus_exited"]
+[connection signal="toggled" from="Center/VBoxContainer/FullScreen" to="." method="_on_full_screen_toggled"]
+[connection signal="pressed" from="Center/VBoxContainer/LanguageContainer/Left" to="Center/VBoxContainer/LanguageContainer/LanguageSelection" method="_on_left_pressed"]
+[connection signal="changed" from="Center/VBoxContainer/LanguageContainer/LanguageSelection" to="." method="_on_language_selection_changed"]
+[connection signal="focus_entered" from="Center/VBoxContainer/LanguageContainer/LanguageSelection" to="." method="_on_language_selection_focus_entered"]
+[connection signal="pressed" from="Center/VBoxContainer/LanguageContainer/Right" to="Center/VBoxContainer/LanguageContainer/LanguageSelection" method="_on_right_pressed"]
+[connection signal="button_down" from="Center/VBoxContainer/CenterReset/ResetButton" to="." method="_on_reset_button_button_down"]
+[connection signal="button_up" from="Center/VBoxContainer/CenterReset/ResetButton" to="." method="_on_reset_button_button_up"]
+[connection signal="focus_entered" from="Center/VBoxContainer/CenterReset/ResetButton" to="." method="_on_reset_button_focus_entered"]
+[connection signal="timeout" from="Center/VBoxContainer/CenterReset/ResetButton/Timer" to="." method="_on_reset_timer_timeout"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

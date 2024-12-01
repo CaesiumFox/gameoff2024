@@ -1,0 +1,112 @@
+[gd_scene load_steps=6 format=3 uid="uid://3a6gajtfwxfo"]
+
+[ext_resource type="Theme" uid="uid://70yhvrg7ebw" path="res://ui/theme.tres" id="1_pqttv"]
+[ext_resource type="Theme" uid="uid://byyfyow8w62ue" path="res://ui/main_menu/main_menu_theme.tres" id="2_126dp"]
+[ext_resource type="Script" path="res://ui/main_menu/MainMenu.gd" id="2_pd1sh"]
+[ext_resource type="PackedScene" uid="uid://cw17j3fqx4p6x" path="res://ui/main_menu/MainMenuButton.tscn" id="4_ilpic"]
+[ext_resource type="Texture2D" uid="uid://dyc4bt123rmpu" path="res://assets/logo.png" id="5_nx6nd"]
+
+[node name="MainMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_top = NodePath("MainButtons/QuitButton")
+focus_neighbor_bottom = NodePath("MainButtons/PlayButton")
+focus_next = NodePath("MainButtons/PlayButton")
+focus_previous = NodePath("MainButtons/QuitButton")
+focus_mode = 2
+theme = ExtResource("1_pqttv")
+script = ExtResource("2_pd1sh")
+
+[node name="MainButtons" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -120.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_126dp")
+theme_override_constants/separation = -8
+alignment = 1
+
+[node name="PlayButton" parent="MainButtons" instance=ExtResource("4_ilpic")]
+layout_mode = 2
+focus_neighbor_top = NodePath("../QuitButton")
+focus_neighbor_bottom = NodePath("../AchievementsButton")
+focus_next = NodePath("../AchievementsButton")
+focus_previous = NodePath("../QuitButton")
+translation_id = "MM_PLAY"
+
+[node name="AchievementsButton" parent="MainButtons" instance=ExtResource("4_ilpic")]
+layout_mode = 2
+focus_neighbor_top = NodePath("../PlayButton")
+focus_neighbor_bottom = NodePath("../StatisticsButton")
+focus_next = NodePath("../StatisticsButton")
+focus_previous = NodePath("../PlayButton")
+translation_id = "MM_ACHIEVEMENTS"
+
+[node name="StatisticsButton" parent="MainButtons" instance=ExtResource("4_ilpic")]
+layout_mode = 2
+focus_neighbor_top = NodePath("../AchievementsButton")
+focus_neighbor_bottom = NodePath("../OptionsButton")
+focus_next = NodePath("../OptionsButton")
+focus_previous = NodePath("../AchievementsButton")
+translation_id = "MM_STATISTICS"
+
+[node name="OptionsButton" parent="MainButtons" instance=ExtResource("4_ilpic")]
+layout_mode = 2
+focus_neighbor_top = NodePath("../StatisticsButton")
+focus_neighbor_bottom = NodePath("../CreditsButton")
+focus_next = NodePath("../CreditsButton")
+focus_previous = NodePath("../StatisticsButton")
+translation_id = "MM_OPTIONS"
+
+[node name="CreditsButton" parent="MainButtons" instance=ExtResource("4_ilpic")]
+layout_mode = 2
+focus_neighbor_top = NodePath("../OptionsButton")
+focus_neighbor_bottom = NodePath("../QuitButton")
+focus_next = NodePath("../QuitButton")
+focus_previous = NodePath("../OptionsButton")
+translation_id = "MM_CREDITS"
+
+[node name="QuitButton" parent="MainButtons" instance=ExtResource("4_ilpic")]
+layout_mode = 2
+focus_neighbor_top = NodePath("../CreditsButton")
+focus_neighbor_bottom = NodePath("../PlayButton")
+focus_next = NodePath("../PlayButton")
+focus_previous = NodePath("../CreditsButton")
+translation_id = "MM_QUIT"
+
+[node name="WaitTimer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
+[node name="LogoCenter" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -75.0
+offset_top = 16.0
+offset_right = 75.0
+offset_bottom = 56.0
+grow_horizontal = 2
+
+[node name="Logo" type="TextureRect" parent="LogoCenter"]
+layout_mode = 2
+texture = ExtResource("5_nx6nd")
+
+[connection signal="selected" from="MainButtons/PlayButton" to="." method="_on_play_button_selected"]
+[connection signal="selected" from="MainButtons/AchievementsButton" to="." method="_on_achievements_button_selected"]
+[connection signal="selected" from="MainButtons/StatisticsButton" to="." method="_on_records_button_selected"]
+[connection signal="selected" from="MainButtons/StatisticsButton" to="." method="_on_statistics_button_selected"]
+[connection signal="selected" from="MainButtons/OptionsButton" to="." method="_on_options_button_selected"]
+[connection signal="selected" from="MainButtons/CreditsButton" to="." method="_on_credits_button_selected"]
+[connection signal="selected" from="MainButtons/QuitButton" to="." method="_on_quit_button_selected"]
+[connection signal="timeout" from="WaitTimer" to="." method="_on_wait_timer_timeout"]

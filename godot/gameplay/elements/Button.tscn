@@ -1,0 +1,81 @@
+[gd_scene load_steps=10 format=3 uid="uid://3xgycv5wxm7e"]
+
+[ext_resource type="Script" path="res://gameplay/elements/Button.gd" id="1_m5id3"]
+[ext_resource type="Texture2D" uid="uid://dsgotgahmquxy" path="res://assets/tiles0.png" id="2_qj4qa"]
+[ext_resource type="AudioStream" uid="uid://bkdpyrkdohv4q" path="res://assets/sfx/button.ogg" id="3_ev31w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ymh11"]
+atlas = ExtResource("2_qj4qa")
+region = Rect2(144, 120, 12, 12)
+filter_clip = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n80x6"]
+size = Vector2(8, 3)
+
+[sub_resource type="Animation" id="Animation_aoawc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("View:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("AtlasTexture_ymh11")]
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aqu7o"]
+atlas = ExtResource("2_qj4qa")
+region = Rect2(156, 120, 12, 12)
+
+[sub_resource type="Animation" id="Animation_rxnfl"]
+resource_name = "press"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("View:texture")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [SubResource("AtlasTexture_aqu7o")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_itosn"]
+_data = {
+"RESET": SubResource("Animation_aoawc"),
+"press": SubResource("Animation_rxnfl")
+}
+
+[node name="Button" type="Area2D"]
+collision_layer = 0
+collision_mask = 5
+script = ExtResource("1_m5id3")
+
+[node name="View" type="Sprite2D" parent="."]
+position = Vector2(0, -6)
+texture = SubResource("AtlasTexture_ymh11")
+
+[node name="Shape" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_n80x6")
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_itosn")
+}
+
+[node name="ClickSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ev31w")
+bus = &"Sound"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="click" from="." to="." method="_on_click"]
