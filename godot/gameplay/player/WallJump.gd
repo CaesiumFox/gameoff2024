@@ -1,6 +1,7 @@
 extends Ability
 class_name WallJumpAbility
 
+signal wall_grab
 signal wall_jump(right_wall: bool)
 
 @onready var wall_timer := $WallTimer as Timer
@@ -17,7 +18,10 @@ func reset() -> void:
 
 func action(_delta: float) -> void:
     if player.is_on_wall() and player.get_slide_collision_count() > 0:
+        var old_on_wall := on_wall
         on_wall = 1 if player.get_last_slide_collision().get_normal().x > 0 else -1
+        if old_on_wall != on_wall:
+            wall_grab.emit()
     else:
         on_wall = 0
     

@@ -66,3 +66,6 @@ func reset_air_jumps() -> void:
 
 func _on_coyote_timer_timeout() -> void:
     coyote_works = false
+
+func _on_wall_jump_wall_grab() -> void:
+    reset_air_jumps()

@@ -694,6 +694,7 @@ bus = &"Sound"
 [connection signal="jump" from="Jump" to="Animator" method="_on_jump_jump"]
 [connection signal="leave_ground" from="Jump" to="Animator" method="_on_jump_leave_ground"]
 [connection signal="timeout" from="Jump/CoyoteTimer" to="Jump" method="_on_coyote_timer_timeout"]
+[connection signal="wall_grab" from="Jump/WallJump" to="Jump" method="_on_wall_jump_wall_grab"]
 [connection signal="wall_jump" from="Jump/WallJump" to="." method="_on_wall_jump_wall_jump"]
 [connection signal="timeout" from="Jump/WallJump/WallTimer" to="Jump/WallJump" method="_on_wall_timer_timeout"]
 [connection signal="just_disabled" from="Move" to="Move" method="_on_just_disabled"]
