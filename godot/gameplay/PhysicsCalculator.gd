@@ -52,10 +52,10 @@ func jump_speed() -> float:
     return retval
 
 func wall_jump_speed_v() -> float:
-    return jump_speed()  # TODO
+    return jump_speed()
 
 func wall_jump_speed_h() -> float:
-    return jump_speed()  # TODO
+    return jump_speed()
 
 func speed() -> float:
     return desired_speed
