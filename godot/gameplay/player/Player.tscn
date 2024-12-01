@@ -420,7 +420,7 @@ sprite_frames = SubResource("SpriteFrames_xe4u1")
 one_shot = true
 
 [node name="CoolDown" type="Timer" parent="Shield"]
-wait_time = 5.0
+wait_time = 3.0
 one_shot = true
 
 [node name="UI" type="CanvasLayer" parent="Shield"]
