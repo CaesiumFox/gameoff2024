@@ -77,6 +77,7 @@ func reload() -> void:
         SaveManager.data.levels.total_coin_count()
     ]
     for i in range(12):
+        level_names[i].text = tr("NUM_LVL").format({ id = i + 1 })
         best_times[i].text = time_show(SaveManager.data.levels.levels[i].best_time)
         star1_times[i].modulate = highlight if (
             SaveManager.data.levels.levels[i].best_time <= LevelMetadata.data[i].star_1_threshold
