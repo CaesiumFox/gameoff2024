@@ -5,6 +5,7 @@ var master_volume: float = 0:
     get:
         return master_volume
     set(new):
+        if master_volume == new: return
         master_volume = new
         if master_volume == -INF:
             AudioServer.set_bus_mute(master_index, true)
@@ -16,6 +17,7 @@ var sfx_volume: float = 0:
     get:
         return sfx_volume
     set(new):
+        if sfx_volume == new: return
         sfx_volume = new
         if sfx_volume == -INF:
             AudioServer.set_bus_mute(sfx_index, true)
@@ -27,6 +29,7 @@ var music_volume: float = 0:
     get:
         return music_volume
     set(new):
+        if music_volume == new: return
         music_volume = new
         if music_volume == -INF:
             AudioServer.set_bus_mute(music_index, true)
@@ -38,6 +41,7 @@ var full_screen: bool = true:
     get:
         return full_screen
     set(new):
+        if full_screen == new: return
         full_screen = new
         if full_screen:
             DisplayServer.window_set_mode(
@@ -50,6 +54,7 @@ var language: String = "":
     get:
         return language
     set(new):
+        if language == new: return
         language = new
         TranslationServer.set_locale(new)
 
