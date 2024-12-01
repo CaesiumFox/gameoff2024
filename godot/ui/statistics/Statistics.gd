@@ -71,7 +71,11 @@ func _ready() -> void:
         table.add_child(star3_time)
 
 func reload() -> void:
-    deaths.text = "D %d" % SaveManager.data.levels.total_deaths_count()
+    deaths.text = "D %d   S: %d   C: %d" % [
+        SaveManager.data.levels.total_deaths_count(),
+        SaveManager.data.levels.total_star_count(),
+        SaveManager.data.levels.total_coin_count()
+    ]
     for i in range(12):
         best_times[i].text = time_show(SaveManager.data.levels.levels[i].best_time)
         star1_times[i].modulate = highlight if (
