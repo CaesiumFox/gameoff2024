@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://d1qc2s6boueup"]
+[gd_scene load_steps=21 format=4 uid="uid://d1qc2s6boueup"]
 
 [ext_resource type="Script" path="res://gameplay/levels/level2/Level_2.gd" id="1_sax3l"]
 [ext_resource type="TileSet" uid="uid://b3c1hcw6x6y0p" path="res://assets/tiles0_0.tres" id="2_8i7y1"]
@@ -60,9 +60,6 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 192, 372, 0, 0, 0, 0, 192, 480, 0, 0, 0, 0, 192, 372)
 }
 point_count = 3
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mwfjw"]
-size = Vector2(16, 2)
 
 [node name="Level_2" type="Node2D"]
 script = ExtResource("1_sax3l")
@@ -215,12 +212,6 @@ rotates = false
 [node name="TileMapLayer" type="TileMapLayer" parent="Moving/Path1/Moving"]
 tile_map_data = PackedByteArray("AAAAAAEAAAAOAAAAADACAAEAAAAMAAAAADACAAAAAAADAAcAAAAAAAAAAAABAAcAAAABAAAAAAACAAcAAAABAAEAAAANAAAAADA=")
 tile_set = ExtResource("2_8i7y1")
-
-[node name="Damage" parent="Moving/Path1/Moving" instance=ExtResource("3_exlq3")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Moving/Path1/Moving/Damage"]
-position = Vector2(18, 13)
-shape = SubResource("RectangleShape2D_mwfjw")
 
 [node name="Timer" type="Timer" parent="Moving/Path1"]
 process_callback = 0
