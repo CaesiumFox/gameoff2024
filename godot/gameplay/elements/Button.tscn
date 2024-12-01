@@ -55,7 +55,7 @@ _data = {
 
 [node name="Button" type="Area2D"]
 collision_layer = 0
-collision_mask = 4
+collision_mask = 5
 script = ExtResource("1_m5id3")
 
 [node name="View" type="Sprite2D" parent="."]
